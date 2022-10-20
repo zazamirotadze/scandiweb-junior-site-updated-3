@@ -1,0 +1,118 @@
+.cart-card{
+    width: 88%;
+    height: 20em;
+    display: flex;
+    margin-top: 2em;
+   
+}
+.cart-imgi{
+    width: 200px ;
+    height: 100% ;
+}
+
+.imp-and-btn-and-count{
+    
+    height: 100%;
+    margin-left: auto;
+    display: flex;
+}
+
+.btn-and-sum{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding-right: 1em;
+}
+
+.attributes-div{
+    
+    width: 25%;
+}
+
+.name{
+    color: rgb(53, 52, 52);
+    font-weight: lighter;
+}
+
+.price{
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.color-word-div-in-cart{
+    font-size: small;
+    font-weight: bold;
+}
+
+
+.attribute-word-div-in-cart{
+    margin-top: 1em;
+    font-size: small;
+    font-weight: bold;
+  
+}
+
+.cart-plus-minus-btn-incart{
+    background-color: white;
+    outline: none;
+    border: 1px black solid;
+    height: 2em;
+    width: 2em;
+    font-size: large;
+    font-weight: lighter;
+}
+
+.thewholecart{
+    margin-left: 6%;
+    margin-top: 4em;
+}
+
+.cards-conteiner-incart{
+    margin-top: 4em;
+}
+
+.count-incart{
+    font-weight: bold;
+}
+
+.order-btn{
+    border:none;
+    background-color: rgb(5, 199, 79);
+    color: white;
+    padding: 0.8em 6em 0.8em 6em;
+    border-radius: 2%;
+    margin-top: 1em;
+}
+
+.calculated-numbers-incart{
+    margin-top: 1.5em;
+}
+
+
+
+.arrow-icons-in-cart{
+    position: absolute;
+    margin-top: -2.2em;
+    display: flex;
+    margin-left: 9em;
+    width: 2.4em;
+    justify-content: space-between;
+}
+
+.left-angle{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.685);
+    height: 1em;
+    width: 1em;
+    text-align: center;
+}
+.right-angle{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.685);
+    height: 1em;
+    width: 1em;
+    text-align: center;
+}
+

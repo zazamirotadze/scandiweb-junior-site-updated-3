@@ -1,0 +1,14 @@
+.card-container{
+    margin-left: 10%;
+    margin-top: 5%;
+    display: grid;
+    grid-template: repeat(2, 340px) / repeat(3, 1fr);
+    grid-gap: 6em;
+    
+}
+
+
+
+.titles-div{
+    margin-left: 10%;
+}

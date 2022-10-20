@@ -1,0 +1,86 @@
+.nav-div{
+    width: 100%;
+    display: flex;
+}
+
+.category-btn{
+    padding: 1em 2em 1em 2em;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.category-div{
+    margin-left: 6%;
+}
+
+
+.div-for-bag{
+    margin-left: 25%;
+}
+
+.dropdown-list-div{
+    margin-left: 27%;
+    margin-top: 1em;
+}
+
+
+
+
+.drop{
+    border: none;
+    outline: none;
+    font-size: 1em;
+    width: 2.4em;
+}
+
+
+.quantity-circle{
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    width: 1.7em;
+    height: 1.7em;
+    font-size: 0.8em;
+    position: absolute;
+    margin-top: -2.7em;
+    margin-left: 1em;
+    text-align: center;
+}
+
+.quantitynum-innav{
+    margin-top: 0.4em;
+}
+
+
+.list-of-prices-innav{
+    position: absolute;
+   
+}
+
+.currency-changer-in-nav{
+    
+    text-align: center;
+  
+    width: 4em;
+    margin-left: -0.6em;
+    margin-top: -2em;
+}
+.whole-currency-changer-in-nav{
+    width: 50px;
+    margin-left: 30%;
+ 
+    height: 5em;
+}
+
+.cart-icon-div-innav{
+    margin-top: 0.1em;
+    width: 50px;
+    
+    align-items: center;
+    height: 50px;
+    
+}
+.cart-img{
+    margin-top: 0.7em;
+}
