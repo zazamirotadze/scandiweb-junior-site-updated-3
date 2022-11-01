@@ -45,7 +45,23 @@ const getAllCategory = gql`
 
 class ProductListPage extends React.Component {
 
-
+  state={
+    allCategoryName: "",
+    clothesCategoryName: "",
+    techCategoryName: ""
+  }
+  componentDidMount(){
+    setTimeout(() => {
+      if(this.props.data.loading){
+        console.log("zaza")
+      }else{
+        this.setState({allCategoryName:this.props.data.categories[0].name})
+        this.setState({clothesCategoryName:this.props.data.categories[1].name})
+        this.setState({techCategoryName:this.props.data.categories[2].name})
+      }
+    }
+    , 500)
+  }
   
   fetchData = () => {
       
@@ -53,28 +69,17 @@ class ProductListPage extends React.Component {
       if(this.props.data.loading){
         return ""
       }else{
-        
+       
         const category=this.props.category
-        const category1 = this.props.data.categories[category].products
-        
         const currency =  this.props.currency
         const productData = this.props.data.categories[category].products
         
+          
+
         const renderProductData = productData.map(element=>{ 
-
-          
-         
-          
-
-          const swatch = element.attributes.filter(element => element.type === "swatch" )
-          
-
-          
-          const prices = element.prices.filter(element => element.currency.symbol===currency)
-
-          
-          
-          const cart =this.props.cart
+        const swatch = element.attributes.filter(element => element.type === "swatch" )
+        const prices = element.prices.filter(element => element.currency.symbol===currency)
+        const cart =this.props.cart
         
          
           return(
@@ -91,8 +96,9 @@ class ProductListPage extends React.Component {
             </div>
             ) } 
           )
-          return <div className="card-container" >{renderProductData}</div>
+          return <div className="card-container" >{renderProductData}</div> 
       }
+    
     
   }
 
@@ -103,16 +109,13 @@ class ProductListPage extends React.Component {
     
     const category=this.props.category
     
-    
     return (
         
         <div>
           <div className="titles-div">
-            {category===0?<h1>All</h1>:category===1?<h1>CLOTHES</h1>:<h1>TECH</h1> }
+            {category===0?<h1>{this.state.allCategoryName}</h1>:category===1?<h1>{this.state.clothesCategoryName}</h1>:<h1>{this.state.techCategoryName}</h1> }
           </div>
-
-          {this.fetchData()}
-          
+          {this.state.allCategoryName && <div>{this.fetchData()}</div>}
         </div>
       
     )

@@ -1,14 +1,21 @@
 .img-in-product{
     height: 250px;
-    width: 250px;
+    width: 80%
 }
 
 .name-div{
     color: rgb(53, 52, 52);
     font-weight: lighter;
-    padding-top: 1.5em;
-  
+    
 }
+
+.brand-div-inproductlistpage{
+    color: rgb(53, 52, 52);
+    font-weight: lighter;
+}
+
+
+
 
 .price-div{
     padding-top: -10em;
@@ -27,9 +34,11 @@
 
 .cardoverlay-inproduct{
     position: absolute;
-    width: 25%;
-    height: 70%;
-    background-color: rgba(255, 255, 255, 0.438);
+    width: 23%;
+    height: 66.1%;
+   /* background-color: rgba(255, 255, 255, 0.438);*/ 
+    background-color: rgba(82, 80, 80, 0.507);
+    
     z-index: 2;
 }
 
@@ -53,4 +62,6 @@
 
 .card{
     padding: 1em 0em 1em 3em;
+    border: 2px solid black;
+    height: 400px;
 }

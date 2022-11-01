@@ -9,11 +9,18 @@ export default class CardForCart extends Component {
     if (this.props.photosSrcs.length > this.state.src +1){
     this.setState({src: this.state.src +1})
     }
+    if (this.props.photosSrcs.length === this.state.src +1){
+      this.setState({src: 0})
+    }
   }
   decreaseSrcNumber(){
   
     if (this.state.src > 0){
       this.setState({src: this.state.src -1})
+    }
+
+    if (this.state.src === 0){
+      this.setState({src: this.props.photosSrcs.length -1})
     }
     
   }

@@ -36,25 +36,22 @@ export default class Product extends Component {
     const trueOrFalse = mappedCart.some(element=> element===true)
     //
         
-
+       
     return (
       
         <>
-        <div key={this.props.element.id}>
-          
+          <Link to="/details"><div className={!newElmement1.inStock && "cardoverlay-inproduct"} onClick={()=>(changeState(newElmement1)) }></div></Link>
           <div className='card' id={trueOrFalse && "isincart"} >
-              <div className={!newElmement1.inStock && "cardoverlay-inproduct"}></div>
               {!newElmement1.inStock && <div className="outofstock-word" >OUT OF STOCK</div>}
               {trueOrFalse && <img src={image2} className="is-incart-img" />}
               <Link to="/details">
                   <img className='img-in-product' src={element.gallery[0]} onClick={()=>(changeState(newElmement1)) }/> 
               </Link>
+              <h3 className='brand-div-inproductlistpage'>{element.brand}</h3>
               <h3 className='name-div'>{element.name}</h3>
               <div>{swatch}</div>
               <h3 className='price-div'>{label}{amount}</h3>
-              
           </div>
-        </div>
          </>
     )
   }

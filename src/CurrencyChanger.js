@@ -3,68 +3,124 @@ import "./Nav.css"
 
 export default class CurrencyChanger extends Component {
 
-    state = {
+    constructor(props) {
+      super(props);
 
-        listIsShown: false,
-        option1: false,
-        option2: false,
-        option3: false,
-        option4: false,
-        option5: false
+      this.wrapperRef = React.createRef();
+      this.handleClickOutside = this.handleClickOutside.bind(this);
     }
+
+    componentDidMount() {
+      document.addEventListener("mousedown", this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+      document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    handleClickOutside(event) {
+      if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+        this.setState({listIsShown: false});
+      }
+    }
+
+
+
+    state = {
+        listIsShown: false,
+        option1: this.props.currency==="$"?true:false,
+        option2: this.props.currency==="£"?true:false,
+        option3: this.props.currency==="A$"?true:false,
+        option4: this.props.currency==="¥"?true:false,
+        option5: this.props.currency==="₽"?true:false
+    }
+
+
+
   render() {
     
     const  changeCurrency=this.props.changeCurrency
     const currency=this.props.currency
 
     return (
-        <div  className='whole-currency-changer-in-nav'  style={{}}>
+        <div  className='whole-currency-changer-in-nav' >
         <p>{currency}</p>
         <div className='currency-changer-in-nav'>
-        
+        <div className='arrow-div-currency'>
         <i 
             className={this.state.listIsShown?"fas fa-angle-up":  'fas fa-angle-down' }
-            onClick={()=>this.setState({listIsShown: !this.state.listIsShown})}
+            onClick={()=>this.setState({listIsShown: true})}
         >
         </i>
-        {this.state.listIsShown && <div className='list-of-prices-innav'>
+        </div>
+        {this.state.listIsShown && <div className='list-of-prices-innav' ref={this.wrapperRef}>
           <option 
-            onMouseOver={() => this.setState({option1: true})}
-            onMouseOut={() => this.setState({option1: false})}
-            onClick={()=> changeCurrency("$")}
+            onClick={()=> {
+              changeCurrency("$") 
+              this.setState({option1: true}) 
+              this.setState({option2: false})
+              this.setState({option3: false})
+              this.setState({option4: false})
+              this.setState({option5: false})
+              this.setState({listIsShown: false})
+            }}
             style={{backgroundColor: this.state.option1? "#e0e0d1" : "white"}}
             
           >
             $ USD
           </option>
           <option
-            onMouseOver={() => this.setState({option2: true})}
-            onMouseOut={() => this.setState({option2: false})}
-            onClick={()=> changeCurrency("£")}
+            onClick={()=> {
+              changeCurrency("£")
+              this.setState({option1: false}) 
+              this.setState({option2: true})
+              this.setState({option3: false})
+              this.setState({option4: false})
+              this.setState({option5: false})
+              this.setState({listIsShown: false})
+            }}
             style={{backgroundColor: this.state.option2? "#e0e0d1" : "white"}}
           >
             £ EUR
           </option>
           <option
-            onMouseOver={() => this.setState({option3: true})}
-            onMouseOut={() => this.setState({option3: false})}
-            onClick={()=> changeCurrency("A$")}
+            onClick={()=> {
+              changeCurrency("A$")
+              this.setState({option1: false}) 
+              this.setState({option2: false})
+              this.setState({option3: true})
+              this.setState({option4: false})
+              this.setState({option5: false})
+              this.setState({listIsShown: false})
+            }}
             style={{backgroundColor: this.state.option3? "#e0e0d1" : "white"}}
           >
             A$ AUD
           </option>
           <option
-            onMouseOver={() => this.setState({option4: true})}
-            onMouseOut={() => this.setState({option4: false})}
-            onClick={()=> changeCurrency("¥")}
+            onClick={()=>{ 
+              changeCurrency("¥")
+              this.setState({option1: false}) 
+              this.setState({option2: false})
+              this.setState({option3: false})
+              this.setState({option4: true})
+              this.setState({option5: false})
+              this.setState({listIsShown: false})
+            }}
             style={{backgroundColor: this.state.option4? "#e0e0d1" : "white"}}
           >
             ¥ JPY
           </option>
           <option
-            onMouseOver={() => this.setState({option5: true})}
-            onMouseOut={() => this.setState({option5: false})}
-            onClick={()=> changeCurrency("₽")}
+            onClick={()=>{ 
+              changeCurrency("₽")
+              this.setState({option1: false}) 
+              this.setState({option2: false})
+              this.setState({option3: false})
+              this.setState({option4: false})
+              this.setState({option5: true})
+              this.setState({listIsShown: false})
+            }}
             style={{backgroundColor: this.state.option5? "#e0e0d1" : "white"}}
           >
            ₽ RUB 

@@ -16,11 +16,11 @@ class App extends React.Component {
   state = {
     detailProduct : {},
     category: 0,
-    currency: "$",
-    cart: [],
-    totalSum: 0,
-    totalQuantity: 0,
-    tax21: 0,
+    currency:JSON.parse(localStorage.getItem("currency"))? JSON.parse(localStorage.getItem("currency")): "$",
+    cart: JSON.parse(localStorage.getItem("cart"))? JSON.parse(localStorage.getItem("cart")):[],
+    totalSum: JSON.parse(localStorage.getItem("totalSum"))? JSON.parse(localStorage.getItem("totalSum")):0,
+    totalQuantity: JSON.parse(localStorage.getItem("totalQuantity"))? JSON.parse(localStorage.getItem("totalQuantity")):0,
+    tax21: JSON.parse(localStorage.getItem("tax21"))? JSON.parse(localStorage.getItem("tax21")):0,
     allCategoryShown: true,
     techCategoryShown: false,
     clothesCategoryShown: false
@@ -54,6 +54,12 @@ class App extends React.Component {
 
     this.setState({currency: event})
     setTimeout(() => {
+      localStorage.setItem("currency", JSON.stringify(this.state.currency))
+      this.setState({currency: event})
+    }, 90);
+    
+
+    setTimeout(() => {
       this.getTotal();
     }, 100);
   }
@@ -67,7 +73,16 @@ class App extends React.Component {
         }
     })
     this.setState({cart: cart});
-    this.getTotal();
+    setTimeout(()=>{
+      localStorage.setItem("cart", JSON.stringify(this.state.cart))
+      const storedCart = JSON.parse(localStorage.getItem("cart"))
+      
+      this.setState({cart: storedCart})
+      this.getTotal();
+    }
+      ,
+    10) 
+    
   };
 
   reduction = id =>{
@@ -78,8 +93,20 @@ class App extends React.Component {
         }
     })
     this.setState({cart: cart});
-    this.getTotal();
+   
     this.removeFromCart(id)
+    setTimeout(()=>{
+      localStorage.setItem("cart", JSON.stringify(this.state.cart))
+      const storedCart = JSON.parse(localStorage.getItem("cart"))
+      
+      this.setState({cart: storedCart})
+      this.getTotal();
+    }
+      ,
+    10) 
+
+
+
   };
 
 
@@ -92,6 +119,7 @@ class App extends React.Component {
         return prev + (priceObject.amount * item.count);
     },0)
     this.setState({totalSum: res})
+
     //
 
      ////// calculate tax 21%
@@ -103,11 +131,56 @@ class App extends React.Component {
     const newQuantity = cart.reduce((prev, item) => {
         return prev +  item.count;
     },0)
+    //
+    //place data into the local storage
     this.setState({totalQuantity: newQuantity})
+    setTimeout(()=>{ 
+
+
+      localStorage.setItem("totalSum", JSON.stringify(this.state.totalSum))
+      this.setState({totalSum: res})
+
+      localStorage.setItem("tax21", JSON.stringify(this.state.tax21))
+      this.setState({tax21: tax21})
+
+      localStorage.setItem("totalQuantity", JSON.stringify(this.state.totalQuantity))
+      this.setState({totalQuantity: newQuantity})
+
+    } ,100)
+    
     //
 };
 
   addToCart = (card) => {
+    
+
+    // identify if every attribute is selected for the card
+    let isAnyAttributeChosen 
+    
+    if(card.attributes.length===0){
+      isAnyAttributeChosen = true
+    }
+
+
+    if(card.attributes.length===1){
+      isAnyAttributeChosen = card.attributes[0].items.some(item => item.isSelected===true)
+    }
+
+
+    if(card.attributes.length===2){
+      isAnyAttributeChosen = card.attributes[0].items.some(item => item.isSelected===true)&&
+      card.attributes[1].items.some(item => item.isSelected===true)
+    }
+
+    if(card.attributes.length===3){
+      isAnyAttributeChosen = card.attributes[0].items.some(item => item.isSelected===true)&&
+      card.attributes[1].items.some(item => item.isSelected===true)&&
+      card.attributes[2].items.some(item => item.isSelected===true)
+    }
+    
+    
+    //
+
     const countedCard = JSON.parse(JSON.stringify(card));
     countedCard.count = 1
     countedCard.incart = true
@@ -115,14 +188,29 @@ class App extends React.Component {
     const inCartIdElementArray = cartLength > 0 && this.state.cart.map(element => element.id )
     const findId = cartLength > 0 && inCartIdElementArray.filter(element => element === card.id)
     const findIdLength = cartLength > 0 && findId.length
-
+    
  
-    if (cartLength === 0){
+    if (cartLength === 0 && isAnyAttributeChosen){
       this.setState({cart: [...this.state.cart, countedCard]})
       
-    }else if (findIdLength === 0){
+      setTimeout(()=>{
+        localStorage.setItem("cart", JSON.stringify(this.state.cart))
+        const storedCart = JSON.parse(localStorage.getItem("cart"))
+        
+        this.setState({cart: storedCart})
+      }
+        ,
+      10) 
+
+    }else if (findIdLength === 0 && isAnyAttributeChosen){
       this.setState({cart: [...this.state.cart, countedCard]})
-      
+      setTimeout(()=>{
+        localStorage.setItem("cart", JSON.stringify(this.state.cart))
+        const storedCart = JSON.parse(localStorage.getItem("cart"))
+        this.setState({cart: storedCart})
+      },10)     
+    }else if(!isAnyAttributeChosen){
+      alert("Firstly you have to choose  attributes")
     }else{
       alert("The product has already been added into the cart.")
     }
@@ -138,6 +226,10 @@ class App extends React.Component {
     this.setState({cart: []})
     this.setState({totalQuantity:0})
     alert("They payment is successful. please click ok")
+    localStorage.removeItem('cart');
+    localStorage.removeItem('totalSum');
+    localStorage.removeItem('tax21');
+    localStorage.removeItem('totalQuantity');
   }
 
   removeFromCart = (id) => {
@@ -163,16 +255,43 @@ class App extends React.Component {
   this.setState({detailProduct:newDetailProduct})
   }
 
-  selectColorInCart = (element, id) => {
-    const newCart = JSON.parse(JSON.stringify(this.state.cart))
-    const findObjInCart =  newCart.find(cartObj => cartObj.id === id )
-    const findSwatch = findObjInCart.attributes.find(element => element.type === 'swatch')
-    findSwatch.items.find(color =>  color.id === element.id).isSelected=true
-    const eleseColors= findSwatch.items.filter(color =>  color.id !== element.id)
-    eleseColors.forEach(element => element.isSelected=false )
-    this.setState({cart:newCart})
+  selectColorWhenInDescription = (element, id) => {
+    const cart = this.state.cart
+
+    const  findDescriptionElement = cart.find(elementi => elementi.id === id )
+    
+    let IsSwatchInCart
+    if(findDescriptionElement !== undefined){
+      IsSwatchInCart = findDescriptionElement.attributes.find(element => element.type === 'swatch')
+    }
+    
+      if (IsSwatchInCart !== undefined){
+        const findSwatchInCart= findDescriptionElement.attributes.find(element => element.type === 'swatch').items
+        const findSwatchInDesc=  element.attributes.find(element => element.type === 'swatch').items
+
+        const selectedColorInDescId = findSwatchInDesc.find(elementi => elementi.isSelected===true).id
+
+        //find color to select
+        findSwatchInCart.find(elementi => elementi.id === selectedColorInDescId).isSelected=true
+        //
+
+        //find colors to disselect
+        const disselectedColor = findSwatchInCart.filter(elementi => elementi.id != selectedColorInDescId)
+        disselectedColor.forEach(element => element.isSelected=false)
+        //
+
+        setTimeout(()=>{
+        localStorage.setItem("cart", JSON.stringify(cart))
+        },100)
+      } 
+      
   }
+
+
   //
+
+
+
 
   // functions to select sizes
   selectSize = (element) => {
@@ -185,15 +304,44 @@ class App extends React.Component {
     this.setState({detailProduct:newDetailProduct})
   }
 
-  selectSizeInCart = (element, id) => {
-    const newCart = JSON.parse(JSON.stringify(this.state.cart))
-    const findObjInCart =  newCart.find(cartObj => cartObj.id === id )
-    const findSize = findObjInCart.attributes.find(element => element.id === 'Size')
-    findSize.items.find(size =>  size.id === element.id).isSelected=true
-    const eleseSizes= findSize.items.filter(size=>  size.id !== element.id)
-    eleseSizes.forEach(element => element.isSelected=false )
-    this.setState({cart:newCart})
+
+  selectSizeWhenInDescription = (element, id) => {
+
+    const cart = this.state.cart
+    const  findDescriptionElement = cart.find(elementi => elementi.id === id )
+
+
+
+    let isSizeInCart
+    if(findDescriptionElement !== undefined){
+     isSizeInCart = findDescriptionElement.attributes.find(element => element.id === 'Size')
+    }
+
+
+    if (isSizeInCart !== undefined){
+
+      const findSizeInCart= findDescriptionElement.attributes.find(element => element.id === 'Size').items
+      const findSizeInDesc= element.attributes.find(element => element.id === 'Size').items
+
+      const selectedSizeInDescId = findSizeInDesc.find(elementi => elementi.isSelected===true).id
+
+      //find Size to select
+      findSizeInCart.find(elementi => elementi.id === selectedSizeInDescId).isSelected=true
+      //
+
+      //find Size to disselect
+      const disselectedSize = findSizeInCart.filter(elementi => elementi.id != selectedSizeInDescId)
+      disselectedSize.forEach(element => element.isSelected=false)
+      //
+
+      setTimeout(()=>{
+        localStorage.setItem("cart", JSON.stringify(cart))
+      },100)
+
+    }
+    
   }
+
   //
   // functions to select Capacity
   selectCapacity = (element) => {
@@ -205,16 +353,46 @@ class App extends React.Component {
      
     this.setState({detailProduct:newDetailProduct})
   }
-  selectCapacityInCart = (element, id) => {
-    const newCart = JSON.parse(JSON.stringify(this.state.cart))
-    const findObjInCart =  newCart.find(cartObj => cartObj.id === id )
-    const findCapacity = findObjInCart.attributes.find(element => element.id === 'Capacity')
-    findCapacity.items.find(capacity =>  capacity.id === element.id).isSelected=true
-    const eleseCapacity= findCapacity.items.filter(capacity=>  capacity.id !== element.id)
-    eleseCapacity.forEach(element => element.isSelected=false )
-    this.setState({cart:newCart})
+
+  selectCapacityWhenInDescription = (element, id) => {
+
+    const cart = this.state.cart
+    const  findDescriptionElement = cart.find(elementi => elementi.id === id )
+
+   
+
+     let isCapacityInCart
+    if(findDescriptionElement !== undefined){
+     isCapacityInCart = findDescriptionElement.attributes.find(element => element.id === 'Capacity')
+    }
+
+
+    if (isCapacityInCart !== undefined){
+
+      const findCapacityInCart= findDescriptionElement.attributes.find(element => element.id === 'Capacity').items
+      const findCapacityInDesc= element.attributes.find(element => element.id === 'Capacity').items
+
+      const selectedCapacityInDescId = findCapacityInDesc.find(elementi => elementi.isSelected===true).id
+
+      //find capacity to select
+      findCapacityInCart.find(elementi => elementi.id === selectedCapacityInDescId).isSelected=true
+      //
+
+      //find capacity to disselect
+      const disselectedSize = findCapacityInCart.filter(elementi => elementi.id != selectedCapacityInDescId)
+      disselectedSize.forEach(element => element.isSelected=false)
+      //
+
+      setTimeout(()=>{
+        localStorage.setItem("cart", JSON.stringify(cart))
+      },100) 
+
+    }
+    
   }
 
+
+  //
   // functions to select if With USB 3 ports
   
   selectWithUSB3ports = (element) => {
@@ -227,15 +405,7 @@ class App extends React.Component {
     this.setState({detailProduct:newDetailProduct})
   }
 
-  selectWithUSB3portsInCart = (element, id) => {
-    const newCart = JSON.parse(JSON.stringify(this.state.cart))
-    const findObjInCart =  newCart.find(cartObj => cartObj.id === id )
-    const findWithUSB3ports = findObjInCart.attributes.find(element => element.id === 'With USB 3 ports')
-    findWithUSB3ports.items.find(WithUSB =>  WithUSB.id === element.id).isSelected=true
-    const eleseWithUSB3Ports= findWithUSB3ports.items.filter(withUSB=>  withUSB.id !== element.id)
-    eleseWithUSB3Ports.forEach(element => element.isSelected=false )
-    this.setState({cart:newCart})
-  }
+
   //
 
   // functions to select if Touch ID in keyboard
@@ -245,21 +415,13 @@ class App extends React.Component {
     findTouchIDinkeyboard.items.find(TouchID=>  TouchID.id === element.id).isSelected=true
     const elesefindTouchIDinkeyboard= findTouchIDinkeyboard.items.filter(withUSB =>  withUSB.id !== element.id)
     elesefindTouchIDinkeyboard.forEach(element => element.isSelected=false )
-     
     this.setState({detailProduct:newDetailProduct})
   }
-
-  selectTouchIDinkeyboardInCart = (element, id) => {
-    const newCart = JSON.parse(JSON.stringify(this.state.cart))
-    const findObjInCart =  newCart.find(cartObj => cartObj.id === id )
-    const findfindTouchIDinkeyboard = findObjInCart.attributes.find(element => element.id === 'Touch ID in keyboard')
-    findfindTouchIDinkeyboard.items.find(TouchID => TouchID.id === element.id).isSelected=true
-    const eleseTouchIDinkeyboard= findfindTouchIDinkeyboard.items.filter(TouchID=>  TouchID.id !== element.id)
-    eleseTouchIDinkeyboard.forEach(element => element.isSelected=false )
-    this.setState({cart:newCart})
-  }
-
   //
+
+
+
+
 
   render() {
   
@@ -281,11 +443,6 @@ class App extends React.Component {
                   totalSum = {this.state.totalSum}
                   totalQuantity={this.state.totalQuantity}
                   tax21={this.state.tax21}
-                  selectColorInCart={this.selectColorInCart}
-                  selectSizeInCart={this.selectSizeInCart}
-                  selectCapacityInCart={this.selectCapacityInCart}
-                  selectWithUSB3portsInCart={this.selectWithUSB3portsInCart}
-                  selectTouchIDinkeyboardInCart={this.selectTouchIDinkeyboardInCart}
                   clearCart={this.clearCart}
                   
                   />
@@ -305,11 +462,19 @@ class App extends React.Component {
                         details={this.state.detailProduct}
                         currency ={this.state.currency}
                         addToCart = {this.addToCart}
+
+                        
                         selectColor={this.selectColor}
                         selectSize={this.selectSize}
                         selectCapacity={this.selectCapacity}
                         selectWithUSB3ports={this.selectWithUSB3ports}
                         selectTouchIDinkeyboard={this.selectTouchIDinkeyboard}
+
+
+
+                        selectColorWhenInDescription={this.selectColorWhenInDescription}
+                        selectSizeWhenInDescription={this.selectSizeWhenInDescription}
+                        selectCapacityWhenInDescription={this.selectCapacityWhenInDescription}
                       />}
                   />
                   <Route path="/Cart" 
@@ -324,11 +489,6 @@ class App extends React.Component {
                         totalSum = {this.state.totalSum}
                         totalQuantity={this.state.totalQuantity}
                         tax21={this.state.tax21}
-                        selectColorInCart={this.selectColorInCart}
-                        selectSizeInCart={this.selectSizeInCart}
-                        selectCapacityInCart={this.selectCapacityInCart}
-                        selectWithUSB3portsInCart={this.selectWithUSB3portsInCart}
-                        selectTouchIDinkeyboardInCart={this.selectTouchIDinkeyboardInCart}
                         clearCart={this.clearCart}
                       />}
                   />

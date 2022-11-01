@@ -12,6 +12,30 @@ export default class Nav extends Component {
     isMiniCartShown: false,
   }
 
+
+  constructor(props) {
+    super(props);
+
+    this.wrapperRef = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target) ) {
+      this.setState({isMiniCartShown: false});
+    }
+  }
+
+
+
   miniCartCloser = () => {
     this.setState({isMiniCartShown: false})
   }
@@ -69,13 +93,18 @@ export default class Nav extends Component {
           {this.props.totalQuantity>0 &&<div className='quantity-circle'><p className='quantitynum-innav'>{this.props.totalQuantity}</p></div>}
         </div>  
         
-      </div>
+      </div >
+        <div  >
           {this.state.isMiniCartShown &&
-                <MiniCart 
-                  miniCartCloser={this.miniCartCloser}
-                  {...this.props}
-                />
+                  <div ref={this.wrapperRef } >
+                    
+                    <MiniCart 
+                    miniCartCloser={this.miniCartCloser}
+                    {...this.props}
+                    />
+                  </div>
           }
+          </div>
       </>
       
     )

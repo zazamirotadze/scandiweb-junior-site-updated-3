@@ -10,9 +10,9 @@ export default class Cart extends Component {
     render() {
     const cart = this.props.cart
     
- 
-  
- 
+    const storedCart = JSON.parse(localStorage.getItem("cart"))
+      
+      
     const renderCart = cart.map(item => {
       //price
       const priceObject = (item.prices.find((element => element.currency.symbol ===this.props.currency)))
@@ -30,7 +30,7 @@ export default class Cart extends Component {
       const attributes = item.attributes
      
        //colors
-      const selectColorInCart =this.props.selectColorInCart
+      
 
       const swatchObject = (attributes.find(element => element.type === "swatch"))
       
@@ -43,7 +43,7 @@ export default class Cart extends Component {
             background: `${element.displayValue}`,
             border: element.isSelected?`2px solid rgb(5, 199, 79)`:`2px solid white`
           }}  
-          onClick={(event) => selectColorInCart(element,item.id)}>
+          >
           
         </div>)})
       //
@@ -59,7 +59,7 @@ export default class Cart extends Component {
             color: element.isSelected?`white`:` black`
           }}  
           
-          onClick={(event) => selectSizeInCart(element,item.id)}>
+          >
           {element.displayValue}
         </div>)
       //
@@ -73,7 +73,7 @@ export default class Cart extends Component {
             background: element.isSelected?` black`:` white`,
             color: element.isSelected?`white`:` black`
           }}  
-          onClick={(event) => selectCapacityInCart(element,item.id)}
+          
         >
           {element.displayValue}
         </div>)
@@ -90,7 +90,7 @@ export default class Cart extends Component {
             background: element.isSelected?` black`:` white`,
             color: element.isSelected?`white`:` black`
           }}  
-          onClick={(event) => selectWithUSB3portsInCart(element,item.id)}
+          
         >
           {element.displayValue}
         </div>)
@@ -106,7 +106,7 @@ export default class Cart extends Component {
             background: element.isSelected?` black`:` white`,
             color: element.isSelected?`white`:` black`
           }}  
-          onClick={(event) => selectTouchIDinkeyboardInCart(element,item.id)}
+          
         >
           {element.displayValue}
         </div>)

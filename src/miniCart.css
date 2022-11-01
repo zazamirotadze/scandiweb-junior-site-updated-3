@@ -3,6 +3,18 @@
     height: 170px;
 }
 
+
+.minicart{
+    background-color: white;
+    width: 20%;
+    max-height:  510px;
+    margin-left: 75%;
+    margin-top: -0.74%;
+    z-index: 4;
+    position: absolute;
+}
+
+
 .minicart-overlay{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.13);
@@ -12,12 +24,11 @@
     bottom: -400%;
     z-index: 3;
 }
-.minicart{
-    background-color: white;
-    width: 20%;
-    max-height:  510px;
-    margin-left: 75%;
-}
+
+
+
+
+
 .miniCart-cards{
     overflow-y: auto;
     max-height: 350px;
@@ -31,9 +42,7 @@
 }
 
 .minicard-card{
-    width: 98%;
-    
-    
+    width: 98%; 
     display: flex;
     flex-direction: row;
     margin-top: 1em;

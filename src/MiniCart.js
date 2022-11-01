@@ -5,10 +5,19 @@ import CardForMiniCart from './CardForMiniCart'
 
 
 export default class MiniCart extends Component {
+
+
+
+
+  miniCartCloser = () => {
+    this.setState({isMiniCartShown: true})
+  }
+
+
     render() {
         const cart = this.props.cart
         
-        const  miniCartCloser = this.props.miniCartCloser
+        const storedCart = JSON.parse(localStorage.getItem("cart"))
       
      
         const renderCart = cart.map(item => {
@@ -26,7 +35,7 @@ export default class MiniCart extends Component {
           const attributes = item.attributes
          
            //colors
-          const selectColorInCart =this.props.selectColorInCart
+          
     
           const swatchObject = (attributes.find(element => element.type === "swatch"))
           
@@ -39,7 +48,7 @@ export default class MiniCart extends Component {
                 background: `${element.displayValue}`,
                 border: element.isSelected?`2px solid rgb(5, 199, 79)`:`2px solid white`
               }}  
-              onClick={(event) => selectColorInCart(element,item.id)}>
+              >
               
             </div>)})
           //
@@ -55,7 +64,7 @@ export default class MiniCart extends Component {
                 color: element.isSelected?`white`:` black`
               }}  
               
-              onClick={(event) => selectSizeInCart(element,item.id)}>
+              >
               {element.displayValue}
             </div>)
           //
@@ -69,7 +78,7 @@ export default class MiniCart extends Component {
                 background: element.isSelected?` black`:` white`,
                 color: element.isSelected?`white`:` black`
               }}  
-              onClick={(event) => selectCapacityInCart(element,item.id)}
+              
             >
               {element.displayValue}
             </div>)
@@ -86,7 +95,7 @@ export default class MiniCart extends Component {
                 background: element.isSelected?` black`:` white`,
                 color: element.isSelected?`white`:` black`
               }}  
-              onClick={(event) => selectWithUSB3portsInCart(element,item.id)}
+              
             >
               {element.displayValue}
             </div>)
@@ -102,7 +111,7 @@ export default class MiniCart extends Component {
                 background: element.isSelected?` black`:` white`,
                 color: element.isSelected?`white`:` black`
               }}  
-              onClick={(event) => selectTouchIDinkeyboardInCart(element,item.id)}
+              
             >
               {element.displayValue}
             </div>)
@@ -137,25 +146,28 @@ export default class MiniCart extends Component {
        
         
         return (
-          <div className='minicart-overlay'>
-            <div className='minicart'>
-            <span className='mybagword-in-minicart'> My Bag.</span>
-            <span> {this.props.totalQuantity} items</span>
-            {cart.length===0 ? <div>Cart is empty</div>:
-              <div>
-                <div className='miniCart-cards'>
-                {renderCart}
-                </div>
-                <div className='fixed-part-minicart'>
-                  <div className=' total-in-minicart'>Total: <div >{this.props.currency}{this.props.totalSum}</div> </div>  
-                  <div className='buttons-in-div-minicart'>
-                    <Link  to="/Cart"><button className='view-bag-minicart-btn' onClick={() => miniCartCloser()} >VIEW BAG</button></Link>
-                    <button className='checkout-minicart-btn' onClick={() => this.props.clearCart()}>CHECK OUT</button>
-                  </div>
-                </div>
-              </div>
-            }
-            </div>
+          <div>
+             <div className= "minicart-overlay" onClick={() => this.props.miniCartCloser()}  ></div>
+              <div className='minicart'>
+                <span className='mybagword-in-minicart'> My Bag.</span>
+                <span> {this.props.totalQuantity} items</span>
+                
+                {cart.length===0 ? <div>Cart is empty</div>:
+                  <div>
+                    <div className='miniCart-cards'>
+                   {renderCart} 
+                    </div>
+                      <div className='fixed-part-minicart'>
+                        <div className=' total-in-minicart'>Total: <div >{this.props.currency}{this.props.totalSum}</div> </div>  
+                        <div className='buttons-in-div-minicart'>
+                            <Link  to="/Cart"><button className='view-bag-minicart-btn' onClick={() => this.props.miniCartCloser()} >VIEW BAG</button></Link>
+                            <button className='checkout-minicart-btn' onClick={() => this.props.clearCart()}>CHECK OUT</button>
+                        </div> 
+                    </div>
+                  </div> }
+                  
+              </div> 
+              
           </div>
         )
       }

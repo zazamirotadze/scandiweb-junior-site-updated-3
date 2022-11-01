@@ -7,10 +7,20 @@ import "./DescriptionPage.css"
 
 export default class DescriptionPage extends Component {
   render() {
+
+    
     
     const {attributes, brand, category, description, gallery, id, inStock, name, prices} = this.props.details && this.props.details
     
-      
+   
+    
+   const selectColorWhenInDescription=this.props.selectColorWhenInDescription
+   const selectSizeWhenInDescription= this.props.selectSizeWhenInDescription
+   const selectCapacityWhenInDescription= this.props.selectCapacityWhenInDescription
+   
+   
+    
+
     //Description
     const des = parse(description)
     //
@@ -35,7 +45,12 @@ export default class DescriptionPage extends Component {
              background: `${element.displayValue}`,
              border: element.isSelected?`2px solid rgb(5, 199, 79)`:`2px solid white`
             }} 
-             onClick={(event) => selectColor(element)}>
+             onClick={(event) =>{
+              selectColor(element)
+              
+             } }
+             
+        >
              
         </div>)})
     //
@@ -118,7 +133,7 @@ export default class DescriptionPage extends Component {
     const addToCart = this.props.addToCart
     const card = this.props.details
     //
-
+      
     return ( 
      <div className='description-conteiner'  >
         <div className='secondary-photos-condeiner'>
@@ -142,7 +157,17 @@ export default class DescriptionPage extends Component {
           
           <div className='price-word-div'>PRICE:</div>
           <div className='price-div' >{renderPrice.currency.symbol}{renderPrice.amount}</div>
-          <Link  to="/Cart"> <button  onClick={() => addToCart(card)}  className="add-to-cart-btn"> ADD TO CART</button> </Link>
+          {card.inStock && <Link  to="/Cart"> 
+            <button  onClick={() => 
+              {addToCart(card)
+              selectSizeWhenInDescription(card, id) 
+              selectColorWhenInDescription(card, id)
+              selectCapacityWhenInDescription(card, id)
+              }}  
+            className="add-to-cart-btn"
+            > 
+              ADD TO CART
+            </button> </Link>}
           <div className='des'>{des}</div>
         </div>
     </div>
