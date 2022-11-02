@@ -2,19 +2,22 @@ import React, { Component } from 'react'
 import { Link} from "react-router-dom"
 import "./miniCart.css"
 import CardForMiniCart from './CardForMiniCart'
+import OutsideAlerterForMiniCart from './outsideAlerterForMiniCart'
+import PropTypes from "prop-types";
+
 
 
 export default class MiniCart extends Component {
 
 
 
-
-  miniCartCloser = () => {
-    this.setState({isMiniCartShown: true})
-  }
-
+  
+   
 
     render() {
+        
+       
+        
         const cart = this.props.cart
         
         const storedCart = JSON.parse(localStorage.getItem("cart"))
@@ -143,12 +146,15 @@ export default class MiniCart extends Component {
           </div>)}
         )
         
-       
+        //onClick={() => this.props.miniCartCloser()}
         
         return (
           <div>
-             <div className= "minicart-overlay" onClick={() => this.props.miniCartCloser()}  ></div>
-              <div className='minicart'>
+             <div className= "minicart-overlay"   ></div>
+             
+              <div className='minicart' onMouseDown={()=>console.log("yaya")} >
+                
+                <OutsideAlerterForMiniCart miniCartCloser={this.props.miniCartCloser}>
                 <span className='mybagword-in-minicart'> My Bag.</span>
                 <span> {this.props.totalQuantity} items</span>
                 
@@ -166,9 +172,12 @@ export default class MiniCart extends Component {
                     </div>
                   </div> }
                   
+                  </OutsideAlerterForMiniCart>
+                  
               </div> 
               
           </div>
         )
       }
     }
+

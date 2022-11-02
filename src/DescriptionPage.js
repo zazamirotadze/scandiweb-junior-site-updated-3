@@ -17,6 +17,9 @@ export default class DescriptionPage extends Component {
    const selectColorWhenInDescription=this.props.selectColorWhenInDescription
    const selectSizeWhenInDescription= this.props.selectSizeWhenInDescription
    const selectCapacityWhenInDescription= this.props.selectCapacityWhenInDescription
+   const selectWithUSB3portsWhenInDescription= this.props.selectWithUSB3portsWhenInDescription
+   const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboardWhenInDescription
+   
    
    
     
@@ -163,6 +166,9 @@ export default class DescriptionPage extends Component {
               selectSizeWhenInDescription(card, id) 
               selectColorWhenInDescription(card, id)
               selectCapacityWhenInDescription(card, id)
+              selectWithUSB3portsWhenInDescription(card, id)
+              selectTouchIDinkeyboardWhenInDescription(card, id)
+              
               }}  
             className="add-to-cart-btn"
             > 

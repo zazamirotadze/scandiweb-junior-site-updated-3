@@ -13,26 +13,6 @@ export default class Nav extends Component {
   }
 
 
-  constructor(props) {
-    super(props);
-
-    this.wrapperRef = React.createRef();
-    this.handleClickOutside = this.handleClickOutside.bind(this);
-  }
-
-  componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-  }
-
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target) ) {
-      this.setState({isMiniCartShown: false});
-    }
-  }
 
 
 
@@ -96,7 +76,7 @@ export default class Nav extends Component {
       </div >
         <div  >
           {this.state.isMiniCartShown &&
-                  <div ref={this.wrapperRef } >
+                  <div  >
                     
                     <MiniCart 
                     miniCartCloser={this.miniCartCloser}

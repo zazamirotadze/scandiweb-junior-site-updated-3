@@ -1,28 +1,10 @@
 import React, { Component } from 'react'
 import "./Nav.css"
+import OutsideAlerterForCurrencyChanger from './OutsideAlerterForCurrencyChanger'
 
 export default class CurrencyChanger extends Component {
 
-    constructor(props) {
-      super(props);
 
-      this.wrapperRef = React.createRef();
-      this.handleClickOutside = this.handleClickOutside.bind(this);
-    }
-
-    componentDidMount() {
-      document.addEventListener("mousedown", this.handleClickOutside);
-    }
-
-    componentWillUnmount() {
-      document.removeEventListener("mousedown", this.handleClickOutside);
-    }
-
-    handleClickOutside(event) {
-      if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
-        this.setState({listIsShown: false});
-      }
-    }
 
 
 
@@ -35,6 +17,9 @@ export default class CurrencyChanger extends Component {
         option5: this.props.currency==="₽"?true:false
     }
 
+    currencyCloser=()=>{
+      this.setState({listIsShown:false})
+    }
 
 
   render() {
@@ -49,11 +34,12 @@ export default class CurrencyChanger extends Component {
         <div className='arrow-div-currency'>
         <i 
             className={this.state.listIsShown?"fas fa-angle-up":  'fas fa-angle-down' }
-            onClick={()=>this.setState({listIsShown: true})}
+            onClick={()=> this.setState({listIsShown:true}) }
         >
         </i>
         </div>
-        {this.state.listIsShown && <div className='list-of-prices-innav' ref={this.wrapperRef}>
+        {this.state.listIsShown && <div className='list-of-prices-innav' >
+          <OutsideAlerterForCurrencyChanger currencyCloser={this.currencyCloser}>
           <option 
             onClick={()=> {
               changeCurrency("$") 
@@ -125,6 +111,7 @@ export default class CurrencyChanger extends Component {
           >
            ₽ RUB 
           </option>
+          </OutsideAlerterForCurrencyChanger>
         </div>}
     </div>
     </div>
