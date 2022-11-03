@@ -10,7 +10,7 @@ export default class DescriptionPage extends Component {
 
     
     
-    const {attributes, brand, category, description, gallery, id, inStock, name, prices} = this.props.details && this.props.details
+    const {attributes, brand,  description, gallery, id,  name, prices} = this.props.details && this.props.details
     
    
     
@@ -30,7 +30,7 @@ export default class DescriptionPage extends Component {
 
 
     //Photos
-    const photosOfProducts = gallery.map(element => (<img src={element} className="secondary-Photos"></img>))
+    const photosOfProducts = gallery.map(element => (<img src={element} className="secondary-Photos" alt=""></img>))
     const mainPhoto = photosOfProducts[0].props.src
     //
 
@@ -139,11 +139,11 @@ export default class DescriptionPage extends Component {
       
     return ( 
      <div className='description-conteiner'  >
-        <div className='secondary-photos-condeiner'>
+        <div className='secondary-photos-condeiner' >
           {photosOfProducts}
         </div> 
         <div >
-          <img src={mainPhoto} className="mainPhoto"/>
+          <img src={mainPhoto} alt="" className="mainPhoto"/>
         </div> 
         <div className='information-div'>
           <h2 className='brand-name-div'>{brand}</h2>

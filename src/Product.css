@@ -1,6 +1,13 @@
 .img-in-product{
     height: 250px;
-    width: 80%
+    width: 100%;
+    
+}
+
+.img-in-product-div{
+    height: 270px;
+    width: 81%;
+    
 }
 
 .name-div{
@@ -12,13 +19,14 @@
 .brand-div-inproductlistpage{
     color: rgb(53, 52, 52);
     font-weight: lighter;
+    margin-top: -0.8em;
 }
 
 
 
 
 .price-div{
-    padding-top: -10em;
+    padding-top: -9em;
 }
 
 .swatch-div{
@@ -30,6 +38,19 @@
 .swatch-conteiner{
     display: flex;
     gap: 0.2em;
+    margin-top: -1em;
+}
+
+.capacity-conteiner{
+    display: flex;
+    gap: 0.2em;
+    margin-top: 0.5em;
+}
+
+.capacity-div{
+    padding: 0.3em;
+    font-size: small;
+    border: 1px solid black;
 }
 
 .cardoverlay-inproduct{
@@ -37,7 +58,7 @@
     width: 23%;
     height: 66.1%;
    /* background-color: rgba(255, 255, 255, 0.438);*/ 
-    background-color: rgba(82, 80, 80, 0.507);
+    background-color: rgba(255, 249, 249, 0.507);
     
     z-index: 2;
 }
@@ -50,18 +71,21 @@
     color: rgb(53, 52, 52);
 }
 
-.is-incart-img{
+.is-incart-img-div{
     position: absolute;
-    margin-top: 13.5em;
+    margin-top: 15em;
     margin-left: 12em;
+
     
-}
-#isincart{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .card{
     padding: 1em 0em 1em 3em;
-    border: 2px solid black;
+    box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
     height: 400px;
+
+}
+
+.hoveredCard{
+    box-shadow: rgba(18, 18, 19, 0.571) 0px 8px 24px;
 }

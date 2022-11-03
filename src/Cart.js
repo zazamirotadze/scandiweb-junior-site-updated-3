@@ -10,7 +10,7 @@ export default class Cart extends Component {
     render() {
     const cart = this.props.cart
     
-    const storedCart = JSON.parse(localStorage.getItem("cart"))
+   
       
       
     const renderCart = cart.map(item => {
@@ -49,7 +49,7 @@ export default class Cart extends Component {
       //
 
       //size
-      const selectSizeInCart =this.props.selectSizeInCart
+      
       const sizeObject = attributes.find(element => element.id === "Size")
       const renderSizes = sizeObject && sizeObject.items.map((element) =>
         <div
@@ -64,7 +64,7 @@ export default class Cart extends Component {
         </div>)
       //
       //capacity
-      const selectCapacityInCart =this.props.selectCapacityInCart
+
       const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
       const Capacity = capacityObject && capacityObject.items.map((element) =>
         <div
@@ -81,7 +81,7 @@ export default class Cart extends Component {
     
 
       //capacity With USB 3 ports
-      const selectWithUSB3portsInCart =this.props.selectWithUSB3portsInCart
+    
       const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
       const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
         <div
@@ -97,7 +97,7 @@ export default class Cart extends Component {
       //
 
       // touch id in keyboard
-      const selectTouchIDinkeyboardInCart =this.props.selectTouchIDinkeyboardInCart
+     
       const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
       const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
         <div

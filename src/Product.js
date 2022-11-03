@@ -2,10 +2,29 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import "./Product.css"   
 import image2 from "./Common.png"
+import SmallPopup from './SmallPopup'
+
+
 export default class Product extends Component {
 
+  state={
+    isHoveredAnImage: false,
+    isCardHoverd: false,
+    isPopUpShown: false
+  }
+
+  popUpCloser = () =>{
+    this.setState({isPopUpShown: false})
+  }
+  cardHoverClose = () =>{
+    this.setState({isCardHoverd: false})
+  }
   render() {
+    // add to cart when an Item has no attribute
+    const addToCart = this.props.addToCart
     
+    //
+
     const element = this.props.element
     const newElmement1 = JSON.parse(JSON.stringify(element));
     // give isSelected property to every attribute
@@ -29,29 +48,101 @@ export default class Product extends Component {
       </div>)}
     )
 
+    const capacity =  this.props.capacity.map(element  =>{
+      
+      return(
+        <div className='capacity-conteiner'>
+          <div  className='capacity-div'>{element.items[0].value}</div> 
+          <div  className='capacity-div'>{element.items[1].value}</div> 
+        </div>)}
+    )
 
-    // is in cart or not
-    const cart=this.props.cart
-    const mappedCart = cart.map(element => newElmement1.id ===element.id)
-    const trueOrFalse = mappedCart.some(element=> element===true)
-    //
+   
         
        
     return (
       
         <>
-          <Link to="/details"><div className={!newElmement1.inStock && "cardoverlay-inproduct"} onClick={()=>(changeState(newElmement1)) }></div></Link>
-          <div className='card' id={trueOrFalse && "isincart"} >
+          <Link to="/details">
+            <div 
+              className={!newElmement1.inStock && "cardoverlay-inproduct"} 
+              onClick={()=>(changeState(newElmement1)) }
+              onMouseOver={()=>this.setState({isCardHoverd: true})}
+              onMouseOut={()=>this.setState({isCardHoverd: false})}
+            ></div>
+          </Link>
+          {this.state.isHoveredAnImage && 
+          <div className="is-incart-img-div" 
+            onClick={()=> {
+              
+              if(newElmement1.attributes.length>0){
+                this.setState({isPopUpShown: true})
+                changeState(newElmement1)
+              }
+
+              if(newElmement1.attributes.length===0){
+                addToCart(newElmement1)
+              }
+              
+            }}
+            onMouseOver={()=>{
+              this.setState({isHoveredAnImage: true})
+              this.setState({isCardHoverd: true})
+            }}
+            onMouseOut={()=>this.setState({isHoveredAnImage: false})}
+          ><img src={image2} alt="" /></div> }
+          <Link to="/details" onClick={()=>(changeState(newElmement1)) } style={{textDecoration: 'none',color:"black"}} >
+          <div className={`card ${this.state.isCardHoverd ?"hoveredCard":undefined}`} 
+            onMouseOver={()=>this.setState({isCardHoverd: true})}
+            onMouseOut={()=>this.setState({isCardHoverd: false})}
+          >
+          
               {!newElmement1.inStock && <div className="outofstock-word" >OUT OF STOCK</div>}
-              {trueOrFalse && <img src={image2} className="is-incart-img" />}
-              <Link to="/details">
-                  <img className='img-in-product' src={element.gallery[0]} onClick={()=>(changeState(newElmement1)) }/> 
-              </Link>
+                  <div className='img-in-product-div' 
+                      onMouseOver={()=>this.setState({isHoveredAnImage: true})}
+                      onMouseOut={()=>this.setState({isHoveredAnImage: false})}
+                      alt=""
+                  >
+                  <img className='img-in-product' 
+                    src={element.gallery[0]} 
+                    alt=""
+                  /> 
+                  </div>
+              
               <h3 className='brand-div-inproductlistpage'>{element.brand}</h3>
               <h3 className='name-div'>{element.name}</h3>
               <div>{swatch}</div>
+              {!newElmement1.inStock &&<div>{capacity}</div>}
               <h3 className='price-div'>{label}{amount}</h3>
+            
+            
           </div>
+          </Link>
+          {this.state.isPopUpShown && 
+          <SmallPopup
+           popUpCloser={this.popUpCloser}
+           cardHoverClose={this.cardHoverClose}
+           details={this.props.details}
+           addToCart = {this.props.addToCart}
+
+
+           selectColor={this.props.selectColor}
+           selectSize={this.props.selectSize}
+           selectCapacity={this.props.selectCapacity}
+           selectWithUSB3ports={this.props.selectWithUSB3ports}
+           selectTouchIDinkeyboard={this.props.selectTouchIDinkeyboard}
+
+
+
+           selectColorWhenInDescription={this.props.selectColorWhenInDescription}
+           selectSizeWhenInDescription={this.props.selectSizeWhenInDescription}
+           selectCapacityWhenInDescription={this.props.selectCapacityWhenInDescription}     
+           selectWithUSB3portsWhenInDescription={this.props.selectWithUSB3portsWhenInDescription}
+           selectTouchIDinkeyboardWhenInDescription={this.props.selectTouchIDinkeyboardWhenInDescription}
+
+
+
+           />}
          </>
     )
   }

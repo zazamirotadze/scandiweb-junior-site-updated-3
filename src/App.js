@@ -2,7 +2,7 @@ import React from "react";
 import ProductListPage from "./ProductListPage";
 import Cart from "./Cart";
 import Nav from "./Nav";
-import {Routes, Route, Link} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 
 import DescriptionPage from "./DescriptionPage";
 
@@ -14,7 +14,7 @@ class App extends React.Component {
 
 
   state = {
-    detailProduct : {},
+    detailProduct : JSON.parse(localStorage.getItem("detailProduct"))? JSON.parse(localStorage.getItem("detailProduct")): {},
     category: 0,
     currency:JSON.parse(localStorage.getItem("currency"))? JSON.parse(localStorage.getItem("currency")): "$",
     cart: JSON.parse(localStorage.getItem("cart"))? JSON.parse(localStorage.getItem("cart")):[],
@@ -30,6 +30,9 @@ class App extends React.Component {
 
   changeState = (data) => {
     this.setState( {detailProduct : data})
+    setTimeout(()=>{
+      localStorage.setItem("detailProduct", JSON.stringify(data))
+    },100)
   }
   changeCategory = (number) => {
     this.setState( {category : number})
@@ -253,6 +256,9 @@ class App extends React.Component {
    eleseColors.forEach(element => element.isSelected=false )
    
   this.setState({detailProduct:newDetailProduct})
+    setTimeout(()=>{
+      localStorage.setItem("detailProduct", JSON.stringify(newDetailProduct))
+    },100)
   }
 
   selectColorWhenInDescription = (element, id) => {
@@ -262,11 +268,11 @@ class App extends React.Component {
       
     
     let IsSwatchInCart
-    if(findDescriptionElement != undefined){
+    if(findDescriptionElement !== undefined){
       IsSwatchInCart = findDescriptionElement.attributes.find(element => element.id=== 'Color')
     }
     
-      if (IsSwatchInCart != undefined){
+      if (IsSwatchInCart !== undefined){
         const findSwatchInCart= findDescriptionElement.attributes.find(element => element.id === 'Color').items
         const findSwatchInDesc=  element.attributes.find(element => element.id === 'Color').items
         const  isSelectedColorInDescId = findSwatchInDesc.find(elementi => elementi.isSelected===true)
@@ -279,7 +285,7 @@ class App extends React.Component {
           //
 
           //find colors to disselect
-          const disselectedColor = findSwatchInCart.filter(elementi => elementi.id != selectedColorInDescId)
+          const disselectedColor = findSwatchInCart.filter(elementi => elementi.id !== selectedColorInDescId)
           disselectedColor.forEach(element => element.isSelected=false)
           //
           setTimeout(()=>{
@@ -306,6 +312,9 @@ class App extends React.Component {
      eleseColors.forEach(element => element.isSelected=false )
      
     this.setState({detailProduct:newDetailProduct})
+      setTimeout(()=>{
+        localStorage.setItem("detailProduct", JSON.stringify(newDetailProduct))
+      },100)
   }
 
 
@@ -313,7 +322,7 @@ class App extends React.Component {
 
     const cart = this.state.cart
     let  findDescriptionElement
-    if(id!=undefined){
+    if(id!==undefined){
        findDescriptionElement = cart.find(elementi => elementi.id === id )
        
     }
@@ -323,12 +332,12 @@ class App extends React.Component {
 
 
     let isSizeInCart
-    if(findDescriptionElement != undefined){
+    if(findDescriptionElement !== undefined){
      isSizeInCart = findDescriptionElement.attributes.find(element => element.id === 'Size')
     }
 
 
-    if (isSizeInCart != undefined){
+    if (isSizeInCart !== undefined){
 
       const findSizeInCart= findDescriptionElement.attributes.find(element => element.id === 'Size').items
       const findSizeInDesc= element.attributes.find(element => element.id === 'Size').items
@@ -346,7 +355,7 @@ class App extends React.Component {
       //
 
       //find Size to disselect
-      const disselectedSize = findSizeInCart.filter(elementi => elementi.id != selectedSizeInDescId)
+      const disselectedSize = findSizeInCart.filter(elementi => elementi.id !== selectedSizeInDescId)
       disselectedSize.forEach(element => element.isSelected=false)
       //
       setTimeout(()=>{
@@ -369,6 +378,10 @@ class App extends React.Component {
      eleseCapacity.forEach(element => element.isSelected=false )
      
     this.setState({detailProduct:newDetailProduct})
+    setTimeout(()=>{
+      localStorage.setItem("detailProduct", JSON.stringify(newDetailProduct))
+    },100)
+
   }
 
   selectCapacityWhenInDescription = (element, id) => {
@@ -376,7 +389,7 @@ class App extends React.Component {
     const cart = this.state.cart
 
     let  findDescriptionElement
-    if(id!=undefined){
+    if(id!==undefined){
        findDescriptionElement =   cart.find(elementi => elementi.id === id )
        
     }
@@ -386,12 +399,12 @@ class App extends React.Component {
    
 
     let isCapacityInCart
-    if(findDescriptionElement != undefined){
+    if(findDescriptionElement !== undefined){
      isCapacityInCart = findDescriptionElement.attributes.find(element => element.id === 'Capacity' )
     }
 
 
-    if (isCapacityInCart != undefined){
+    if (isCapacityInCart !== undefined){
 
       const findCapacityInCart= findDescriptionElement.attributes.find(element => element.id === 'Capacity' ).items
       const findCapacityInDesc= element.attributes.find(element => element.id === 'Capacity' ).items
@@ -404,7 +417,7 @@ class App extends React.Component {
         //
 
         //find capacity to disselect
-        const disselectedSize = findCapacityInCart.filter(elementi => elementi.id != selectedCapacityInDescId)
+        const disselectedSize = findCapacityInCart.filter(elementi => elementi.id !== selectedCapacityInDescId)
         disselectedSize.forEach(element => element.isSelected=false)
         //
         setTimeout(()=>{
@@ -430,25 +443,30 @@ class App extends React.Component {
      eleseWithUSB3Ports.forEach(element => element.isSelected=false )
      
     this.setState({detailProduct:newDetailProduct})
+
+    setTimeout(()=>{
+      localStorage.setItem("detailProduct", JSON.stringify(newDetailProduct))
+    },100)
+
   }
 
   selectWithUSB3portsWhenInDescription = (element, id) => {
     
     const cart = this.state.cart
     let findDescriptionElement
-    if(id!=undefined){
+    if(id!==undefined){
       findDescriptionElement = cart.find(elementi => elementi.id === id )
       
     }
     
      let isWithUSB3portsInCart
-    if(findDescriptionElement != undefined){
+    if(findDescriptionElement !== undefined){
      isWithUSB3portsInCart = findDescriptionElement.attributes.find(element => element.id === 'With USB 3 ports')
      
     }
     
 
-    if (isWithUSB3portsInCart != undefined){
+    if (isWithUSB3portsInCart !== undefined){
 
       const findWithUSB3portsInCart= findDescriptionElement.attributes.find(element => element.id === 'With USB 3 ports').items
       
@@ -465,7 +483,7 @@ class App extends React.Component {
         //
 
         //find WithUSB3ports to disselect
-        const disselectedWithUSB3ports = findWithUSB3portsInCart.filter(elementi => elementi.id != selectedWithUSB3portsInDescId)
+        const disselectedWithUSB3ports = findWithUSB3portsInCart.filter(elementi => elementi.id !== selectedWithUSB3portsInDescId)
         disselectedWithUSB3ports.forEach(element => element.isSelected=false)
       //
         setTimeout(()=>{
@@ -490,25 +508,29 @@ class App extends React.Component {
     const elesefindTouchIDinkeyboard= findTouchIDinkeyboard.items.filter(withUSB =>  withUSB.id !== element.id)
     elesefindTouchIDinkeyboard.forEach(element => element.isSelected=false )
     this.setState({detailProduct:newDetailProduct})
+
+    setTimeout(()=>{
+      localStorage.setItem("detailProduct", JSON.stringify(newDetailProduct))
+    },100)
   }
 
   selectTouchIDinkeyboardWhenInDescription = (element, id) => {
     
     const cart = this.state.cart
     let findDescriptionElement
-    if(id!=undefined){
+    if(id!==undefined){
       findDescriptionElement = cart.find(elementi => elementi.id === id )
       
     }
     
      let isTouchIDinkeyboard
-    if(findDescriptionElement != undefined){
+    if(findDescriptionElement !== undefined){
      isTouchIDinkeyboard = findDescriptionElement.attributes.find(element => element.id === 'Touch ID in keyboard')
      
     }
     
 
-    if (isTouchIDinkeyboard != undefined){
+    if (isTouchIDinkeyboard !== undefined){
 
       const findTouchIDinkeyboardInCart= findDescriptionElement.attributes.find(element => element.id === 'Touch ID in keyboard').items
       
@@ -525,7 +547,7 @@ class App extends React.Component {
         //
 
         //find WithUSB3ports to disselect
-        const disselectedTouchIDinkeyboard = findTouchIDinkeyboardInCart.filter(elementi => elementi.id != selectedTouchIDinkeyboardInDescId)
+        const disselectedTouchIDinkeyboard = findTouchIDinkeyboardInCart.filter(elementi => elementi.id !== selectedTouchIDinkeyboardInDescId)
         disselectedTouchIDinkeyboard.forEach(element => element.isSelected=false)
       //
         setTimeout(()=>{
@@ -575,6 +597,26 @@ class App extends React.Component {
                         category = {this.state.category}
                         currency ={this.state.currency}
                         cart={this.state.cart}
+
+                        // props for popUp
+                        details={this.state.detailProduct}
+                        addToCart = {this.addToCart}
+
+
+                        selectColor={this.selectColor}
+                        selectSize={this.selectSize}
+                        selectCapacity={this.selectCapacity}
+                        selectWithUSB3ports={this.selectWithUSB3ports}
+                        selectTouchIDinkeyboard={this.selectTouchIDinkeyboard}
+
+
+
+                        selectColorWhenInDescription={this.selectColorWhenInDescription}
+                        selectSizeWhenInDescription={this.selectSizeWhenInDescription}
+                        selectCapacityWhenInDescription={this.selectCapacityWhenInDescription}     
+                        selectWithUSB3portsWhenInDescription={this.selectWithUSB3portsWhenInDescription}
+                        selectTouchIDinkeyboardWhenInDescription={this.selectTouchIDinkeyboardWhenInDescription}
+                        // 
                       />}
                   />
                   <Route path="/details" 

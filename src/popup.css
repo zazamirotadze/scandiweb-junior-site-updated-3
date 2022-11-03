@@ -1,0 +1,138 @@
+.pop-up-in-pop-up{
+    position: absolute;
+    width: 150px;
+    height: 230px;
+    box-shadow: rgba(149, 157, 165, 0.527) 0px 8px 24px;
+    margin-top: -370px;
+    margin-left: 200px;
+    background-color: white;
+}
+
+
+.add-to-cart-btn-inpopup{
+    border:none;
+    background-color: rgb(5, 199, 79);
+    color: white;
+    padding: 0.3em 1em  0.3em 1em ;
+    font-size: small;
+    border-radius: 2%;
+    margin-top: 1em;
+}
+
+.information-div-inpopup{
+    padding: 0.5em;
+}
+
+
+/* Size Attribute inpopup */
+.size-inpopup{
+    padding: 0.2em 0.5em 0.2em 0.5em ;
+    border: black 1px solid;
+    font-size: small;
+}
+
+.size-conteiner-inpopup{
+    display: flex;
+    gap: 0.5em;
+    margin-top: 0.3em;
+}
+
+.size-word-div-inpopup{
+    font-weight: bold;
+    margin-top: 0.5em;
+    font-size: small;
+    
+}
+
+/* // */
+
+
+/* Color Attribute inpopup */
+
+.color-inpopup{
+    width: 1.1em;
+    height: 1.1em;
+    border: none;
+}
+
+.color-conteiner-inpopup{
+    margin-top: 0.3em;
+    display: flex;
+    gap: 0.2em;
+}
+
+.color-word-div-inpopup{
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+/* // */
+
+/* With USB 3 ports */
+
+.withUSB3Ports-inpopup{
+    border: 1px solid black;
+    padding: 0.3em;
+    font-size: small;
+}
+
+.withUSB3Ports-container-inpopup{
+    margin-top: 0.4em;
+    display: flex;
+    gap:0.6em
+}
+
+.usb-word-div-inpopup{
+    margin-top: 0.5em;
+    font-weight: bold;
+    font-size: small;
+}
+
+/* // */
+
+/* Capacity */
+
+.capacity-inpopup{
+    border: 1px solid black;
+    padding: 0.3em;
+    font-size: small;
+}
+
+.capacity-container--inpopup{
+    margin-top: 0.4em;
+    display: flex;
+    gap:0.6em
+}
+
+.capacity-name-div-inpopup{
+    margin-top: 0.5em;
+    font-weight: bold;
+    font-size: small;
+}
+
+
+/* // */
+
+
+/* touchIDinkeyboard */
+
+.touchIDinkeyboard-inpopup{
+    border: 1px solid black;
+    padding: 0.3em;
+    font-size: small;
+}
+
+.ID-name-div-inpopup{
+    margin-top: 0.5em;
+    font-weight: bold;
+    font-size: small;
+}
+
+.touchIDinkeyboard-container--inpopup{
+    margin-top: 0.4em;
+    display: flex;
+    gap:0.6em
+}
+
+
+/* // */

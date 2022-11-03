@@ -6,7 +6,7 @@
     grid-template: repeat(3, 340px) / repeat(3, 1fr);
     grid-gap: 8em;
     
-    border: 2px solid black;
+    border-top: 1px solid rgb(197, 197, 197);
     height: 1500px;
 }
 

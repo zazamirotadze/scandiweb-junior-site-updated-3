@@ -3,7 +3,8 @@
     height: 20em;
     display: flex;
     margin-top: 2em;
-   
+    border-top: 1px solid rgb(197, 197, 197);
+    border-bottom: 1px solid rgb(182, 182, 182);
 }
 .cart-imgi{
     width: 200px ;

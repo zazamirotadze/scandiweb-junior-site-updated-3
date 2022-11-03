@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Routes, Route, Link} from "react-router-dom"
+import { Link} from "react-router-dom"
 import image from "./a-logo.png"
 import image1 from "./empty-cart.png"
 import "./Nav.css"
@@ -24,7 +24,7 @@ export default class Nav extends Component {
     const allCategoryShown = this.props.allCategoryShown
     const techCategoryShown = this.props.techCategoryShown
     const clothesCategoryShown = this.props.clothesCategoryShown
-    const currency = this.props.currency
+  
 
     return (
       <>
@@ -64,12 +64,12 @@ export default class Nav extends Component {
         </div>
 
         <div className='div-for-bag'>
-          <img src={image} className="bag-img"   />
+          <img src={image} className="bag-img" alt=""  />
         </div>
 
         <CurrencyChanger changeCurrency={this.props.changeCurrency} currency={this.props.currency}/>
         <div className='cart-icon-div-innav' > 
-          <img src={image1} className="cart-img" onClick={()=> this.setState({isMiniCartShown: !this.state.isMiniCartShown})}  /> 
+          <img src={image1} alt="" className="cart-img" onClick={()=> this.setState({isMiniCartShown: !this.state.isMiniCartShown})}  /> 
           {this.props.totalQuantity>0 &&<div className='quantity-circle'><p className='quantitynum-innav'>{this.props.totalQuantity}</p></div>}
         </div>  
         

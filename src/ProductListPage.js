@@ -3,7 +3,7 @@ import {  gql } from "@apollo/client";
 import {  graphql } from "react-apollo";
 import Product from "./Product";
 import "./ProductListPage.css"
-
+import Category from "./Category";
 
 const getAllCategory = gql`
   query {
@@ -50,18 +50,15 @@ class ProductListPage extends React.Component {
     clothesCategoryName: "",
     techCategoryName: ""
   }
-  componentDidMount(){
-    setTimeout(() => {
-      if(this.props.data.loading){
-        console.log("zaza")
-      }else{
-        this.setState({allCategoryName:this.props.data.categories[0].name})
-        this.setState({clothesCategoryName:this.props.data.categories[1].name})
-        this.setState({techCategoryName:this.props.data.categories[2].name})
-      }
-    }
-    , 500)
+
+  setNameForAllCategory = (nameAll, nameClothes, nameTeach) => {
+    this.setState({allCategoryName:nameAll})
+    this.setState({clothesCategoryName:nameClothes})
+    this.setState({techCategoryName:nameTeach})
   }
+
+
+
   
   fetchData = () => {
       
@@ -78,6 +75,7 @@ class ProductListPage extends React.Component {
 
         const renderProductData = productData.map(element=>{ 
         const swatch = element.attributes.filter(element => element.type === "swatch" )
+        const capacity = element.attributes.filter(element => element.id === "Capacity" )
         const prices = element.prices.filter(element => element.currency.symbol===currency)
         const cart =this.props.cart
         
@@ -88,10 +86,35 @@ class ProductListPage extends React.Component {
                 trueOrFalse={cart.forEach(elementi =>  elementi.id===element.id)} 
                 cart={cart}
                 swatch = {swatch}
+                capacity = {capacity}
                 prices = {prices}
                 key ={element.id} 
                 element={element} 
                 setDetailProduct = {this.props.setDetailProduct}
+
+
+
+                details={this.props.details}
+                addToCart = {this.props.addToCart}
+
+
+                selectColor={this.props.selectColor}
+                selectSize={this.props.selectSize}
+                selectCapacity={this.props.selectCapacity}
+                selectWithUSB3ports={this.props.selectWithUSB3ports}
+                selectTouchIDinkeyboard={this.props.selectTouchIDinkeyboard}
+
+
+
+                selectColorWhenInDescription={this.props.selectColorWhenInDescription}
+                selectSizeWhenInDescription={this.props.selectSizeWhenInDescription}
+                selectCapacityWhenInDescription={this.props.selectCapacityWhenInDescription}     
+                selectWithUSB3portsWhenInDescription={this.props.selectWithUSB3portsWhenInDescription}
+                selectTouchIDinkeyboardWhenInDescription={this.props.selectTouchIDinkeyboardWhenInDescription}
+
+
+
+
               />
             </div>
             ) } 
@@ -114,6 +137,7 @@ class ProductListPage extends React.Component {
         <div>
           <div className="titles-div">
             {category===0?<h1>{this.state.allCategoryName}</h1>:category===1?<h1>{this.state.clothesCategoryName}</h1>:<h1>{this.state.techCategoryName}</h1> }
+            <Category setNameForAllCategory={this.setNameForAllCategory}/>
           </div>
           {this.state.allCategoryName && <div>{this.fetchData()}</div>}
         </div>

@@ -27,7 +27,7 @@ export default class CardForCart extends Component {
 
   render() {
     
-    const {brand,name ,symbol, amount, renderSizes, renderSwatches, withUSB3Ports, Capacity, touchIdInKeyboard, src, count,  id} = this.props
+    const {brand,name ,symbol, amount, renderSizes, renderSwatches, withUSB3Ports, Capacity, touchIdInKeyboard,  count,  id} = this.props
 
     const increase = this.props.increase
     const reduction=this.props.reduction
@@ -55,7 +55,7 @@ export default class CardForCart extends Component {
             <button onClick={() => reduction(id)}  className="cart-plus-minus-btn-incart">-</button>
           </div>
           <div>
-            <img className='cart-imgi' src={programmedSrc}/>
+            <img className='cart-imgi' alt='' src={programmedSrc}/>
             {photosSrcs.length>1 && 
             <div className='arrow-icons-in-cart' >
               <div className='left-angle' onClick={() => this.decreaseSrcNumber()} >
