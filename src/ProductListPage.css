@@ -1,17 +1,29 @@
 .card-container{
     margin: auto;
     width: 90%;
-    margin-top: 5%;
+    margin-top: 50px;
     display: grid;
     grid-template: repeat(3, 340px) / repeat(3, 1fr);
     grid-gap: 8em;
-    
     border-top: 1px solid rgb(197, 197, 197);
     height: 1500px;
 }
 
+@media only screen and (max-width: 700px) {
+    .card-container {
+        grid-template: repeat(3, 340px) / repeat(1, 300px);
+        justify-content: center;
+    }
+  }
 
+  @media only screen and  (min-width: 700px) and (max-width: 1100px) {
+    .card-container {
+        grid-template: repeat(3, 340px) / repeat(2, 300px);
+        justify-content: center;
+    }
+  }
 
 .titles-div{
-    margin-left: 10%;
+    margin-left: 5%;
+    margin-top: 50px;
 }

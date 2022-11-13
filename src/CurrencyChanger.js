@@ -29,7 +29,7 @@ export default class CurrencyChanger extends Component {
 
     return (
         <div  className='whole-currency-changer-in-nav' >
-        <p>{currency}</p>
+        <p className='currency-symbol-in-nav'>{currency}</p>
         <div className='currency-changer-in-nav'>
         <div className='arrow-div-currency'>
         <i 

@@ -82,7 +82,7 @@ export default class DescriptionPage extends Component {
     const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
     const Capacity = capacityObject && capacityObject.items.map((element) => 
       <div 
-        className='capacity'
+        className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectCapacity(element)}
         style={{
           background: element.isSelected?` black`:` white`,
@@ -99,7 +99,7 @@ export default class DescriptionPage extends Component {
     const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
     const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
       <div
-        className='withUSB3Ports'
+        className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectWithUSB3ports(element)}
         style={{
           background: element.isSelected?` black`:` white`,
@@ -115,7 +115,7 @@ export default class DescriptionPage extends Component {
     const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
     const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
       <div 
-        className='touchIDinkeyboard'
+        className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectTouchIDinkeyboard(element)}
         style={{
           background: element.isSelected?` black`:` white`,
@@ -146,19 +146,29 @@ export default class DescriptionPage extends Component {
           <img src={mainPhoto} alt="" className="mainPhoto"/>
         </div> 
         <div className='information-div'>
-          <h2 className='brand-name-div'>{brand}</h2>
+          <h2 >{brand}</h2>
           <h2 className='name-div'>{name}</h2>
-          {renderSizes &&<div className='size-word-div'>SIZE: <div className='size-conteiner'>{renderSizes}</div></div>}
+          {renderSizes &&<div className='attributes-word-div'>
+            SIZE: <div className='attributes-container'>{renderSizes}</div>
+          </div>}
           
-          {renderSwatches &&<div className='color-word-div'>Color:<div  className='color-conteiner'>{renderSwatches}</div> </div>}
+          {renderSwatches &&<div className='attributes-word-div'>
+            Color:<div  className='attributes-container'>{renderSwatches}</div> 
+          </div>}
           
-          {withUSB3Ports &&<div className='usb-word-div' >With USB 3 ports: <div className='withUSB3Ports-container'>{withUSB3Ports}</div> </div>}
+          {withUSB3Ports &&<div className='attributes-word-div' >
+            With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div> 
+          </div>}
           
-          {Capacity && <div className='capacity-name-div' >Capacity: <div className='capacity-container'>{Capacity}</div></div>}
+          {Capacity && <div className='attributes-word-div' >
+            Capacity: <div className='attributes-container'>{Capacity}</div>
+          </div>}
           
-          {touchIdInKeyboard &&<div className='ID-name-div' >Touch ID in keyboard:<div className='touchIDinkeyboard-container'>{touchIdInKeyboard}</div> </div>}
+          {touchIdInKeyboard &&<div className='attributes-word-div' >
+            Touch ID in keyboard:<div className='attributes-container'>{touchIdInKeyboard}</div>
+           </div>}
           
-          <div className='price-word-div'>PRICE:</div>
+          <div className='attributes-word-div'>PRICE:</div>
           <div className='price-div' >{renderPrice.currency.symbol}{renderPrice.amount}</div>
           {card.inStock && <Link  to="/Cart"> 
             <button  onClick={() => 

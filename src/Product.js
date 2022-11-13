@@ -40,7 +40,7 @@ export default class Product extends Component {
     const swatch = this.props.swatch.map(element  =>{
       
       return(
-      <div className='swatch-conteiner'>
+      <div className='swatch-or-capacity-conteiner'>
         <div style={{background: `${element.items[0].displayValue}`}} className='swatch-div'></div> 
         <div style={{background: `${element.items[1].displayValue}`}} className='swatch-div'></div> 
         <div style={{background: `${element.items[2].displayValue}`}} className='swatch-div'></div> 
@@ -51,14 +51,14 @@ export default class Product extends Component {
     const capacity =  this.props.capacity.map(element  =>{
       
       return(
-        <div className='capacity-conteiner'>
+        <div className='swatch-or-capacity-conteiner'>
           <div  className='capacity-div'>{element.items[0].value}</div> 
           <div  className='capacity-div'>{element.items[1].value}</div> 
         </div>)}
     )
 
    
-        
+    
        
     return (
       
@@ -108,14 +108,13 @@ export default class Product extends Component {
                     alt=""
                   /> 
                   </div>
-              
-              <h3 className='brand-div-inproductlistpage'>{element.brand}</h3>
-              <h3 className='name-div'>{element.name}</h3>
-              <div>{swatch}</div>
-              {!newElmement1.inStock &&<div>{capacity}</div>}
-              <h3 className='price-div'>{label}{amount}</h3>
-            
-            
+              <div className='attributes-div-inproduct'>
+                <h3 className='brand-name-div-inproductlistpage'>{element.brand}</h3>
+                <h3 className='brand-name-div-inproductlistpage'>{element.name}</h3>
+                <div>{swatch}</div>
+                {!newElmement1.inStock &&<div>{capacity}</div>}
+                <h3 className='price-div'>{label}{amount}</h3>
+              </div>
           </div>
           </Link>
           {this.state.isPopUpShown && 
@@ -132,7 +131,7 @@ export default class Product extends Component {
            selectWithUSB3ports={this.props.selectWithUSB3ports}
            selectTouchIDinkeyboard={this.props.selectTouchIDinkeyboard}
 
-
+           
 
            selectColorWhenInDescription={this.props.selectColorWhenInDescription}
            selectSizeWhenInDescription={this.props.selectSizeWhenInDescription}

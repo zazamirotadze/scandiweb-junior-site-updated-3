@@ -1,57 +1,20 @@
 .description-conteiner{
     width: 85%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-left: 8%;
-    margin-top: 7%;
-}
-
-.mainPhoto{
-    height: 450px;
-    width: 450px;
-    margin-right: 8em;
-}
-.secondary-Photos{
-    height: 100px;
-    width: 100px;
-}
-
-.secondary-photos-condeiner{
     display: flex;
-    flex-direction: column;
-    gap: 1em;
+    margin: 110px auto 0px auto ;
+    justify-content: space-between;
+}
+
+
+
+
+.name-div{
+    color: rgb(53, 52, 52);
+    font-weight: lighter;
 }
 
 .information-div{
-    
-    width: 20em;
-    margin-right: 6em;
-}
-
-.size-conteiner{
-    display: flex;
-    gap: 0.9em;
-    margin-top: 0.3em;
-}
-
-.withUSB3Ports-container{
-    display: flex;
-}
-
-.capacity-container{
-    margin-top: 0.4em;
-    display: flex;
-    gap:0.8em
-}
-
-.capacity{
-    border: 1px solid black;
-    padding: 0.5em;
-}
-
-
-.touchIDinkeyboard-container{
-    display: flex;
+    width: 320px;
 }
 
 .add-to-cart-btn{
@@ -63,84 +26,67 @@
     margin-top: 1em;
 }
 
-.size{
-    padding: 0.5em 0.8em 0.5em 0.8em ;
-    border: black 1px solid;
+
+
+/*photos*/
+.mainPhoto{
+    height: 450px;
+    width: 450px;
+    border: 2px solid white;
+}
+.secondary-Photos{
+    height: 100px;
+    width: 100px;
 }
 
-.price-word-div{
-    margin-top: 1.2em;
-    font-weight: bold;
-}
-
-.price-div{
-    margin-top: 0.5em;
-    font-weight: bold;
-}
-
-.size-word-div{
-    font-weight: bold;
-    margin-top: 2em;
-}
-
-.name-div{
-    color: rgb(53, 52, 52);
-    font-weight: lighter;
-    margin-top: -0.5em;
-}
-
-.brand-name-div{
-    margin-top: -0.2em;
-}
-
-.color-conteiner{
-    margin-top: 0.3em;
+.secondary-photos-condeiner{
     display: flex;
-    gap: 0.3em;
+    flex-direction: column;
+    gap: 16px;
 }
+
+/**/
+
+
+
+
+/*attributes-names*/
+.attributes-word-div{
+    margin-top: 1em;
+    font-weight: bold;
+}
+/**/
+
+/*attributes*/
+
 .color{
     width: 1.5em;
     height: 1.5em;
     border: none;
-    
 }
 
-.color-word-div{
-    margin-top: 1.5em;
-    font-weight: bold;
+.size{
+    padding: 0.5em 0.8em;
+    border: black 1px solid;
 }
 
-
-
-.capacity-name-div{
-    margin-top: 0.9em;
-    font-weight: bold;
-}
-
-.withUSB3Ports{
+.withUSB3Ports-touchIDinkeyboard-capacity{
     border: 1px solid black;
     padding: 0.5em;
 }
 
-.withUSB3Ports-container{
+/**/
+
+
+/*attributes containers*/
+.attributes-container{
     margin-top: 0.4em;
     display: flex;
-    gap:0.8em
+    gap: 0.8em;
 }
 
-.touchIDinkeyboard{
-    border: 1px solid black;
-    padding: 0.5em;
-}
-
-.touchIDinkeyboard-container{
-    margin-top: 0.4em;
-    display: flex;
-    gap:0.8em
-}
-
-.ID-name-div{
-    margin-top: 0.9em;
+.price-div{
+    margin-top: 0.2em;
     font-weight: bold;
 }
 
@@ -149,7 +95,25 @@
     font-size: 0.9em;
 }
 
-.usb-word-div{
-    font-weight: bold;
-}
 
+/**/
+
+
+/* media queries*/
+
+@media only screen and  (min-width: 600px) and (max-width: 950px) {
+    .mainPhoto{
+        height: 150px;
+        width: 150px;
+    }
+  }
+
+
+  @media only screen  and (max-width: 600px) {
+    .mainPhoto{
+        height: 0px;
+        width: 0px;
+    }
+  }
+
+/**/

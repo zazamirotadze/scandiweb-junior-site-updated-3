@@ -134,7 +134,7 @@ class ProductListPage extends React.Component {
     
     return (
         
-        <div>
+        <div >
           <div className="titles-div">
             {category===0?<h1>{this.state.allCategoryName}</h1>:category===1?<h1>{this.state.clothesCategoryName}</h1>:<h1>{this.state.techCategoryName}</h1> }
             <Category setNameForAllCategory={this.setNameForAllCategory}/>

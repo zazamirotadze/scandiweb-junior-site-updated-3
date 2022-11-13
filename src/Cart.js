@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "./Cart.css"
 import CardForCart from './CardForCart'
 
+
 export default class Cart extends Component {
   
  
@@ -68,7 +69,7 @@ export default class Cart extends Component {
       const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
       const Capacity = capacityObject && capacityObject.items.map((element) =>
         <div
-          className='capacity'
+          className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?` black`:` white`,
             color: element.isSelected?`white`:` black`
@@ -85,7 +86,7 @@ export default class Cart extends Component {
       const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
       const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
         <div
-          className='withUSB3Ports'
+          className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?` black`:` white`,
             color: element.isSelected?`white`:` black`
@@ -101,7 +102,7 @@ export default class Cart extends Component {
       const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
       const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
         <div
-          className='touchIDinkeyboard'
+          className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?` black`:` white`,
             color: element.isSelected?`white`:` black`

@@ -1,6 +1,6 @@
 .cart-card{
     width: 88%;
-    height: 20em;
+    height: 22em;
     display: flex;
     margin-top: 2em;
     border-top: 1px solid rgb(197, 197, 197);
@@ -28,8 +28,10 @@
 }
 
 .attributes-div{
-    
-    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 200px;
 }
 
 .name{
@@ -116,4 +118,6 @@
     width: 1em;
     text-align: center;
 }
+
+
 

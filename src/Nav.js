@@ -27,8 +27,8 @@ export default class Nav extends Component {
   
 
     return (
-      <>
-      <div className='nav-div'>
+      <div>
+      <div className='nav-info-div'>
 
         <div className='category-div'>
             <Link  to="/"> 
@@ -64,15 +64,19 @@ export default class Nav extends Component {
         </div>
 
         <div className='div-for-bag'>
-          <img src={image} className="bag-img" alt=""  />
+          <div className="bag-img-div">
+            <img src={image}  alt=""  />
+          </div>
         </div>
-
-        <CurrencyChanger changeCurrency={this.props.changeCurrency} currency={this.props.currency}/>
-        <div className='cart-icon-div-innav' > 
-          <img src={image1} alt="" className="cart-img" onClick={()=> this.setState({isMiniCartShown: !this.state.isMiniCartShown})}  /> 
-          {this.props.totalQuantity>0 &&<div className='quantity-circle'><p className='quantitynum-innav'>{this.props.totalQuantity}</p></div>}
-        </div>  
-        
+        <div className='currency-and-cart-icon-innav'>
+          <CurrencyChanger changeCurrency={this.props.changeCurrency} currency={this.props.currency}/>
+          <div className='cart-icon-div-innav' > 
+            <div>
+              <img src={image1} alt="" className="cart-img" onClick={()=> this.setState({isMiniCartShown: !this.state.isMiniCartShown})}  /> 
+              {this.props.totalQuantity>0 &&<div className='quantity-circle'><p className='quantitynum-innav'>{this.props.totalQuantity}</p></div>}
+            </div>
+          </div>  
+        </div>
       </div >
         <div  >
           {this.state.isMiniCartShown &&
@@ -85,7 +89,7 @@ export default class Nav extends Component {
                   </div>
           }
           </div>
-      </>
+      </div>
       
     )
   } 

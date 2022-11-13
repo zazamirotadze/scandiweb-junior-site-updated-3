@@ -1,39 +1,29 @@
-.nav-div{
-    width: 100%;
+.nav-info-div{
     display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
 }
 
 .category-btn{
-    padding: 1em 2em 1em 2em;
+    padding: 1.6em 2em;
     background: transparent;
     outline: none;
     border: none;
 }
 
-.category-div{
-    margin-left: 6%;
+
+/*bag-icon*/
+
+.bag-img-div{
+    height: 40px;
+    margin-top: 10px;
 }
 
-
-.div-for-bag{
-    margin-left: 25%;
-}
-
-.dropdown-list-div{
-    margin-left: 27%;
-    margin-top: 1em;
-}
+/*/
 
 
-
-
-.drop{
-    border: none;
-    outline: none;
-    font-size: 1em;
-    width: 2.4em;
-}
-
+/*cart-icon*/
 
 .quantity-circle{
     background-color: black;
@@ -52,7 +42,14 @@
     margin-top: 0.4em;
 }
 
-
+.cart-icon-div-innav{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/**/
+/*currency*/
 .list-of-prices-innav{
     position: absolute;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -63,31 +60,38 @@ option{
 }
 
 .arrow-div-currency{
-    text-align: center;
+    margin-left: 25px;
+    width: 20%;
+    margin-top: -15px;
 }
 
 .currency-changer-in-nav{
     width: 4em;
-    margin-left: -0.6em;
-    margin-top: -2em;
+
 }
+
+.currency-symbol-in-nav{
+    width: 60%;
+    margin-top: 16px;
+    margin-left:8px;
+    font-size: 20px;
+}
+/**/
+
+/*currency-and-cart-icon*/
+
 .whole-currency-changer-in-nav{
-    width: 50px;
-    margin-left: 30%;
-    
+    width: 50%;
 }
 
-
-
-.cart-icon-div-innav{
-    margin-top: 0.1em;
-    width: 50px;
-    
-    align-items: center;
-    height: 50px;
-    
+.currency-and-cart-icon-innav{
+    display: flex;
+    width: 100px;
 }
+
 .cart-img{
-    margin-top: 0.7em;
+    
 }
+
+/**/
 

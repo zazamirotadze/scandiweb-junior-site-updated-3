@@ -1,51 +1,30 @@
-.img-in-product{
-    height: 250px;
-    width: 100%;
-    
+/*attributes div*/
+
+.attributes-div-inproduct{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.img-in-product-div{
-    height: 270px;
-    width: 81%;
-    
-}
 
-.name-div{
+
+.brand-name-div-inproductlistpage{
     color: rgb(53, 52, 52);
     font-weight: lighter;
-    
 }
 
-.brand-div-inproductlistpage{
-    color: rgb(53, 52, 52);
-    font-weight: lighter;
-    margin-top: -0.8em;
-}
-
-
-
-
-.price-div{
-    padding-top: -9em;
-}
 
 .swatch-div{
     width: 1em;
     height: 1em;
+}
+
+.swatch-or-capacity-conteiner{
+    display: flex;
+    gap: 0.2em;
     
 }
 
-.swatch-conteiner{
-    display: flex;
-    gap: 0.2em;
-    margin-top: -1em;
-}
-
-.capacity-conteiner{
-    display: flex;
-    gap: 0.2em;
-    margin-top: 0.5em;
-}
 
 .capacity-div{
     padding: 0.3em;
@@ -53,14 +32,21 @@
     border: 1px solid black;
 }
 
+/*overlay and card figure*/
+
 .cardoverlay-inproduct{
     position: absolute;
-    width: 23%;
-    height: 66.1%;
-   /* background-color: rgba(255, 255, 255, 0.438);*/ 
-    background-color: rgba(255, 249, 249, 0.507);
-    
+    width: 320px;
+    height: 400px;
+   background-color: rgba(255, 251, 251, 0.568);;
     z-index: 2;
+}
+.card{
+    padding: 1em 0em 1em 3em;
+    box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
+    height: 400px;
+    width: 320px;
+
 }
 
 .outofstock-word{
@@ -70,22 +56,32 @@
     z-index: 1;
     color: rgb(53, 52, 52);
 }
+/**/
+
+/* images */
 
 .is-incart-img-div{
     position: absolute;
-    margin-top: 15em;
+    margin-top: 13em;
     margin-left: 12em;
-
-    
 }
 
-.card{
-    padding: 1em 0em 1em 3em;
-    box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
-    height: 400px;
-
-}
 
 .hoveredCard{
     box-shadow: rgba(18, 18, 19, 0.571) 0px 8px 24px;
 }
+
+.img-in-product{
+    height: 220px;
+    width: 220px;
+    
+}
+
+.img-in-product-div{
+    height: 230px;
+    width: 81%;
+}
+
+
+
+/* */

@@ -14,11 +14,11 @@ export default class CardForMiniCart extends Component {
           <h2 className='h2-inminicart'>{brand}</h2>
           <h2 className='h2-inminicart'>{name}</h2>
           <p className="price-inminicart">{symbol}{amount}</p>
-          {renderSizes &&<div className='h2-inminicart'>Size: <div className='size-conteiner-inminicart'>{renderSizes}</div></div>}
+          {renderSizes &&<div className='h2-inminicart'>Size: <div className='size-container-inminicart'>{renderSizes}</div></div>}
           {renderSwatches &&<div className='h2-inminicart' >Color: <div className='color-conteiner-inminicart'>{renderSwatches}</div></div>}
-          {withUSB3Ports &&<div className='h2-inminicart'>With USB 3 ports: <div className='withUSB3Ports-container'>{withUSB3Ports}</div></div>}
-          {Capacity && <div className='h2-inminicart'>Capacity:<div className='capacity-container'> {Capacity}</div></div>}
-          {touchIdInKeyboard &&<div className='h2-inminicart' >Touch ID in keyboard: <div className='touchIDinkeyboard-container'>{touchIdInKeyboard}</div></div>}
+          {withUSB3Ports &&<div className='h2-inminicart'>With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div></div>}
+          {Capacity && <div className='h2-inminicart'>Capacity:<div className='attributes-container'> {Capacity}</div></div>}
+          {touchIdInKeyboard &&<div className='h2-inminicart' >Touch ID in keyboard: <div className='attributes-container'>{touchIdInKeyboard}</div></div>}
         </div>
         <div className='imga-btns-inminicart'>
           <div className='btn-and-sum-inminicart'>
