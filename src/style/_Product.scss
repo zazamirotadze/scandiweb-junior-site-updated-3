@@ -1,3 +1,6 @@
+@import "./variables";
+
+
 /*attributes div*/
 
 .attributes-div-inproduct{
@@ -10,7 +13,7 @@
 
 
 .brand-name-div-inproductlistpage{
-    color: rgb(53, 52, 52);
+    color: $color-dark-grey;
     font-weight: lighter;
 }
 
@@ -38,8 +41,8 @@
     position: absolute;
     width: 280px;
     height: 400px;
-   background-color: rgba(247, 247, 247, 0.568);
-   box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
+   background-color: rgba($color-white, 0.568);
+   box-shadow: rgba($color-dark-grey, 0.171) 0px 8px 24px;
     z-index: 2;
 }
 .card{
@@ -48,7 +51,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
+    box-shadow: rgba($color-dark-grey, 0.171) 0px 8px 24px;
     height: 100%;
    
 }
@@ -59,7 +62,7 @@
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 1;
-    color: rgb(53, 52, 52);
+    color: $color-dark-grey;
 }
 /**/
 
@@ -74,7 +77,7 @@
 
 
 .hoveredCard{
-    box-shadow: rgba(18, 18, 19, 0.571) 0px 8px 24px;
+    box-shadow: rgba($color-black, 0.571) 0px 8px 24px;
 }
 
 .img-in-product{

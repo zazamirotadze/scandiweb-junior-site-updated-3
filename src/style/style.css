@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
+}
+
 .card-container {
   margin: auto;
   width: 90%;
@@ -13,7 +19,7 @@
   grid-auto-rows: 400px;
   grid-gap: 70px;
   margin-bottom: 20px;
-  border-top: rgb(187, 186, 186) 1px solid;
+  border-top: rgb(197, 197, 197) 1px solid;
   padding-top: 10px;
 }
 
@@ -25,6 +31,12 @@
 .titles-div {
   margin-left: 5%;
   margin-top: 50px;
+}
+
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
 }
 
 /*attributes div*/
@@ -59,8 +71,8 @@
   position: absolute;
   width: 280px;
   height: 400px;
-  background-color: rgba(247, 247, 247, 0.568);
-  box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
+  background-color: rgba(255, 255, 255, 0.568);
+  box-shadow: rgba(53, 52, 52, 0.171) 0px 8px 24px;
   z-index: 2;
 }
 
@@ -70,7 +82,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
+  box-shadow: rgba(53, 52, 52, 0.171) 0px 8px 24px;
   height: 100%;
 }
 
@@ -93,7 +105,7 @@
 }
 
 .hoveredCard {
-  box-shadow: rgba(18, 18, 19, 0.571) 0px 8px 24px;
+  box-shadow: rgba(0, 0, 0, 0.571) 0px 8px 24px;
 }
 
 .img-in-product {
@@ -107,13 +119,19 @@
 }
 
 /* */
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
+}
+
 .cart-card {
   width: 88%;
   height: 22em;
   display: flex;
   margin-top: 2em;
   border-top: 1px solid rgb(197, 197, 197);
-  border-bottom: 1px solid rgb(182, 182, 182);
+  border-bottom: 1px solid rgb(197, 197, 197);
 }
 
 .cart-imgi {
@@ -224,6 +242,12 @@
   text-align: center;
 }
 
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
+}
+
 .description-conteiner {
   width: 85%;
   display: flex;
@@ -325,6 +349,12 @@
   }
 }
 /**/
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
+}
+
 .img-in-mini-cart {
   width: 95px;
   height: 170px;
@@ -365,7 +395,7 @@
   max-height: 350px;
   padding: 1em;
   border-top: 1px solid rgb(197, 197, 197);
-  border-bottom: 1px solid rgb(182, 182, 182);
+  border-bottom: 1px solid rgb(197, 197, 197);
 }
 
 .mybagword-in-minicart {
@@ -380,7 +410,7 @@
   flex-direction: row;
   margin-top: 1em;
   border-top: 1px solid rgb(197, 197, 197);
-  border-bottom: 1px solid rgb(182, 182, 182);
+  border-bottom: 1px solid rgb(197, 197, 197);
 }
 
 /*attributes inminicart*/
@@ -442,7 +472,7 @@
 .btns-inminicart {
   background-color: white;
   color: black;
-  border: 1px solid rgb(68, 68, 68);
+  border: 1px solid rgb(53, 52, 52);
   padding: 0.3em 0.3em;
 }
 
@@ -481,6 +511,12 @@
   color: white;
   background-color: rgb(5, 199, 79);
   border: 1px solid rgb(5, 199, 79);
+}
+
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
 }
 
 .nav-info-div {
@@ -571,6 +607,12 @@ option {
 }
 
 /**/
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
+}
+
 .pop-up-in-pop-up {
   position: absolute;
   width: 150px;
@@ -693,4 +735,9 @@ option {
   gap: 0.6em;
 }
 
-/* // *//*# sourceMappingURL=style.css.map */
+/* // */
+:root {
+  --color-green: rgb(5, 199, 79);
+  --color-black: black;
+  --color-transparent: transparent;
+}/*# sourceMappingURL=style.css.map */

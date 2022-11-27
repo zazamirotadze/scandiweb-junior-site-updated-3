@@ -1,0 +1,17 @@
+$color-green: rgb(5, 199, 79);
+
+$color-black: black;
+
+$color-transparent:transparent;
+
+$color-white:white;
+
+$color-light-grey:rgb(197, 197, 197);
+$color-medium-grey:rgb(149, 157, 165,);
+$color-dark-grey:rgb(53, 52, 52);
+
+:root {
+    --color-green: #{$color-green};
+    --color-black: #{$color-black};
+    --color-transparent: #{$color-transparent};
+}

@@ -1,10 +1,12 @@
+@import "./variables";
+
 .cart-card{
     width: 88%;
     height: 22em;
     display: flex;
     margin-top: 2em;
-    border-top: 1px solid rgb(197, 197, 197);
-    border-bottom: 1px solid rgb(182, 182, 182);
+    border-top: 1px solid $color-light-grey;
+    border-bottom: 1px solid $color-light-grey;
 }
 .cart-imgi{
     width: 200px ;
@@ -35,7 +37,7 @@
 }
 
 .name{
-    color: rgb(53, 52, 52);
+    color: $color-dark-grey;
     font-weight: lighter;
 }
 
@@ -58,9 +60,9 @@
 }
 
 .cart-plus-minus-btn-incart{
-    background-color: white;
+    background-color: $color-white;
     outline: none;
-    border: 1px black solid;
+    border: 1px $color-black solid;
     height: 2em;
     width: 2em;
     font-size: large;
@@ -82,8 +84,8 @@
 
 .order-btn{
     border:none;
-    background-color: rgb(5, 199, 79);
-    color: white;
+    background-color: $color-green;
+    color: $color-white;
     padding: 0.8em 6em 0.8em 6em;
     border-radius: 2%;
     margin-top: 1em;
@@ -106,15 +108,15 @@
 }
 
 .left-angle{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.685);
+    color: $color-white;
+    background-color: rgba($color-black, 0.685);
     height: 1em;
     width: 1em;
     text-align: center;
 }
 .right-angle{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.685);
+    color: $color-white;
+    background-color: rgba($color-black, 0.685);
     height: 1em;
     width: 1em;
     text-align: center;

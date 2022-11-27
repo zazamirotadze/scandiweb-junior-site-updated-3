@@ -19,11 +19,20 @@ export default class Nav extends Component {
     this.setState({isMiniCartShown: false})
   }
   render() {
+
+    // color variebles
+    const styles = window.getComputedStyle(document.documentElement);
+    const colorGreen = styles.getPropertyValue('--color-green');
+    const colorBlack = styles.getPropertyValue('--color-black');
+    const colorTransparent = styles.getPropertyValue('--color-transparent');
+    //
+
     const changeCategory = this.props.changeCategory
     const allCategoryShown = this.props.allCategoryShown
     const techCategoryShown = this.props.techCategoryShown
     const clothesCategoryShown = this.props.clothesCategoryShown
   
+
 
     return (
       <div>
@@ -33,8 +42,8 @@ export default class Nav extends Component {
             <Link  to="/"> 
               <button 
               className='category-btn'
-              style={{borderBottom :allCategoryShown? "rgb(5, 199, 79) 2px solid": "",
-                      color:allCategoryShown? "rgb(5, 199, 79)": ""}}  
+              style={{borderBottom :allCategoryShown? `${colorGreen} 2px solid` : `${colorTransparent} 2px solid`,
+                      color:allCategoryShown? `${colorGreen}`: `${colorBlack}`}}  
               onClick={() =>changeCategory(0) } 
               >
                 ALL
@@ -43,8 +52,8 @@ export default class Nav extends Component {
             <Link  to="/"> 
               <button 
                 className='category-btn' 
-                style={{borderBottom :techCategoryShown? "rgb(5, 199, 79) 2px solid": "",
-                        color:techCategoryShown? "rgb(5, 199, 79)": "" }} 
+                style={{borderBottom :techCategoryShown? `${colorGreen} 2px solid`: `${colorTransparent} 2px solid`,
+                        color:techCategoryShown? `${colorGreen}`: `${colorBlack}` }} 
                 onClick={() =>changeCategory(2) }
               > 
                 TECH
@@ -53,8 +62,8 @@ export default class Nav extends Component {
             <Link  to="/"> 
               <button 
                 className='category-btn'
-                style={{borderBottom :clothesCategoryShown? "rgb(5, 199, 79) 2px solid": "",
-                        color:clothesCategoryShown? "rgb(5, 199, 79)": ""  }} 
+                style={{borderBottom :clothesCategoryShown? `${colorGreen} 2px solid`: `${colorTransparent} 2px solid`,
+                        color:clothesCategoryShown? `${colorGreen}`: `${colorBlack}` }} 
                 onClick={() =>changeCategory(1) }
               > 
                 CLOTHES
