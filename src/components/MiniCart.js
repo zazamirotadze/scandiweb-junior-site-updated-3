@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link} from "react-router-dom"
-import "./miniCart.css"
 import CardForMiniCart from './CardForMiniCart'
-import OutsideAlerterForMiniCart from './outsideAlerterForMiniCart'
+import OutsideAlerterForMiniCart from '../outsideAlerters/outsideAlerterForMiniCart'
 
 
 

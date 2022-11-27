@@ -2,7 +2,6 @@ import React from "react";
 import {  gql } from "@apollo/client";
 import {  graphql } from "react-apollo";
 import Product from "./Product";
-import "./ProductListPage.css"
 import Category from "./Category";
 
 const getAllCategory = gql`

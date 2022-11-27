@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link} from "react-router-dom"
-import image from "./a-logo.png"
-import image1 from "./empty-cart.png"
-import "./Nav.css"
+import image from "../images/a-logo.png"
+import image1 from "../images/empty-cart.png"
 import MiniCart from './MiniCart'
 import CurrencyChanger from './CurrencyChanger'
 

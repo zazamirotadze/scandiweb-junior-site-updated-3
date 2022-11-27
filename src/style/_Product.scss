@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 220px;
 }
 
 
@@ -29,30 +30,34 @@
 .capacity-div{
     padding: 0.3em;
     font-size: small;
-    border: 1px solid black;
 }
 
-/*overlay and card figure*/
+
 
 .cardoverlay-inproduct{
     position: absolute;
-    width: 320px;
+    width: 280px;
     height: 400px;
-   background-color: rgba(255, 251, 251, 0.568);;
+   background-color: rgba(247, 247, 247, 0.568);
+   box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
     z-index: 2;
 }
 .card{
-    padding: 1em 0em 1em 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     box-shadow: rgba(149, 157, 165, 0.171) 0px 8px 24px;
-    height: 400px;
-    width: 320px;
-
+    height: 100%;
+   
 }
 
 .outofstock-word{
     position: absolute;
-    margin-top: 7em;
-    margin-left: 3em;
+    top:50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     z-index: 1;
     color: rgb(53, 52, 52);
 }
@@ -62,8 +67,9 @@
 
 .is-incart-img-div{
     position: absolute;
-    margin-top: 13em;
-    margin-left: 12em;
+    margin-top: 220px;
+    margin-left: 200px;
+    z-index: 1;
 }
 
 
@@ -80,7 +86,9 @@
 .img-in-product-div{
     height: 230px;
     width: 81%;
+    
 }
+
 
 
 

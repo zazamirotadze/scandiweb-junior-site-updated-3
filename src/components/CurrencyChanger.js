@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import "./Nav.css"
-import OutsideAlerterForCurrencyChanger from './OutsideAlerterForCurrencyChanger'
+import OutsideAlerterForCurrencyChanger from '../outsideAlerters/OutsideAlerterForCurrencyChanger'
 
 export default class CurrencyChanger extends Component {
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import "./popup.css"
-import OutsideAlerterForPopUp from './OutsideAlerterForPopUp'
+import OutsideAlerterForPopUp from '../outsideAlerters/OutsideAlerterForPopUp'
 import { Link } from 'react-router-dom'
 
 

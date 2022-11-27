@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./miniCart.css"
+
 
 export default class CardForMiniCart extends Component {
   render() {

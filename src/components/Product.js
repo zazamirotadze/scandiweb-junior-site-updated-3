@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import "./Product.css"   
-import image2 from "./Common.png"
+import { Link } from 'react-router-dom' 
+import image2 from "../images/Common.png"
 import SmallPopup from './SmallPopup'
 
 

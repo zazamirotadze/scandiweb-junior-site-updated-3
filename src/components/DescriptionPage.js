@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import parse from 'html-react-parser';
 import {Link} from "react-router-dom"
-import "./DescriptionPage.css"
+
 
 
 
