@@ -14,7 +14,12 @@ export default class MiniCart extends Component {
    
 
     render() {
-        
+      // color variebles
+      const styles = window.getComputedStyle(document.documentElement);
+      const colorGreen = styles.getPropertyValue('--color-green');
+      const colorBlack = styles.getPropertyValue('--color-black');
+      const colorWhite = styles.getPropertyValue('--color-white');
+      //
        
         
         const cart = this.props.cart
@@ -48,7 +53,7 @@ export default class MiniCart extends Component {
             <div className='color-inminicart' 
               style={{
                 background: `${element.displayValue}`,
-                border: element.isSelected?`2px solid rgb(5, 199, 79)`:`2px solid white`
+                border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
               }}  
               >
               
@@ -62,8 +67,8 @@ export default class MiniCart extends Component {
             <div
               className='size-inminicart'
               style={{ 
-                background: element.isSelected?` black`:` white`,
-                color: element.isSelected?`white`:` black`
+                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
               }}  
               
               >
@@ -77,8 +82,8 @@ export default class MiniCart extends Component {
             <div
             className='size-inminicart'
               style={{ 
-                background: element.isSelected?` black`:` white`,
-                color: element.isSelected?`white`:` black`
+                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
               }}  
               
             >
@@ -94,8 +99,8 @@ export default class MiniCart extends Component {
             <div
             className='size-inminicart'
               style={{ 
-                background: element.isSelected?` black`:` white`,
-                color: element.isSelected?`white`:` black`
+                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
               }}  
               
             >
@@ -110,8 +115,8 @@ export default class MiniCart extends Component {
             <div
             className='size-inminicart'
               style={{ 
-                background: element.isSelected?` black`:` white`,
-                color: element.isSelected?`white`:` black`
+                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
               }}  
               
             >

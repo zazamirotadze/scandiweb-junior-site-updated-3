@@ -22,6 +22,12 @@ export default class CurrencyChanger extends Component {
 
 
   render() {
+
+    // color variebles
+      const styles = window.getComputedStyle(document.documentElement);
+      const colorWhite = styles.getPropertyValue('--color-white');
+      const colorLightGrey = styles.getPropertyValue('--color-light-grey');
+    //
     
     const  changeCurrency=this.props.changeCurrency
     const currency=this.props.currency
@@ -49,7 +55,7 @@ export default class CurrencyChanger extends Component {
               this.setState({option5: false})
               this.setState({listIsShown: false})
             }}
-            style={{backgroundColor: this.state.option1? "#e0e0d1" : "white"}}
+            style={{backgroundColor: this.state.option1? `${colorLightGrey}` : `${colorWhite}`}}
             
           >
             $ USD
@@ -64,8 +70,8 @@ export default class CurrencyChanger extends Component {
               this.setState({option5: false})
               this.setState({listIsShown: false})
             }}
-            style={{backgroundColor: this.state.option2? "#e0e0d1" : "white"}}
-          >
+            style={{backgroundColor: this.state.option2? `${colorLightGrey}` : `${colorWhite}`}}
+          > 
             £ EUR
           </option>
           <option
@@ -78,7 +84,7 @@ export default class CurrencyChanger extends Component {
               this.setState({option5: false})
               this.setState({listIsShown: false})
             }}
-            style={{backgroundColor: this.state.option3? "#e0e0d1" : "white"}}
+            style={{backgroundColor: this.state.option3? `${colorLightGrey}` : `${colorWhite}`}}
           >
             A$ AUD
           </option>
@@ -92,7 +98,7 @@ export default class CurrencyChanger extends Component {
               this.setState({option5: false})
               this.setState({listIsShown: false})
             }}
-            style={{backgroundColor: this.state.option4? "#e0e0d1" : "white"}}
+            style={{backgroundColor: this.state.option4? `${colorLightGrey}` : `${colorWhite}`}}
           >
             ¥ JPY
           </option>
@@ -106,7 +112,7 @@ export default class CurrencyChanger extends Component {
               this.setState({option5: true})
               this.setState({listIsShown: false})
             }}
-            style={{backgroundColor: this.state.option5? "#e0e0d1" : "white"}}
+            style={{backgroundColor: this.state.option5? `${colorLightGrey}` : `${colorWhite}`}}
           >
            ₽ RUB 
           </option>

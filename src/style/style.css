@@ -8,6 +8,8 @@
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 .card-container {
@@ -37,6 +39,8 @@
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 /*attributes div*/
@@ -123,6 +127,8 @@
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 .cart-card {
@@ -246,6 +252,8 @@
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 .description-conteiner {
@@ -353,6 +361,8 @@
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 .img-in-mini-cart {
@@ -517,6 +527,8 @@
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 .nav-info-div {
@@ -611,6 +623,8 @@ option {
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }
 
 .pop-up-in-pop-up {
@@ -740,4 +754,6 @@ option {
   --color-green: rgb(5, 199, 79);
   --color-black: black;
   --color-transparent: transparent;
+  --color-white: white;
+  --color-light-grey: rgb(197, 197, 197);
 }/*# sourceMappingURL=style.css.map */

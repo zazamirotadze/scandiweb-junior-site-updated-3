@@ -11,6 +11,13 @@ import { Link } from 'react-router-dom'
 
 export default class SmallPopup extends Component {
   render() {
+
+    // color variebles
+    const styles = window.getComputedStyle(document.documentElement);
+    const colorGreen = styles.getPropertyValue('--color-green');
+    const colorBlack = styles.getPropertyValue('--color-black');
+    const colorWhite = styles.getPropertyValue('--color-white');
+    //
 const  cardHoverClose = this.props.cardHoverClose
 const {attributes,  id, } = this.props.details && this.props.details
     
@@ -37,8 +44,8 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
      return(
      <div className='color-inpopup'
       style={{
-          background: `${element.displayValue}`,
-          border: element.isSelected?`2px solid rgb(5, 199, 79)`:`2px solid white`
+        background: `${element.displayValue}`,
+        border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
          }} 
           onClick={(event) =>{
            selectColor(element)
@@ -59,8 +66,8 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
      className='size-inpopup'
      onClick={(event) => selectSize(element)}
      style={{
-       background: element.isSelected?` black`:` white`,
-       color: element.isSelected?`white`:` black`
+      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
       }} 
    >
      {element.displayValue}
@@ -77,8 +84,8 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
      className='capacity-inpopup'
      onClick={(event) => selectCapacity(element)}
      style={{
-       background: element.isSelected?` black`:` white`,
-       color: element.isSelected?`white`:` black`
+      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
      }} 
    >
      {element.displayValue}
@@ -94,8 +101,8 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
      className='withUSB3Ports-inpopup'
      onClick={(event) => selectWithUSB3ports(element)}
      style={{
-       background: element.isSelected?` black`:` white`,
-       color: element.isSelected?`white`:` black`
+      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
      }} 
    >
      {element.displayValue}
@@ -110,8 +117,8 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
      className='touchIDinkeyboard-inpopup'
      onClick={(event) => selectTouchIDinkeyboard(element)}
      style={{
-       background: element.isSelected?` black`:` white`,
-       color: element.isSelected?`white`:` black`
+      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
      }} 
    >
      {element.displayValue}

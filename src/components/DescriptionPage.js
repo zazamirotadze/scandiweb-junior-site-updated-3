@@ -8,7 +8,12 @@ import {Link} from "react-router-dom"
 export default class DescriptionPage extends Component {
   render() {
 
-    
+    // color variebles
+    const styles = window.getComputedStyle(document.documentElement);
+    const colorGreen = styles.getPropertyValue('--color-green');
+    const colorBlack = styles.getPropertyValue('--color-black');
+    const colorWhite = styles.getPropertyValue('--color-white');
+    //
     
     const {attributes, brand,  description, gallery, id,  name, prices} = this.props.details && this.props.details
     
@@ -46,7 +51,7 @@ export default class DescriptionPage extends Component {
         <div className='color'
          style={{
              background: `${element.displayValue}`,
-             border: element.isSelected?`2px solid rgb(5, 199, 79)`:`2px solid white`
+             border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
             }} 
              onClick={(event) =>{
               selectColor(element)
@@ -67,8 +72,8 @@ export default class DescriptionPage extends Component {
         className='size'
         onClick={(event) => selectSize(element)}
         style={{
-          background: element.isSelected?` black`:` white`,
-          color: element.isSelected?`white`:` black`
+          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
          }} 
       >
         {element.displayValue}
@@ -85,8 +90,8 @@ export default class DescriptionPage extends Component {
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectCapacity(element)}
         style={{
-          background: element.isSelected?` black`:` white`,
-          color: element.isSelected?`white`:` black`
+          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
         }} 
       >
         {element.displayValue}
@@ -102,8 +107,8 @@ export default class DescriptionPage extends Component {
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectWithUSB3ports(element)}
         style={{
-          background: element.isSelected?` black`:` white`,
-          color: element.isSelected?`white`:` black`
+          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
         }} 
       >
         {element.displayValue}
@@ -118,8 +123,8 @@ export default class DescriptionPage extends Component {
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectTouchIDinkeyboard(element)}
         style={{
-          background: element.isSelected?` black`:` white`,
-          color: element.isSelected?`white`:` black`
+          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
         }} 
       >
         {element.displayValue}
