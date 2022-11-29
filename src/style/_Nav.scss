@@ -1,98 +1,96 @@
 @import "./variables";
+@import "./media";
 
 
-.nav-info-div{
+
+.nav{
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     width: 90%;
+    @include respond(phone){
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid $color-light-grey;
+    }
+    &__category--div{
+        & button{
+            padding: 2rem 2.2rem;
+            background: $color-transparent;
+            outline: none;
+            border: none;
+            @include respond(phone){
+                padding: 1.8rem 1.8rem;
+            }
+        }
+    }
+    &__bag--div{
+        height: 4rem;
+        margin-top: 1rem;
+        margin-right: 4rem;
+        text-align: center;
+        @include respond(phone){
+            margin-right: 0;
+        }
+    }
+    &__currency-cart-icon--div{
+        display: flex;
+        width: 10rem;
+    }
+    &__cart-icon--div{
+        position: relative;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include respond(phone){
+            margin-top: 1.4rem;
+        }
+        & div{
+            background-color: $color-black;
+            color: $color-white;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            font-size: 1rem;
+            position: absolute;
+            top: 1.2rem;
+            right: 0.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include respond(phone){
+                top: -0.4rem;
+            }
+        }
+    }
 }
 
-.category-btn{
-    padding: 1.6em 2em;
-    background: $color-transparent;
-    outline: none;
-    border: none;
-}
 
-
-/*bag-icon*/
-
-.bag-img-div{
-    height: 40px;
-    margin-top: 10px;
-}
-
-/*/
-
-
-/*cart-icon*/
-
-.quantity-circle{
-    background-color: $color-black;
-    color: $color-white;
-    border-radius: 50%;
-    width: 1.7em;
-    height: 1.7em;
-    font-size: 0.8em;
-    position: absolute;
-    margin-top: -2.7em;
-    margin-left: 1em;
-    text-align: center;
-}
-
-.quantitynum-innav{
-    margin-top: 0.4em;
-}
-
-.cart-icon-div-innav{
+.currency-changer{
     width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/**/
-/*currency*/
-.list-of-prices-innav{
-    position: absolute;
-    box-shadow: rgba($color-black, 0.24) 0px 3px 8px;
-}
-
-option{
-   padding: 4px 10px;
-}
-
-.arrow-div-currency{
-    margin-left: 25px;
-    width: 20%;
-    margin-top: -15px;
-}
-
-.currency-changer-in-nav{
-    width: 4em;
-
-}
-
-.currency-symbol-in-nav{
-    width: 60%;
-    margin-top: 16px;
-    margin-left:8px;
-    font-size: 20px;
-}
-/**/
-
-/*currency-and-cart-icon*/
-
-.whole-currency-changer-in-nav{
-    width: 50%;
-}
-
-.currency-and-cart-icon-innav{
-    display: flex;
-    width: 100px;
+    &__currency-symbol{
+        width: 60%;
+        margin-top: 1.6rem;
+        margin-left:0.8rem;
+        font-size: 2rem;
+    }
+    & i {
+        display: block;
+        margin-left: 2.5rem;
+        width: 20%;
+        margin-top: -15px;
+        font-size:1.6rem;
+    }
+    &__list-of-prices{
+        position: absolute;
+        box-shadow: rgba($color-black, 0.24) 0px 3px 8px;
+        & option{
+            padding: 4px 10px;
+            font-size: 1.6rem;
+        }
+    }
 }
 
 
-
-/**/
 

@@ -13,6 +13,7 @@ export default class DescriptionPage extends Component {
     const colorGreen = styles.getPropertyValue('--color-green');
     const colorBlack = styles.getPropertyValue('--color-black');
     const colorWhite = styles.getPropertyValue('--color-white');
+    
     //
     
     const {attributes, brand,  description, gallery, id,  name, prices} = this.props.details && this.props.details
@@ -51,7 +52,7 @@ export default class DescriptionPage extends Component {
         <div className='color'
          style={{
              background: `${element.displayValue}`,
-             border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
+             border: element.isSelected?`2px solid ${colorGreen}`:`2px solid white`
             }} 
              onClick={(event) =>{
               selectColor(element)
@@ -143,37 +144,37 @@ export default class DescriptionPage extends Component {
     //
       
     return ( 
-     <div className='description-conteiner'  >
-        <div className='secondary-photos-condeiner' >
+     <div className='description'  >
+        <div className='description__secondary-photo--div'>
           {photosOfProducts}
         </div> 
         <div >
-          <img src={mainPhoto} alt="" className="mainPhoto"/>
+          <img src={mainPhoto} alt="" className="description__mainPhoto"/>
         </div> 
-        <div className='information-div'>
+        <div className='description__information-div'>
           <h2 >{brand}</h2>
-          <h2 className='name-div'>{name}</h2>
-          {renderSizes &&<div className='attributes-word-div'>
+          <h2 >{name}</h2>
+          {renderSizes &&<div className='description__attributes-word-div'>
             SIZE: <div className='attributes-container'>{renderSizes}</div>
           </div>}
           
-          {renderSwatches &&<div className='attributes-word-div'>
+          {renderSwatches &&<div className='description__attributes-word-div'>
             Color:<div  className='attributes-container'>{renderSwatches}</div> 
           </div>}
           
-          {withUSB3Ports &&<div className='attributes-word-div' >
+          {withUSB3Ports &&<div className='description__attributes-word-div' >
             With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div> 
           </div>}
           
-          {Capacity && <div className='attributes-word-div' >
+          {Capacity && <div className='description__attributes-word-div' >
             Capacity: <div className='attributes-container'>{Capacity}</div>
           </div>}
           
-          {touchIdInKeyboard &&<div className='attributes-word-div' >
+          {touchIdInKeyboard &&<div className='description__attributes-word-div' >
             Touch ID in keyboard:<div className='attributes-container'>{touchIdInKeyboard}</div>
            </div>}
           
-          <div className='attributes-word-div'>PRICE:</div>
+          <div className='description__attributes-word-div'>PRICE:</div>
           <div className='price-div' >{renderPrice.currency.symbol}{renderPrice.amount}</div>
           {card.inStock && <Link  to="/Cart"> 
             <button  onClick={() => 

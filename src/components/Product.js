@@ -39,21 +39,21 @@ export default class Product extends Component {
     const swatch = this.props.swatch.map(element  =>{
       
       return(
-      <div className='swatch-or-capacity-conteiner'>
-        <div style={{background: `${element.items[0].displayValue}`}} className='swatch-div'></div> 
-        <div style={{background: `${element.items[1].displayValue}`}} className='swatch-div'></div> 
-        <div style={{background: `${element.items[2].displayValue}`}} className='swatch-div'></div> 
-        <div style={{background: `${element.items[3].displayValue}`}} className='swatch-div'></div> 
-      </div>)}
+      <>
+        <div style={{background: `${element.items[0].displayValue}`}} className='product__attributes--swatch'></div> 
+        <div style={{background: `${element.items[1].displayValue}`}} className='product__attributes--swatch'></div> 
+        <div style={{background: `${element.items[2].displayValue}`}} className='product__attributes--swatch'></div> 
+        <div style={{background: `${element.items[3].displayValue}`}} className='product__attributes--swatch'></div> 
+      </>)}
     )
 
     const capacity =  this.props.capacity.map(element  =>{
       
       return(
-        <div className='swatch-or-capacity-conteiner'>
-          <div  className='capacity-div'>{element.items[0].value}</div> 
-          <div  className='capacity-div'>{element.items[1].value}</div> 
-        </div>)}
+        <>
+          <div  className='product__attributes--capacity'>{element.items[0].value}</div> 
+          <div  className='product__attributes--capacity'>{element.items[1].value}</div> 
+        </>)}
     )
 
    
@@ -61,17 +61,18 @@ export default class Product extends Component {
        
     return (
       
+
         <>
           <Link to="/details">
             <div 
-              className={!newElmement1.inStock && "cardoverlay-inproduct"} 
+              className={!newElmement1.inStock && "product__overlay"} 
               onClick={()=>(changeState(newElmement1)) }
               onMouseOver={()=>this.setState({isCardHoverd: true})}
               onMouseOut={()=>this.setState({isCardHoverd: false})}
             ></div>
           </Link>
           {this.state.isHoveredAnImage && 
-          <div className="is-incart-img-div" 
+          <div className="product__cart-icon--div" 
             onClick={()=> {
               
               if(newElmement1.attributes.length>0){
@@ -91,28 +92,25 @@ export default class Product extends Component {
             onMouseOut={()=>this.setState({isHoveredAnImage: false})}
           ><img src={image2} alt="" /></div> }
           <Link to="/details" onClick={()=>(changeState(newElmement1)) } style={{textDecoration: 'none',color:"black"}} >
-          <div className={`card ${this.state.isCardHoverd ?"hoveredCard":undefined}`} 
+          <div className={`product__card ${this.state.isCardHoverd ?"product__card--whenhovered":undefined}`} 
             onMouseOver={()=>this.setState({isCardHoverd: true})}
             onMouseOut={()=>this.setState({isCardHoverd: false})}
           >
           
-              {!newElmement1.inStock && <div className="outofstock-word" >OUT OF STOCK</div>}
-                  <div className='img-in-product-div' 
+              {!newElmement1.inStock && <div className="product__outofstock--word" >OUT OF STOCK</div>}
+                  <div className='product__img--div' 
                       onMouseOver={()=>this.setState({isHoveredAnImage: true})}
                       onMouseOut={()=>this.setState({isHoveredAnImage: false})}
                       alt=""
                   >
-                  <img className='img-in-product' 
-                    src={element.gallery[0]} 
-                    alt=""
-                  /> 
+                    <img src={element.gallery[0]} alt="" /> 
                   </div>
-              <div className='attributes-div-inproduct'>
-                <h3 className='brand-name-div-inproductlistpage'>{element.brand}</h3>
-                <h3 className='brand-name-div-inproductlistpage'>{element.name}</h3>
+              <div className='product__attributes'>
+                <h3>{element.brand}</h3>
+                <h3>{element.name}</h3>
                 <div>{swatch}</div>
                 {!newElmement1.inStock &&<div>{capacity}</div>}
-                <h3 className='price-div'>{label}{amount}</h3>
+                <h3>{label}{amount}</h3>
               </div>
           </div>
           </Link>
@@ -120,26 +118,7 @@ export default class Product extends Component {
           <SmallPopup
            popUpCloser={this.popUpCloser}
            cardHoverClose={this.cardHoverClose}
-           details={this.props.details}
-           addToCart = {this.props.addToCart}
-
-
-           selectColor={this.props.selectColor}
-           selectSize={this.props.selectSize}
-           selectCapacity={this.props.selectCapacity}
-           selectWithUSB3ports={this.props.selectWithUSB3ports}
-           selectTouchIDinkeyboard={this.props.selectTouchIDinkeyboard}
-
-           
-
-           selectColorWhenInDescription={this.props.selectColorWhenInDescription}
-           selectSizeWhenInDescription={this.props.selectSizeWhenInDescription}
-           selectCapacityWhenInDescription={this.props.selectCapacityWhenInDescription}     
-           selectWithUSB3portsWhenInDescription={this.props.selectWithUSB3portsWhenInDescription}
-           selectTouchIDinkeyboardWhenInDescription={this.props.selectTouchIDinkeyboardWhenInDescription}
-
-
-
+           {...this.props}
            />}
          </>
     )

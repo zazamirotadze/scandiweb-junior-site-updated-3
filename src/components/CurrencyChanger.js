@@ -33,17 +33,14 @@ export default class CurrencyChanger extends Component {
     const currency=this.props.currency
 
     return (
-        <div  className='whole-currency-changer-in-nav' >
-        <p className='currency-symbol-in-nav'>{currency}</p>
-        <div className='currency-changer-in-nav'>
-        <div className='arrow-div-currency'>
-        <i 
-            className={this.state.listIsShown?"fas fa-angle-up":  'fas fa-angle-down' }
-            onClick={()=> this.setState({listIsShown:true}) }
-        >
-        </i>
-        </div>
-        {this.state.listIsShown && <div className='list-of-prices-innav' >
+        <div className='currency-changer'>
+          <p className='currency-changer__currency-symbol'>{currency}</p>
+          <i 
+              className={this.state.listIsShown?"fas fa-angle-up":  'fas fa-angle-down' }
+              onClick={()=> this.setState({listIsShown:true}) }
+          ></i>
+        
+        {this.state.listIsShown && <div className='currency-changer__list-of-prices' >
           <OutsideAlerterForCurrencyChanger currencyCloser={this.currencyCloser}>
           <option 
             onClick={()=> {
@@ -119,7 +116,7 @@ export default class CurrencyChanger extends Component {
           </OutsideAlerterForCurrencyChanger>
         </div>}
     </div>
-    </div>
+
     )
   }
 }

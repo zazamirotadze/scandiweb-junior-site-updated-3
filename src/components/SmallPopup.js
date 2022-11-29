@@ -42,7 +42,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const renderSwatches = swatchObject && swatchObject.items.map(
    (element) => {
      return(
-     <div className='color-inpopup'
+     <div className='popup__color'
       style={{
         background: `${element.displayValue}`,
         border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
@@ -63,7 +63,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const sizeObject = ((attributes.find(element =>element.id === "Size")))
  const renderSizes = sizeObject && sizeObject.items.map((element) =>
    <div 
-     className='size-inpopup'
+     className='popup__attributes'
      onClick={(event) => selectSize(element)}
      style={{
       background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -81,7 +81,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
  const Capacity = capacityObject && capacityObject.items.map((element) => 
    <div 
-     className='capacity-inpopup'
+     className='popup__attributes'
      onClick={(event) => selectCapacity(element)}
      style={{
       background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -98,7 +98,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
  const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
    <div
-     className='withUSB3Ports-inpopup'
+     className='popup__attributes'
      onClick={(event) => selectWithUSB3ports(element)}
      style={{
       background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -114,7 +114,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
  const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
    <div 
-     className='touchIDinkeyboard-inpopup'
+     className='popup__attributes'
      onClick={(event) => selectTouchIDinkeyboard(element)}
      style={{
       background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -135,18 +135,17 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  //
    
  return ( 
-    <div className='pop-up-in-pop-up' onMouseOut={()=>cardHoverClose()}>
+    <div className='popup' onMouseOut={()=>cardHoverClose()}>
         <OutsideAlerterForPopUp popUpCloser={this.props.popUpCloser}>
-     <div className='information-div-inpopup'>
-       {renderSizes &&<div className='size-word-div-inpopup'>SIZE: <div className='size-conteiner-inpopup'>{renderSizes}</div></div>}
+       {renderSizes &&<div className='popup__attributes--div'>SIZE: <div >{renderSizes}</div></div>}
        
-       {renderSwatches &&<div className='color-word-div-inpopup'>Color:<div  className='color-conteiner-inpopup'>{renderSwatches}</div> </div>}
+       {renderSwatches &&<div className='popup__attributes--div'>Color:<div>{renderSwatches}</div> </div>}
        
-       {withUSB3Ports &&<div className='usb-word-div-inpopup' >With USB 3 ports: <div className='withUSB3Ports-container-inpopup'>{withUSB3Ports}</div> </div>}
+       {withUSB3Ports &&<div className='popup__attributes--div' >With USB 3 ports: <div>{withUSB3Ports}</div> </div>}
        
-       {Capacity && <div className='capacity-name-div-inpopup' >Capacity: <div className='capacity-container--inpopup'>{Capacity}</div></div>}
+       {Capacity && <div className='popup__attributes--div' >Capacity: <div >{Capacity}</div></div>}
        
-       {touchIdInKeyboard &&<div className='ID-name-div-inpopup' >Touch ID in keyboard:<div className='touchIDinkeyboard-container--inpopup'>{touchIdInKeyboard}</div> </div>}
+       {touchIdInKeyboard &&<div className='popup__attributes--div' >Touch ID in keyboard:<div >{touchIdInKeyboard}</div> </div>}
        
        {card.inStock && <Link  to="/Cart"> 
          <button  onClick={() => 
@@ -158,11 +157,9 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
            selectTouchIDinkeyboardWhenInDescription(card, id)
            
            }}  
-         className="add-to-cart-btn-inpopup"
          > 
            ADD TO CART
          </button> </Link>}
-     </div>
      </OutsideAlerterForPopUp>
  </div>
  )

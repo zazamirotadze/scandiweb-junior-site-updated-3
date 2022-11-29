@@ -1,23 +1,48 @@
 @import "./variables";
+@import "./media";
 
-.description-conteiner{
+.description{
     width: 85%;
     display: flex;
-    margin: 110px auto 0px auto ;
+    margin: 110px auto 3rem auto ;
     justify-content: space-between;
+    font-size: 1.6rem;
+    @include respond(phone){
+        font-size: 1.15rem;
+    }
+    &__secondary-photo--div{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    &__mainPhoto{
+        height: 450px;
+        width: 450px;
+        border: 2px solid $color-white;
+        @include respond(tab-port){
+            height: 150px;
+            width: 150px;
+        }
+        @include respond(phone){
+            height: 0px;
+            width: 0px;
+        }
+    }
+    &__information-div{
+        width: 320px;
+        & h2:nth-child(2){
+            color: $color-dark-grey;
+            font-weight: lighter;
+        }
+    }
+    &__attributes-word-div{
+        margin-top: 1em;
+        font-weight: bold;
+    }
 }
 
 
 
-
-.name-div{
-    color: $color-dark-grey;
-    font-weight: lighter;
-}
-
-.information-div{
-    width: 320px;
-}
 
 .add-to-cart-btn{
     border:none;
@@ -26,40 +51,20 @@
     padding: 1em 5em 1em 5em;
     border-radius: 2%;
     margin-top: 1em;
+    @include respond(phone){
+        padding: 0.6em 3em 0.6em 3em;
+    }
 }
 
 
 
-/*photos*/
-.mainPhoto{
-    height: 450px;
-    width: 450px;
-    border: 2px solid $color-white;
-}
+
 .secondary-Photos{
     height: 100px;
     width: 100px;
 }
 
-.secondary-photos-condeiner{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
-/**/
-
-
-
-
-/*attributes-names*/
-.attributes-word-div{
-    margin-top: 1em;
-    font-weight: bold;
-}
-/**/
-
-/*attributes*/
 
 .color{
     width: 1.5em;
@@ -77,10 +82,6 @@
     padding: 0.5em;
 }
 
-/**/
-
-
-/*attributes containers*/
 .attributes-container{
     margin-top: 0.4em;
     display: flex;
@@ -97,25 +98,3 @@
     font-size: 0.9em;
 }
 
-
-/**/
-
-
-/* media queries*/
-
-@media only screen and  (min-width: 600px) and (max-width: 950px) {
-    .mainPhoto{
-        height: 150px;
-        width: 150px;
-    }
-  }
-
-
-  @media only screen  and (max-width: 600px) {
-    .mainPhoto{
-        height: 0px;
-        width: 0px;
-    }
-  }
-
-/**/

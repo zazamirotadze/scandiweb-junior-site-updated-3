@@ -19,6 +19,7 @@ export default class MiniCart extends Component {
       const colorGreen = styles.getPropertyValue('--color-green');
       const colorBlack = styles.getPropertyValue('--color-black');
       const colorWhite = styles.getPropertyValue('--color-white');
+      
       //
        
         
@@ -50,7 +51,7 @@ export default class MiniCart extends Component {
             
      
             return(
-            <div className='color-inminicart' 
+            <div className='minicard__color' 
               style={{
                 background: `${element.displayValue}`,
                 border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
@@ -65,7 +66,7 @@ export default class MiniCart extends Component {
           const sizeObject = attributes.find(element => element.id === "Size")
           const renderSizes = sizeObject && sizeObject.items.map((element) =>
             <div
-              className='size-inminicart'
+              className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
                 color: element.isSelected?`${colorWhite}`:`${colorBlack}`
@@ -80,7 +81,7 @@ export default class MiniCart extends Component {
           const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
           const Capacity = capacityObject && capacityObject.items.map((element) =>
             <div
-            className='size-inminicart'
+            className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
                 color: element.isSelected?`${colorWhite}`:`${colorBlack}`
@@ -97,7 +98,7 @@ export default class MiniCart extends Component {
           const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
           const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
             <div
-            className='size-inminicart'
+            className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
                 color: element.isSelected?`${colorWhite}`:`${colorBlack}`
@@ -113,7 +114,7 @@ export default class MiniCart extends Component {
           const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
           const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
             <div
-            className='size-inminicart'
+            className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
                 color: element.isSelected?`${colorWhite}`:`${colorBlack}`
@@ -156,25 +157,25 @@ export default class MiniCart extends Component {
           <div>
              <div className= "minicart-overlay"   ></div>
              
-              <div className='minicart' onMouseDown={()=>console.log("yaya")} >
+              <div className='minicart'>
                 
                 <OutsideAlerterForMiniCart miniCartCloser={this.props.miniCartCloser}>
-                <span className='mybagword-in-minicart'> My Bag.</span>
+                <span> My Bag.</span>
                 <span> {this.props.totalQuantity} items</span>
                 
-                {cart.length===0 ? <div>Cart is empty</div>:
-                  <div>
-                    <div className='miniCart-cards'>
+                {cart.length===0 ? <p>Cart is empty</p>:
+                  <>
+                    <div className='minicart__cards'>
                    {renderCart} 
                     </div>
-                      <div className='fixed-part-minicart'>
-                        <div className=' total-in-minicart'>Total: <div >{this.props.currency}{this.props.totalSum}</div> </div>  
-                        <div className='buttons-in-div-minicart'>
-                            <Link  to="/Cart"><button className='view-bag-minicart-btn' onClick={() => this.props.miniCartCloser()} >VIEW BAG</button></Link>
-                            <button className='checkout-minicart-btn' onClick={() => this.props.clearCart()}>CHECK OUT</button>
+                      <div className='minicart__fixed-part'>
+                        <div className='minicart__total'>Total: <div >{this.props.currency}{this.props.totalSum}</div> </div>  
+                        <div >
+                            <Link  to="/Cart"><button  onClick={() => this.props.miniCartCloser()} >VIEW BAG</button></Link>
+                            <button  onClick={() => this.props.clearCart()}>CHECK OUT</button>
                         </div> 
                     </div>
-                  </div> }
+                  </> }
                   
                   </OutsideAlerterForMiniCart>
                   

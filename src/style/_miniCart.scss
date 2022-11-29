@@ -1,177 +1,143 @@
 @import "./variables";
-
-.img-in-mini-cart{
-    width: 95px;
-    height: 170px;
-}
-
+@import "./media";
 
 .minicart{
     background-color: $color-white;
-    width: 270px;
-    max-height:  510px ;
-    margin-left: 75vw;
+    width: 27rem;
+    max-height:  51rem ;
+    right: 4rem;
     z-index: 4;
     position: absolute;
-}
-
-@media only screen and  (min-width: 700px) and (max-width: 1000px) {
-    .minicart {
-        margin-left: 60vw;
+    font-size: 1.6rem;
+    @include respond(phone){
+        
+        right: 2rem;
     }
-  }
-
-@media only  screen and (max-width: 700px) {
-    .minicart {
-        margin-left: 40vw;
+    &-overlay{
+        position: absolute;
+        background-color: rgba($color-black, 0.13);
+        background-position: top;
+        top: 5.8rem;
+        left: 0;
+        right: 0;
+        bottom: -5000px;
+        z-index: 3;
+        @include respond(phone){
+            top: 15rem;
+            margin-top: -0.5rem;
+        }
     }
-}
+    & span:first-child{
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 1.4rem;
+    }
+    & span:nth-child(2){
+        font-size: 1.3rem;
+    }
+    &__cards{
+        overflow-y: auto;
+        max-height: 35rem;
+        padding: 1.6rem;
+        border-top: 1px solid $color-light-grey;
+        border-bottom: 1px solid $color-light-grey;    
+    }
+    &__fixed-part{
+        max-height: 16rem;
+        padding: 1rem;
+        & div:nth-child(2){
+            width: 100%;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            & button{
+                width: 10rem;
+                height: 4rem;
+            }
+            & button:nth-child(1) {
+                color: $color-black;
+                background-color: $color-white;
+                outline: none;
+                border: 1px solid $color-black;
+            }
+            & button:nth-child(2) {
+                color: $color-white;
+                background-color: $color-green;
+                border: 1px solid $color-green;
+            }
+        }
+    }
+    &__total{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
 
 
-.minicart-overlay{
-    position: absolute;
-    background-color: rgba($color-black, 0.13);
-    background-position: top;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: -5000px;
-    z-index: 3;
-}
-
-
-
-
-
-.miniCart-cards{
-    overflow-y: auto;
-    max-height: 350px;
-    padding: 1em;
-    border-top: 1px solid $color-light-grey;
-    border-bottom: 1px solid $color-light-grey;
     
 }
-.mybagword-in-minicart{
-    font-size: 1em;
-    font-weight: bold;
-    margin-left: 1em;
-}
 
-.minicard-card{
+.minicard{
     width: 98%; 
     display: flex;
     flex-direction: row;
-    margin-top: 1em;
+    margin-top: 1rem;
     border-top: 1px solid $color-light-grey;
     border-bottom: 1px solid $color-light-grey;
-}
-
-
-/*attributes inminicart*/
-.size-inminicart{
-    font-size: 1em;
-    padding: 0.1em 0.2em 0.1em 0.2em ;
-    border: $color-black 1px solid;
-}
-
-.h2-inminicart{
-    font-size: 0.8em;
-    font-weight: lighter;
-}
-.price-inminicart{
-    font-size: 0.8em;
-    font-weight: bold;
-}
-
-.attributes-inminicart{
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3em;
-}
-.size-container-inminicart{
-    display: flex;
-    gap: 0.4em;
-}
-
-.color-conteiner-inminicart{
-    margin-top: 0.3em;
-    display: flex;
-    gap: 0.1em;
-}
-
-.color-inminicart{
-    width: 1.5em;
-    height: 1.5em;
-    border: none;
-}
-
-/**/
-
-
-.imga-btns-inminicart{
-    display: flex;
-    width: 55%;
-}
-
-.btn-and-sum-inminicart{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    padding-right: 0.3em;
-    padding-left: 0.5em;
+    &__attributes{
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        & h2, & p, & div{
+            font-size: 1.3rem;
+        }
+        & h2{
+            font-weight: lighter;
+        }
+        & p{
+            font-weight: bold;
+        }
+        & div div {
+            display: flex;
+            gap: 0.4rem;
+        }
+    }
+    &__btn-img--div{
+        display: flex;
+        width: 55%;
+        & div:nth-child(1){
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            padding-right: 0.3rem;
+            padding-left: 0.5rem;
+            & button{
+                background-color: $color-white;
+                color: $color-black;
+                border: 1px solid $color-dark-grey;
+                padding: 0.3rem 0.5rem;
+            }
+        }
+        & div:nth-child(2) img{
+            width: 9.5rem;
+            height: 17rem;
+        }
+    }
+    &__attribute{
+        font-size: 1.3rem;
+        padding: 0.1rem 0.2rem 0.1rem 0.2rem ;
+        border: $color-black 1px solid;
+    }
+    &__color{
+        width: 1.7rem;
+        height: 1.7rem;
+        border: none;
+    }
     
 }
 
-.btns-inminicart{
-    background-color: $color-white;
-    color: $color-black;
-    border: 1px solid $color-dark-grey;
-    padding: 0.3em 0.3em;
-}
 
-
-
-
-
-.fixed-part-minicart{
-    max-height: 16em;
-    padding: 1em;
-}
-
-.total-in-minicart{
-    width: 100%;
-    
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8em;
-    font-weight: bold;
-    
-}
-.buttons-in-div-minicart{
-    width: 100%;
-    
-    margin-top: 1em;
-    display: flex;
-    justify-content: space-between;
-    
-}
-
-.view-bag-minicart-btn{
-    width: 8.5em;
-    height: 2.5em;
-    color: $color-black;
-    background-color: $color-white;
-    outline: none;
-    border: 1px solid $color-black;
-}
-
-.checkout-minicart-btn{
-    width: 8.5em;
-    height: 2.5em;
-    color: $color-white;
-    background-color: $color-green;
-    border: 1px solid $color-green;
-}

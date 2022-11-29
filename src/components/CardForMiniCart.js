@@ -9,25 +9,25 @@ export default class CardForMiniCart extends Component {
     const increase = this.props.increase
     const reduction=this.props.reduction
     return (
-      <div className = "minicard-card">
-        <div className='attributes-inminicart'>
-          <h2 className='h2-inminicart'>{brand}</h2>
-          <h2 className='h2-inminicart'>{name}</h2>
-          <p className="price-inminicart">{symbol}{amount}</p>
-          {renderSizes &&<div className='h2-inminicart'>Size: <div className='size-container-inminicart'>{renderSizes}</div></div>}
-          {renderSwatches &&<div className='h2-inminicart' >Color: <div className='color-conteiner-inminicart'>{renderSwatches}</div></div>}
-          {withUSB3Ports &&<div className='h2-inminicart'>With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div></div>}
-          {Capacity && <div className='h2-inminicart'>Capacity:<div className='attributes-container'> {Capacity}</div></div>}
-          {touchIdInKeyboard &&<div className='h2-inminicart' >Touch ID in keyboard: <div className='attributes-container'>{touchIdInKeyboard}</div></div>}
+      <div className = "minicard">
+        <div className='minicard__attributes'>
+          <h2>{brand}</h2>
+          <h2>{name}</h2>
+          <p>{symbol}{amount}</p>
+          {renderSizes &&<div>Size: <div >{renderSizes}</div></div>}
+          {renderSwatches &&<div>Color: <div>{renderSwatches}</div></div>}
+          {withUSB3Ports &&<div>With USB 3 ports: <div >{withUSB3Ports}</div></div>}
+          {Capacity && <div>Capacity:<div > {Capacity}</div></div>}
+          {touchIdInKeyboard &&<div>Touch ID in keyboard: <div >{touchIdInKeyboard}</div></div>}
         </div>
-        <div className='imga-btns-inminicart'>
-          <div className='btn-and-sum-inminicart'>
-            <button onClick={() => increase(id)} className="btns-inminicart">+</button>
+        <div className='minicard__btn-img--div'>
+          <div>
+            <button onClick={() => increase(id)} >+</button>
             <p >{count}</p>
-            <button onClick={() => reduction(id)} className="btns-inminicart">-</button>
+            <button onClick={() => reduction(id)} >-</button>
           </div>
           <div>
-            <img  className='img-in-mini-cart' src={src}/>
+            <img  src={src}/>
           </div>
         </div>
       </div>

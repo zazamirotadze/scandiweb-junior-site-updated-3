@@ -43,7 +43,7 @@ export default class CardForCart extends Component {
           <h2 className='name'>{name}</h2>
           <p className='price'>{symbol}{amount}</p>
           {renderSizes &&<div className='attribute-word-div-in-cart'>SIZE: <div className='attributes-container'>{renderSizes}</div></div>}
-          {renderSwatches &&<div className='color-word-div-in-cart' >COLOR: <div className='attributes-container'>{renderSwatches}</div></div>}
+          {renderSwatches &&<div className='color-word-div-in-cart' >COLOR: <div className='attributes-container-forcolor'>{renderSwatches}</div></div>}
           {withUSB3Ports &&<div className='attribute-word-div-in-cart'>With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div></div>}
           {Capacity && <div className='attribute-word-div-in-cart'>CAPACITY:<div className='attributes-container'> {Capacity}</div></div>}
           {touchIdInKeyboard &&<div  className='attribute-word-div-in-cart'>Touch ID in keyboard: <div className='attributes-container'>{touchIdInKeyboard}</div></div>}
@@ -55,6 +55,7 @@ export default class CardForCart extends Component {
             <button onClick={() => reduction(id)}  className="cart-plus-minus-btn-incart">-</button>
           </div>
           <div>
+            <div className='image-and-arrow-div'>
             <img className='cart-imgi' alt='' src={programmedSrc}/>
             {photosSrcs.length>1 && 
             <div className='arrow-icons-in-cart' >
@@ -64,7 +65,9 @@ export default class CardForCart extends Component {
               <div className='right-angle' onClick={() => this.increaseSrcNumber()} >
                 <i className='fas fa-angle-right' ></i>  
               </div>
-            </div> }     
+            </div> }   
+            </div>
+           
           </div>
         </div>
       </div>

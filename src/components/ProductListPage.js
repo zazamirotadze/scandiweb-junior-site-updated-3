@@ -90,35 +90,12 @@ class ProductListPage extends React.Component {
                 key ={element.id} 
                 element={element} 
                 setDetailProduct = {this.props.setDetailProduct}
-
-
-
-                details={this.props.details}
-                addToCart = {this.props.addToCart}
-
-
-                selectColor={this.props.selectColor}
-                selectSize={this.props.selectSize}
-                selectCapacity={this.props.selectCapacity}
-                selectWithUSB3ports={this.props.selectWithUSB3ports}
-                selectTouchIDinkeyboard={this.props.selectTouchIDinkeyboard}
-
-
-
-                selectColorWhenInDescription={this.props.selectColorWhenInDescription}
-                selectSizeWhenInDescription={this.props.selectSizeWhenInDescription}
-                selectCapacityWhenInDescription={this.props.selectCapacityWhenInDescription}     
-                selectWithUSB3portsWhenInDescription={this.props.selectWithUSB3portsWhenInDescription}
-                selectTouchIDinkeyboardWhenInDescription={this.props.selectTouchIDinkeyboardWhenInDescription}
-
-
-
-
+                {...this.props}
               />
             </div>
             ) } 
           )
-          return <div className="card-container" >{renderProductData}</div> 
+          return <>{renderProductData}</> 
       }
     
     
@@ -133,13 +110,13 @@ class ProductListPage extends React.Component {
     
     return (
         
-        <div >
+        <>
           <div className="titles-div">
             {category===0?<h1>{this.state.allCategoryName}</h1>:category===1?<h1>{this.state.clothesCategoryName}</h1>:<h1>{this.state.techCategoryName}</h1> }
             <Category setNameForAllCategory={this.setNameForAllCategory}/>
           </div>
-          {this.state.allCategoryName && <div>{this.fetchData()}</div>}
-        </div>
+          {this.state.allCategoryName && <div className="card-container">{this.fetchData()}</div>}
+        </>
       
     )
   }

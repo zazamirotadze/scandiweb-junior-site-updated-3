@@ -36,12 +36,10 @@ export default class Nav extends Component {
 
     return (
       <div>
-      <div className='nav-info-div'>
-
-        <div className='category-div'>
+      <div className='nav'>
+        <div className='nav__category--div'>
             <Link  to="/"> 
               <button 
-              className='category-btn'
               style={{borderBottom :allCategoryShown? `${colorGreen} 2px solid` : `${colorTransparent} 2px solid`,
                       color:allCategoryShown? `${colorGreen}`: `${colorBlack}`}}  
               onClick={() =>changeCategory(0) } 
@@ -51,7 +49,6 @@ export default class Nav extends Component {
             </Link>
             <Link  to="/"> 
               <button 
-                className='category-btn' 
                 style={{borderBottom :techCategoryShown? `${colorGreen} 2px solid`: `${colorTransparent} 2px solid`,
                         color:techCategoryShown? `${colorGreen}`: `${colorBlack}` }} 
                 onClick={() =>changeCategory(2) }
@@ -61,7 +58,6 @@ export default class Nav extends Component {
             </Link>
             <Link  to="/"> 
               <button 
-                className='category-btn'
                 style={{borderBottom :clothesCategoryShown? `${colorGreen} 2px solid`: `${colorTransparent} 2px solid`,
                         color:clothesCategoryShown? `${colorGreen}`: `${colorBlack}` }} 
                 onClick={() =>changeCategory(1) }
@@ -70,33 +66,24 @@ export default class Nav extends Component {
               </button> 
             </Link>
         </div>
-
-        <div className='div-for-bag'>
-          <div className="bag-img-div">
+          <div className="nav__bag--div">
             <img src={image}  alt=""  />
           </div>
-        </div>
-        <div className='currency-and-cart-icon-innav'>
+        <div className='nav__currency-cart-icon--div'>
           <CurrencyChanger changeCurrency={this.props.changeCurrency} currency={this.props.currency}/>
-          <div className='cart-icon-div-innav' > 
-            <div>
-              <img src={image1} alt="" className="cart-img" onClick={()=> this.setState({isMiniCartShown: !this.state.isMiniCartShown})}  /> 
-              {this.props.totalQuantity>0 &&<div className='quantity-circle'><p className='quantitynum-innav'>{this.props.totalQuantity}</p></div>}
-            </div>
+          <div className='nav__cart-icon--div' > 
+              <img src={image1} alt=""  onClick={()=> this.setState({isMiniCartShown: !this.state.isMiniCartShown})}  /> 
+              {this.props.totalQuantity>0 &&<div>{this.props.totalQuantity}</div>}
           </div>  
         </div>
       </div >
-        <div  >
           {this.state.isMiniCartShown &&
-                  <div  >
-                    
+                             
                     <MiniCart 
                     miniCartCloser={this.miniCartCloser}
                     {...this.props}
-                    />
-                  </div>
+                    />         
           }
-          </div>
       </div>
       
     )

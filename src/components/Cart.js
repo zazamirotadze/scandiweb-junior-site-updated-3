@@ -45,7 +45,7 @@ export default class Cart extends Component {
         
  
         return(
-        <div  className='color'
+        <div  className='color-incart'
           style={{
             background: `${element.displayValue}`,
             border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
