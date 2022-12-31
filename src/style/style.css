@@ -60,7 +60,13 @@ html {
   height: 100%;
 }
 .product__card--whenhovered {
-  box-shadow: rgba(0, 0, 0, 0.571) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: rgba(53, 52, 52, 0.571) 0px 8px 24px;
+  height: 100%;
 }
 .product__outofstock--word {
   position: absolute;

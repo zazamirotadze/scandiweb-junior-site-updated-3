@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link} from "react-router-dom"
 import CardForMiniCart from './CardForMiniCart'
 import OutsideAlerterForMiniCart from '../outsideAlerters/outsideAlerterForMiniCart'
-
+import nodeid from 'node-id';
 
 
 
@@ -52,6 +52,7 @@ export default class MiniCart extends Component {
      
             return(
             <div className='minicard__color' 
+            key={nodeid()}
               style={{
                 background: `${element.displayValue}`,
                 border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
@@ -66,6 +67,7 @@ export default class MiniCart extends Component {
           const sizeObject = attributes.find(element => element.id === "Size")
           const renderSizes = sizeObject && sizeObject.items.map((element) =>
             <div
+            key={nodeid()}
               className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -81,6 +83,7 @@ export default class MiniCart extends Component {
           const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
           const Capacity = capacityObject && capacityObject.items.map((element) =>
             <div
+            key={nodeid()}
             className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -98,6 +101,7 @@ export default class MiniCart extends Component {
           const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
           const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
             <div
+            key={nodeid()}
             className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -114,6 +118,7 @@ export default class MiniCart extends Component {
           const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
           const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
             <div
+            key={nodeid()}
             className='minicard__attribute'
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -129,8 +134,9 @@ export default class MiniCart extends Component {
     
           
           return(
-          <div >
+          <div key={item.id} >
             <CardForMiniCart
+              
               removeFromCart={this.props.removeFromCart}
               brand={item.brand}
               name= {item.name}
@@ -157,9 +163,10 @@ export default class MiniCart extends Component {
           <div>
              <div className= "minicart-overlay"   ></div>
              
-              <div className='minicart'>
+              <div >
                 
                 <OutsideAlerterForMiniCart miniCartCloser={this.props.miniCartCloser}>
+                  <div className='minicart'>
                 <span> My Bag.</span>
                 <span> {this.props.totalQuantity} items</span>
                 
@@ -176,7 +183,7 @@ export default class MiniCart extends Component {
                         </div> 
                     </div>
                   </> }
-                  
+                  </div>
                   </OutsideAlerterForMiniCart>
                   
               </div> 

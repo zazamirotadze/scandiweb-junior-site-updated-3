@@ -37,7 +37,7 @@ export default class CardForCart extends Component {
 
     
     return (
-      <div className = "cart-card" >
+      <div className = "cart-card"  >
         <div className='attributes-div'>
           <h2>{brand}</h2>
           <h2 className='name'>{name}</h2>

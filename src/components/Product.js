@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom' 
 import image2 from "../images/Common.png"
 import SmallPopup from './SmallPopup'
-
-
+import nodeid from 'node-id';
+const uniqueId = nodeid()
 export default class Product extends Component {
-
+  
   state={
     isHoveredAnImage: false,
     isCardHoverd: false,
@@ -19,6 +19,8 @@ export default class Product extends Component {
     this.setState({isCardHoverd: false})
   }
   render() {
+    
+
     // add to cart when an Item has no attribute
     const addToCart = this.props.addToCart
     
@@ -39,21 +41,21 @@ export default class Product extends Component {
     const swatch = this.props.swatch.map(element  =>{
       
       return(
-      <>
-        <div style={{background: `${element.items[0].displayValue}`}} className='product__attributes--swatch'></div> 
+      <div key={uniqueId}>
+        <div  style={{background: `${element.items[0].displayValue}`}} className='product__attributes--swatch'></div> 
         <div style={{background: `${element.items[1].displayValue}`}} className='product__attributes--swatch'></div> 
-        <div style={{background: `${element.items[2].displayValue}`}} className='product__attributes--swatch'></div> 
-        <div style={{background: `${element.items[3].displayValue}`}} className='product__attributes--swatch'></div> 
-      </>)}
+        <div  style={{background: `${element.items[2].displayValue}`}} className='product__attributes--swatch'></div> 
+        <div  style={{background: `${element.items[3].displayValue}`}} className='product__attributes--swatch'></div> 
+      </div>)}
     )
 
     const capacity =  this.props.capacity.map(element  =>{
       
       return(
-        <>
-          <div  className='product__attributes--capacity'>{element.items[0].value}</div> 
+        <div key={uniqueId}>
+          <div className='product__attributes--capacity'>{element.items[0].value}</div> 
           <div  className='product__attributes--capacity'>{element.items[1].value}</div> 
-        </>)}
+        </div>)}
     )
 
    
@@ -63,9 +65,10 @@ export default class Product extends Component {
       
 
         <>
-          <Link to="/details">
+          <Link to="/details"  >
             <div 
-              className={!newElmement1.inStock && "product__overlay"} 
+              
+              className={!newElmement1.inStock? "product__overlay": undefined} 
               onClick={()=>(changeState(newElmement1)) }
               onMouseOver={()=>this.setState({isCardHoverd: true})}
               onMouseOut={()=>this.setState({isCardHoverd: false})}
@@ -92,7 +95,7 @@ export default class Product extends Component {
             onMouseOut={()=>this.setState({isHoveredAnImage: false})}
           ><img src={image2} alt="" /></div> }
           <Link to="/details" onClick={()=>(changeState(newElmement1)) } style={{textDecoration: 'none',color:"black"}} >
-          <div className={`product__card ${this.state.isCardHoverd ?"product__card--whenhovered":undefined}`} 
+          <div className={this.state.isCardHoverd ?"product__card--whenhovered":"product__card"} 
             onMouseOver={()=>this.setState({isCardHoverd: true})}
             onMouseOut={()=>this.setState({isCardHoverd: false})}
           >
@@ -116,6 +119,7 @@ export default class Product extends Component {
           </Link>
           {this.state.isPopUpShown && 
           <SmallPopup
+    
            popUpCloser={this.popUpCloser}
            cardHoverClose={this.cardHoverClose}
            {...this.props}

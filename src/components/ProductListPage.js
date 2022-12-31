@@ -80,14 +80,14 @@ class ProductListPage extends React.Component {
         
          
           return(
-            <div>
+            <div key ={element.id} >
               <Product 
                 trueOrFalse={cart.forEach(elementi =>  elementi.id===element.id)} 
                 cart={cart}
                 swatch = {swatch}
                 capacity = {capacity}
                 prices = {prices}
-                key ={element.id} 
+                id ={element.id}
                 element={element} 
                 setDetailProduct = {this.props.setDetailProduct}
                 {...this.props}

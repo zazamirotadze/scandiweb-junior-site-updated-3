@@ -9,7 +9,7 @@ export default class CardForMiniCart extends Component {
     const increase = this.props.increase
     const reduction=this.props.reduction
     return (
-      <div className = "minicard">
+      <div className = "minicard" >
         <div className='minicard__attributes'>
           <h2>{brand}</h2>
           <h2>{name}</h2>

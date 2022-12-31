@@ -41,7 +41,9 @@ export default class CurrencyChanger extends Component {
           ></i>
         
         {this.state.listIsShown && <div className='currency-changer__list-of-prices' >
+          
           <OutsideAlerterForCurrencyChanger currencyCloser={this.currencyCloser}>
+            <>
           <option 
             onClick={()=> {
               changeCurrency("$") 
@@ -113,6 +115,7 @@ export default class CurrencyChanger extends Component {
           >
            ₽ RUB 
           </option>
+          </>
           </OutsideAlerterForCurrencyChanger>
         </div>}
     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import OutsideAlerterForPopUp from '../outsideAlerters/OutsideAlerterForPopUp'
 import { Link } from 'react-router-dom'
+import nodeid from 'node-id';
 
 
 
@@ -11,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 export default class SmallPopup extends Component {
   render() {
-
+    
     // color variebles
     const styles = window.getComputedStyle(document.documentElement);
     const colorGreen = styles.getPropertyValue('--color-green');
@@ -42,7 +43,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const renderSwatches = swatchObject && swatchObject.items.map(
    (element) => {
      return(
-     <div className='popup__color'
+     <div key={nodeid()} className='popup__color'
       style={{
         background: `${element.displayValue}`,
         border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
@@ -63,6 +64,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const sizeObject = ((attributes.find(element =>element.id === "Size")))
  const renderSizes = sizeObject && sizeObject.items.map((element) =>
    <div 
+      key={nodeid()}
      className='popup__attributes'
      onClick={(event) => selectSize(element)}
      style={{
@@ -81,6 +83,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
  const Capacity = capacityObject && capacityObject.items.map((element) => 
    <div 
+   key={nodeid()}
      className='popup__attributes'
      onClick={(event) => selectCapacity(element)}
      style={{
@@ -98,6 +101,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
  const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
    <div
+   key={nodeid()}
      className='popup__attributes'
      onClick={(event) => selectWithUSB3ports(element)}
      style={{
@@ -114,6 +118,7 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
  const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
    <div 
+   key={nodeid()}
      className='popup__attributes'
      onClick={(event) => selectTouchIDinkeyboard(element)}
      style={{
@@ -135,8 +140,9 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  //
    
  return ( 
-    <div className='popup' onMouseOut={()=>cardHoverClose()}>
+    <div  onMouseOut={()=>cardHoverClose()}>
         <OutsideAlerterForPopUp popUpCloser={this.props.popUpCloser}>
+        <div className='popup'>
        {renderSizes &&<div className='popup__attributes--div'>SIZE: <div >{renderSizes}</div></div>}
        
        {renderSwatches &&<div className='popup__attributes--div'>Color:<div>{renderSwatches}</div> </div>}
@@ -160,7 +166,9 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
          > 
            ADD TO CART
          </button> </Link>}
+         </div>
      </OutsideAlerterForPopUp>
+
  </div>
  )
 }

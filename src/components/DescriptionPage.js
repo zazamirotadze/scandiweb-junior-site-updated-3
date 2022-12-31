@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import parse from 'html-react-parser';
+import parse  from 'html-react-parser';
 import {Link} from "react-router-dom"
-
+import nodeid from 'node-id';
 
 
 
@@ -31,12 +31,16 @@ export default class DescriptionPage extends Component {
     
 
     //Description
+  
+
+
     const des = parse(description)
     //
+   
 
 
     //Photos
-    const photosOfProducts = gallery.map(element => (<img src={element} className="secondary-Photos" alt=""></img>))
+    const photosOfProducts = gallery.map(element => (<img key={nodeid()} src={element} className="secondary-Photos" alt=""></img>))
     const mainPhoto = photosOfProducts[0].props.src
     //
 
@@ -50,6 +54,7 @@ export default class DescriptionPage extends Component {
       (element) => {
         return(
         <div className='color'
+        key={nodeid()}
          style={{
              background: `${element.displayValue}`,
              border: element.isSelected?`2px solid ${colorGreen}`:`2px solid white`
@@ -70,6 +75,7 @@ export default class DescriptionPage extends Component {
     const sizeObject = ((attributes.find(element =>element.id === "Size")))
     const renderSizes = sizeObject && sizeObject.items.map((element) =>
       <div 
+      key={nodeid()}
         className='size'
         onClick={(event) => selectSize(element)}
         style={{
@@ -88,6 +94,7 @@ export default class DescriptionPage extends Component {
     const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
     const Capacity = capacityObject && capacityObject.items.map((element) => 
       <div 
+      key={nodeid()}
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectCapacity(element)}
         style={{
@@ -105,6 +112,7 @@ export default class DescriptionPage extends Component {
     const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
     const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
       <div
+      key={nodeid()}
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectWithUSB3ports(element)}
         style={{
@@ -121,6 +129,7 @@ export default class DescriptionPage extends Component {
     const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
     const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
       <div 
+      key={nodeid()}
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectTouchIDinkeyboard(element)}
         style={{

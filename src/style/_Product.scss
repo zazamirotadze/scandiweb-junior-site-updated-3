@@ -13,7 +13,13 @@
         box-shadow: rgba($color-dark-grey, 0.171) 0px 8px 24px;
         height: 100%;
         &--whenhovered{
-            box-shadow: rgba($color-black, 0.571) 0px 8px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: rgba($color-dark-grey, 0.571) 0px 8px 24px;
+            height: 100%;
         }
     }
     &__outofstock--word{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import nodeid from 'node-id';
 import CardForCart from './CardForCart'
 
 
@@ -15,6 +15,7 @@ export default class Cart extends Component {
     const colorBlack = styles.getPropertyValue('--color-black');
     const colorWhite = styles.getPropertyValue('--color-white');
     //
+
     const cart = this.props.cart
  
    
@@ -46,6 +47,7 @@ export default class Cart extends Component {
  
         return(
         <div  className='color-incart'
+        key={nodeid()}
           style={{
             background: `${element.displayValue}`,
             border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
@@ -60,6 +62,7 @@ export default class Cart extends Component {
       const sizeObject = attributes.find(element => element.id === "Size")
       const renderSizes = sizeObject && sizeObject.items.map((element) =>
         <div
+        key={nodeid()}
           className='size'
           style={{ 
             background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -75,6 +78,7 @@ export default class Cart extends Component {
       const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
       const Capacity = capacityObject && capacityObject.items.map((element) =>
         <div
+        key={nodeid()}
           className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -92,6 +96,7 @@ export default class Cart extends Component {
       const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
       const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
         <div
+        key={nodeid()}
           className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -108,6 +113,7 @@ export default class Cart extends Component {
       const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
       const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
         <div
+        key={nodeid()}
           className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -123,7 +129,7 @@ export default class Cart extends Component {
 
       
       return(
-      <div >
+      <div key={item.id} >
         <CardForCart
           removeFromCart={this.props.removeFromCart}
           brand={item.brand}
@@ -142,6 +148,7 @@ export default class Cart extends Component {
           id={item.id}
           increase={this.props.increase}
           reduction={this.props.reduction}
+          
         />
       </div>)}
     )
