@@ -1,5 +1,4 @@
-@import "./variables";
-@import "./media";
+
 
 .minicart{
     background-color: $color-white;
@@ -12,6 +11,25 @@
     @include respond(phone){
         
         right: 2rem;
+    }
+    & select{
+        @include custSelectElement;
+        height: 30px;
+        padding: 7px 0px;
+        outline: none;
+        & option {
+            background-color: initial;
+            color: initial;
+            display: inline;
+            padding: 0.2rem;
+            font-size: small;
+            border: 1px solid $color-black;
+            &:not(:first-child){
+              margin-left: 5px;
+            }
+            
+        }
+        
     }
     &-overlay{
         position: absolute;

@@ -8,7 +8,16 @@ import nodeid from 'node-id';
 
 export default class MiniCart extends Component {
 
-
+        // to remove default clicked color that is created by the select and  option elements
+        state = {
+          clickedValue: {}
+        }
+      
+        removeOpitonsDefaultClickedColor = (element) => {
+          
+          this.setState({clickedValue: element.value})
+        }
+        //
 
   
    
@@ -51,7 +60,7 @@ export default class MiniCart extends Component {
             
      
             return(
-            <div className='minicard__color' 
+            <div className='minicard__color'
             key={nodeid()}
               style={{
                 background: `${element.displayValue}`,
@@ -66,9 +75,10 @@ export default class MiniCart extends Component {
          
           const sizeObject = attributes.find(element => element.id === "Size")
           const renderSizes = sizeObject && sizeObject.items.map((element) =>
-            <div
+            <option
+            onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) } 
             key={nodeid()}
-              className='minicard__attribute'
+              
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
                 color: element.isSelected?`${colorWhite}`:`${colorBlack}`
@@ -76,15 +86,16 @@ export default class MiniCart extends Component {
               
               >
               {element.displayValue}
-            </div>)
+            </option>)
           //
           //capacity
           
           const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
           const Capacity = capacityObject && capacityObject.items.map((element) =>
-            <div
+            <option
+            onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) } 
             key={nodeid()}
-            className='minicard__attribute'
+            
               style={{ 
                 background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
                 color: element.isSelected?`${colorWhite}`:`${colorBlack}`
@@ -92,7 +103,7 @@ export default class MiniCart extends Component {
               
             >
               {element.displayValue}
-            </div>)
+            </option>)
           //
         
     
@@ -100,34 +111,51 @@ export default class MiniCart extends Component {
      
           const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
           const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
-            <div
+            <label
             key={nodeid()}
             className='minicard__attribute'
-              style={{ 
-                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-              }}  
-              
+            style={{
+              backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+              color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+            }}
+            >
+            <input
+              type="checkbox"
+              readOnly
+              checked={element.isSelected}
+              style={{ display: "none" }}
+            />
+            <div
             >
               {element.displayValue}
-            </div>)
+            </div>
+            </label>
+            )
           //
     
           // touch id in keyboard
           
           const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
           const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
-            <div
-            key={nodeid()}
-            className='minicard__attribute'
-              style={{ 
-                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-              }}  
-              
-            >
-              {element.displayValue}
-            </div>)
+          <label
+          key={nodeid()}
+          className='minicard__attribute'
+          style={{
+            backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+            color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+          }}
+          >
+          <input
+            type="checkbox"
+            readOnly
+            checked={element.isSelected}
+            style={{ display: "none" }}
+          />
+          <div
+          >
+            {element.displayValue}
+          </div>
+          </label>)
           //
           ////////////////////////////////
      

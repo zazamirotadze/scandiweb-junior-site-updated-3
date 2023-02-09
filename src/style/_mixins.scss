@@ -14,3 +14,14 @@
         @media (min-width:112.5em){@content};
     }
 }
+
+
+@mixin custSelectElement{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    overflow-y: hidden;
+    border: none;
+    width: 100%;
+}

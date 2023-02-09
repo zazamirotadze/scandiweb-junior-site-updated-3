@@ -14,10 +14,10 @@ export default class CardForMiniCart extends Component {
           <h2>{brand}</h2>
           <h2>{name}</h2>
           <p>{symbol}{amount}</p>
-          {renderSizes &&<div>Size: <div >{renderSizes}</div></div>}
+          {renderSizes &&<div>Size: <select size="4" >{renderSizes}</select></div>}
           {renderSwatches &&<div>Color: <div>{renderSwatches}</div></div>}
           {withUSB3Ports &&<div>With USB 3 ports: <div >{withUSB3Ports}</div></div>}
-          {Capacity && <div>Capacity:<div > {Capacity}</div></div>}
+          {Capacity && <div>Capacity:<select size="2"> {Capacity}</select></div>}
           {touchIdInKeyboard &&<div>Touch ID in keyboard: <div >{touchIdInKeyboard}</div></div>}
         </div>
         <div className='minicard__btn-img--div'>
@@ -27,7 +27,7 @@ export default class CardForMiniCart extends Component {
             <button onClick={() => reduction(id)} >-</button>
           </div>
           <div>
-            <img  src={src}/>
+            <img alt=''  src={src}/>
           </div>
         </div>
       </div>

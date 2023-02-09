@@ -6,6 +6,10 @@ import nodeid from 'node-id';
 
 
 export default class DescriptionPage extends Component {
+
+  
+
+
   render() {
 
     // color variebles
@@ -74,9 +78,10 @@ export default class DescriptionPage extends Component {
     const selectSize =this.props.selectSize
     const sizeObject = ((attributes.find(element =>element.id === "Size")))
     const renderSizes = sizeObject && sizeObject.items.map((element) =>
-      <div 
+      <option
+      
       key={nodeid()}
-        className='size'
+        
         onClick={(event) => selectSize(element)}
         style={{
           background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -84,7 +89,7 @@ export default class DescriptionPage extends Component {
          }} 
       >
         {element.displayValue}
-      </div>)
+      </option>)
     //
 
 
@@ -93,7 +98,7 @@ export default class DescriptionPage extends Component {
     const selectCapacity =this.props.selectCapacity
     const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
     const Capacity = capacityObject && capacityObject.items.map((element) => 
-      <div 
+      <option 
       key={nodeid()}
         className='withUSB3Ports-touchIDinkeyboard-capacity'
         onClick={(event) => selectCapacity(element)}
@@ -103,42 +108,65 @@ export default class DescriptionPage extends Component {
         }} 
       >
         {element.displayValue}
-      </div> )
+      </option> )
     //
     
 
     //With USB 3 ports
-    const selectWithUSB3ports =this.props.selectWithUSB3ports
-    const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
-    const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
-      <div
-      key={nodeid()}
+    const selectWithUSB3ports = this.props.selectWithUSB3ports;
+    const withUSB3PortsObject = (attributes.find(element => element.id === "With USB 3 ports"));
+    const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) => (
+      <label
+        key={nodeid()}
         className='withUSB3Ports-touchIDinkeyboard-capacity'
-        onClick={(event) => selectWithUSB3ports(element)}
         style={{
-          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-        }} 
+          backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+          color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+        }}
       >
-        {element.displayValue}
-      </div>)
+        <input
+          type="checkbox"
+          checked={element.isSelected}
+          onChange={(event) => selectWithUSB3ports(element)}
+          style={{ display: "none" }}
+        />
+        <div
+        >
+          {element.displayValue}
+        </div>
+      </label>
+    ));
     //
 
     // touch id in keyboard
+
+    
+    
     const selectTouchIDinkeyboard =this.props.selectTouchIDinkeyboard
     const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
     const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
-      <div 
+      <label
       key={nodeid()}
-        className='withUSB3Ports-touchIDinkeyboard-capacity'
-        onClick={(event) => selectTouchIDinkeyboard(element)}
-        style={{
-          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-        }} 
+      className='withUSB3Ports-touchIDinkeyboard-capacity'
+      style={{
+        backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+        color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+      }}
+      >
+      <input
+        type="checkbox"
+        checked={element.isSelected}
+        onChange={(event) => selectTouchIDinkeyboard(element)}
+        style={{ display: "none" }}
+      />
+      <div
       >
         {element.displayValue}
-      </div>)
+      </div>
+      </label>
+            
+      
+      )
     //
     ////////////////////////////////
 
@@ -164,7 +192,7 @@ export default class DescriptionPage extends Component {
           <h2 >{brand}</h2>
           <h2 >{name}</h2>
           {renderSizes &&<div className='description__attributes-word-div'>
-            SIZE: <div className='attributes-container'>{renderSizes}</div>
+            SIZE: <select size="4" >{renderSizes}</select>
           </div>}
           
           {renderSwatches &&<div className='description__attributes-word-div'>
@@ -176,7 +204,7 @@ export default class DescriptionPage extends Component {
           </div>}
           
           {Capacity && <div className='description__attributes-word-div' >
-            Capacity: <div className='attributes-container'>{Capacity}</div>
+            Capacity: <select size="2" >{Capacity}</select>
           </div>}
           
           {touchIdInKeyboard &&<div className='description__attributes-word-div' >

@@ -1,3 +1,5 @@
+@import "./variables";
+@import "./mixins";
 @import "./base";
 @import "./ProductListPage";
 @import "./Product";
@@ -6,5 +8,4 @@
 @import "./miniCart";
 @import "./Nav";
 @import "./popup";
-@import "./variables";
-@import "./media";
+@import "./filter";

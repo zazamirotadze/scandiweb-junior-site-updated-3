@@ -3,9 +3,7 @@ import ProductListPage from "./ProductListPage";
 import Cart from "./Cart";
 import Nav from "./Nav";
 import {Routes, Route} from "react-router-dom"
-
 import DescriptionPage from "./DescriptionPage";
-
 
 
 
@@ -15,19 +13,114 @@ class App extends React.Component {
 
   state = {
     detailProduct : JSON.parse(localStorage.getItem("detailProduct"))? JSON.parse(localStorage.getItem("detailProduct")): {},
-    category: 0,
+    category: JSON.parse(localStorage.getItem("categoryNum"))?JSON.parse(localStorage.getItem("categoryNum")) : 0,
     currency:JSON.parse(localStorage.getItem("currency"))? JSON.parse(localStorage.getItem("currency")): "$",
     cart: JSON.parse(localStorage.getItem("cart"))? JSON.parse(localStorage.getItem("cart")):[],
     totalSum: JSON.parse(localStorage.getItem("totalSum"))? JSON.parse(localStorage.getItem("totalSum")):0,
     totalQuantity: JSON.parse(localStorage.getItem("totalQuantity"))? JSON.parse(localStorage.getItem("totalQuantity")):0,
     tax21: JSON.parse(localStorage.getItem("tax21"))? JSON.parse(localStorage.getItem("tax21")):0,
-    allCategoryShown: true,
-    techCategoryShown: false,
-    clothesCategoryShown: false
+    allCategoryShown: JSON.parse( localStorage.getItem("allCategoryShown") ) !==null ? JSON.parse( localStorage.getItem("allCategoryShown") ): true,
+    techCategoryShown: JSON.parse( localStorage.getItem("techCategoryShown") ) !==null ? JSON.parse( localStorage.getItem("techCategoryShown") ): false,
+    clothesCategoryShown: JSON.parse( localStorage.getItem("clothesCategoryShown") ) !==null ? JSON.parse( localStorage.getItem("clothesCategoryShown") ): false,
+    categoryUrl: JSON.parse( localStorage.getItem("categoryUrl") ) !==null ? JSON.parse( localStorage.getItem("categoryUrl") ) : "",
+    filterParameterUrl: JSON.parse( localStorage.getItem("filterParameterUrl") ) !==null ? JSON.parse( localStorage.getItem("filterParameterUrl") ) : "",
+    
   }
 
 
+  
+  changeCategoryUrl = (url) => {
+    const attributesNames0 = JSON.parse(localStorage.getItem("attributesNames0"))
+    const attributesNames1 = JSON.parse(localStorage.getItem("attributesNames1"))
+    const attributesNames2 = JSON.parse(localStorage.getItem("attributesNames2"))
+    const selectedAttribute0 = attributesNames0 !==null &&  attributesNames0.find(element => element.isSelected===true)
+    const selectedAttribute1 = attributesNames1 !==null && attributesNames1.find(element => element.isSelected===true)
+    const selectedAttribute2 = attributesNames2 !==null && attributesNames2.find(element => element.isSelected===true)
+    if(url === "all"){
+      this.changeFilterParameterUrl(selectedAttribute0)
+    }
+    if(url === "tech"){
+      this.changeFilterParameterUrl(selectedAttribute2)
+    }
+    if(url === "clothes"){
+      this.changeFilterParameterUrl(selectedAttribute1)
+    }
+    
+    localStorage.setItem("categoryUrl", JSON.stringify(url))
+    this.setState({categoryUrl: url})
+    
+  
+    
 
+  }
+
+  changeFilterParameterUrl = (data) => {
+    
+    if( Array.isArray(data) && data !==undefined){
+      const selectedElement = data.find(element => element.isSelected === true)
+      const prevSelectedElement = JSON.parse(localStorage.getItem("filterParameterUrl"))
+      
+      if(selectedElement && prevSelectedElement !== selectedElement.name){
+       
+        localStorage.setItem("filterParameterUrl", JSON.stringify(selectedElement.name))
+        this.setState({filterParameterUrl: selectedElement.name})
+
+
+        // give each of the category url its filter parameter
+        if(this.state.categoryUrl==="all"){
+         
+          localStorage.setItem("filterParameterUrlAll", JSON.stringify(selectedElement.name))
+          
+        }
+        if(this.state.categoryUrl==="tech"){
+          localStorage.setItem("filterParameterUrlTech", JSON.stringify(selectedElement.name))
+        }
+        if(this.state.categoryUrl==="clothes"){
+          localStorage.setItem("filterParameterUrlClothes", JSON.stringify(selectedElement.name))
+        }
+        //
+      }else{
+
+         // when we want to disselect an attribute
+       
+        localStorage.setItem("filterParameterUrl", JSON.stringify(""))
+        this.setState({filterParameterUrl: ""})
+               
+        if(JSON.parse(localStorage.getItem("filterParameterUrlAll"))  !== "" && this.state.categoryUrl==="all"){
+          localStorage.setItem("filterParameterUrlAll", JSON.stringify(""))
+        }
+        if(JSON.parse(localStorage.getItem("filterParameterUrlTech"))  !== "" && this.state.categoryUrl==="tech"){
+            localStorage.setItem("filterParameterUrlTech", JSON.stringify(""))
+        }
+        if(JSON.parse(localStorage.getItem("filterParameterUrlClothes"))  !== ""  && this.state.categoryUrl==="clothes"){
+          localStorage.setItem("filterParameterUrlClothes", JSON.stringify(""))
+        }
+               //
+       
+
+        
+    
+        
+      }
+    }else if(!Array.isArray(data) && data){
+      
+      localStorage.setItem("filterParameterUrl", JSON.stringify(data.name))
+      this.setState({filterParameterUrl: data.name})
+   
+       
+    }else{
+      
+      localStorage.setItem("filterParameterUrl", JSON.stringify(""))
+     this.setState({filterParameterUrl: ""})
+     
+      
+    }
+ 
+    
+
+  }
+
+    
   changeState = (data) => {
     this.setState( {detailProduct : data})
     setTimeout(()=>{
@@ -35,18 +128,28 @@ class App extends React.Component {
     },100)
   }
   changeCategory = (number) => {
+    localStorage.setItem("categoryNum", JSON.stringify(number))
     this.setState( {category : number})
     if(number===0){
+      localStorage.setItem("allCategoryShown", JSON.stringify(true))
+      localStorage.setItem("techCategoryShown", JSON.stringify(false))
+      localStorage.setItem("clothesCategoryShown", JSON.stringify(false))
       this.setState({allCategoryShown: true})
       this.setState({techCategoryShown: false})
       this.setState({clothesCategoryShown: false})
     }
     if(number===1){
+      localStorage.setItem("allCategoryShown", JSON.stringify(false))
+      localStorage.setItem("techCategoryShown", JSON.stringify(false))
+      localStorage.setItem("clothesCategoryShown", JSON.stringify(true))
       this.setState({allCategoryShown:false})
       this.setState({techCategoryShown: false})
       this.setState({clothesCategoryShown: true})
     }
     if(number===2){
+      localStorage.setItem("allCategoryShown", JSON.stringify(false))
+      localStorage.setItem("techCategoryShown", JSON.stringify(true))
+      localStorage.setItem("clothesCategoryShown", JSON.stringify(false))
       this.setState({allCategoryShown: false})
       this.setState({techCategoryShown: true})
       this.setState({clothesCategoryShown: false})
@@ -276,7 +379,7 @@ class App extends React.Component {
         const findSwatchInCart= findDescriptionElement.attributes.find(element => element.id === 'Color').items
         const findSwatchInDesc=  element.attributes.find(element => element.id === 'Color').items
         const  isSelectedColorInDescId = findSwatchInDesc.find(elementi => elementi.isSelected===true)
-        console.log(isSelectedColorInDescId)
+        
         if(isSelectedColorInDescId){
           const selectedColorInDescId = findSwatchInDesc.find(elementi => elementi.isSelected===true).id
         
@@ -567,15 +670,18 @@ class App extends React.Component {
 
 
   render() {
-  
+    
     return  <div style={{width:"100%"}}>
+                
+                
                 <Nav  
                   changeCategory= {this.changeCategory} 
                   changeCurrency = {this.changeCurrency} 
                   allCategoryShown= {this.state.allCategoryShown}
                   techCategoryShown= {this.state.techCategoryShown}
                   clothesCategoryShown= {this.state.clothesCategoryShown}
-
+                  changeCategoryUrl={this.changeCategoryUrl}
+                  filterParameterUrl={this.state.filterParameterUrl}
 
                   increase={this.increase}
                   reduction={this.reduction}
@@ -590,14 +696,18 @@ class App extends React.Component {
                   
                   />
                 <Routes>
-                  <Route path="/" 
+                  <Route path={`/${this.state.categoryUrl}/${this.state.filterParameterUrl}`}
                     element={
+                      
                       <ProductListPage 
+                        categoryUrl = {this.state.categoryUrl}
+                        changeFilterParameterUrl = {this.changeFilterParameterUrl}
                         setDetailProduct = {this.changeState}
                         category = {this.state.category}
                         currency ={this.state.currency}
                         cart={this.state.cart}
-
+                        toInitialyFetch= {this.toInitialyFetch}
+                        initialFetch = {this.state.initialFetch}
                         // props for popUp
                         details={this.state.detailProduct}
                         addToCart = {this.addToCart}
@@ -617,8 +727,50 @@ class App extends React.Component {
                         selectWithUSB3portsWhenInDescription={this.selectWithUSB3portsWhenInDescription}
                         selectTouchIDinkeyboardWhenInDescription={this.selectTouchIDinkeyboardWhenInDescription}
                         // 
-                      />}
+                      />  
+                     
+                    
+                    }  
                   />
+                  <Route path="/"
+
+                    element = {
+                      <ProductListPage 
+                      categoryUrl = {this.state.categoryUrl}
+                      changeFilterParameterUrl = {this.changeFilterParameterUrl}
+                      setDetailProduct = {this.changeState}
+                      category = {this.state.category}
+                      currency ={this.state.currency}
+                      cart={this.state.cart}
+                      toInitialyFetch= {this.toInitialyFetch}
+                      initialFetch = {this.state.initialFetch}
+                      // props for popUp
+                      details={this.state.detailProduct}
+                      addToCart = {this.addToCart}
+
+
+                      selectColor={this.selectColor}
+                      selectSize={this.selectSize}
+                      selectCapacity={this.selectCapacity}
+                      selectWithUSB3ports={this.selectWithUSB3ports}
+                      selectTouchIDinkeyboard={this.selectTouchIDinkeyboard}
+
+
+
+                      selectColorWhenInDescription={this.selectColorWhenInDescription}
+                      selectSizeWhenInDescription={this.selectSizeWhenInDescription}
+                      selectCapacityWhenInDescription={this.selectCapacityWhenInDescription}     
+                      selectWithUSB3portsWhenInDescription={this.selectWithUSB3portsWhenInDescription}
+                      selectTouchIDinkeyboardWhenInDescription={this.selectTouchIDinkeyboardWhenInDescription}
+                      // 
+                    />
+                    }
+
+
+                  >
+                    
+                  </Route>
+                  
                   <Route path="/details" 
                     element={
                       <DescriptionPage 
@@ -642,6 +794,7 @@ class App extends React.Component {
                         selectTouchIDinkeyboardWhenInDescription={this.selectTouchIDinkeyboardWhenInDescription}
                         
                       />}
+                      
                   />
                   <Route path="/Cart" 
                     element={
@@ -659,6 +812,7 @@ class App extends React.Component {
                       />}
                   />
                 </Routes>
+              
             </div>
   }
 }

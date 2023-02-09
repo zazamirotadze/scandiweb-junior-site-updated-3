@@ -42,10 +42,10 @@ export default class CardForCart extends Component {
           <h2>{brand}</h2>
           <h2 className='name'>{name}</h2>
           <p className='price'>{symbol}{amount}</p>
-          {renderSizes &&<div className='attribute-word-div-in-cart'>SIZE: <div className='attributes-container'>{renderSizes}</div></div>}
+          {renderSizes &&<div className='attribute-word-div-in-cart'>SIZE: <select size="4" >{renderSizes}</select></div>}
           {renderSwatches &&<div className='color-word-div-in-cart' >COLOR: <div className='attributes-container-forcolor'>{renderSwatches}</div></div>}
           {withUSB3Ports &&<div className='attribute-word-div-in-cart'>With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div></div>}
-          {Capacity && <div className='attribute-word-div-in-cart'>CAPACITY:<div className='attributes-container'> {Capacity}</div></div>}
+          {Capacity && <div className='attribute-word-div-in-cart'>CAPACITY:<select size="2" > {Capacity}</select></div>}
           {touchIdInKeyboard &&<div  className='attribute-word-div-in-cart'>Touch ID in keyboard: <div className='attributes-container'>{touchIdInKeyboard}</div></div>}
         </div>
         <div className='imp-and-btn-and-count'>

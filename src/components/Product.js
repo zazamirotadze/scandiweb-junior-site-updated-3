@@ -52,10 +52,10 @@ export default class Product extends Component {
     const capacity =  this.props.capacity.map(element  =>{
       
       return(
-        <div key={uniqueId}>
-          <div className='product__attributes--capacity'>{element.items[0].value}</div> 
-          <div  className='product__attributes--capacity'>{element.items[1].value}</div> 
-        </div>)}
+        <select  size="2" key={uniqueId}>
+          <option>{element.items[0].value}</option>
+          <option>{element.items[1].value}</option>
+        </select>)}
     )
 
    

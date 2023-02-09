@@ -4,8 +4,16 @@ import CardForCart from './CardForCart'
 
 
 export default class Cart extends Component {
+    // to remove default clicked color that is created by the select and  option elements
+    state = {
+      clickedValue: {}
+    }
   
- 
+    removeOpitonsDefaultClickedColor = (element) => {
+      
+      this.setState({clickedValue: element.value})
+    }
+    //
 
 
     render() {
@@ -60,25 +68,27 @@ export default class Cart extends Component {
       //size
       
       const sizeObject = attributes.find(element => element.id === "Size")
-      const renderSizes = sizeObject && sizeObject.items.map((element) =>
-        <div
+      const renderSizes = sizeObject && sizeObject.items.map((element) =>{
+        
+          return(
+        <option
         key={nodeid()}
-          className='size'
+          onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) }
           style={{ 
             background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
             color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-          }}  
-          
-          >
+          }}>
           {element.displayValue}
-        </div>)
+        </option>
+        )})
       //
       //capacity
 
       const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
       const Capacity = capacityObject && capacityObject.items.map((element) =>
-        <div
+        <option
         key={nodeid()}
+          onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) }
           className='withUSB3Ports-touchIDinkeyboard-capacity'
           style={{ 
             background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
@@ -87,42 +97,61 @@ export default class Cart extends Component {
           
         >
           {element.displayValue}
-        </div>)
+        </option>)
       //
     
 
       //capacity With USB 3 ports
     
+      
+    
       const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
       const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
-        <div
-        key={nodeid()}
-          className='withUSB3Ports-touchIDinkeyboard-capacity'
-          style={{ 
-            background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-            color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-          }}  
-          
-        >
-          {element.displayValue}
-        </div>)
+      <label
+      key={nodeid()}
+      className='withUSB3Ports-touchIDinkeyboard-capacity'
+      style={{
+        backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+        color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+      }}
+      >
+      <input
+        type="checkbox"
+        readOnly
+        checked={element.isSelected}
+        style={{ display: "none" }}
+      />
+      <div
+      >
+        {element.displayValue}
+      </div>
+      </label>
+        )
       //
 
       // touch id in keyboard
      
       const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
       const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
-        <div
-        key={nodeid()}
-          className='withUSB3Ports-touchIDinkeyboard-capacity'
-          style={{ 
-            background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-            color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-          }}  
-          
-        >
-          {element.displayValue}
-        </div>)
+      <label
+      key={nodeid()}
+      className='withUSB3Ports-touchIDinkeyboard-capacity'
+      style={{
+        backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+        color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+      }}
+      >
+      <input
+        type="checkbox"
+        readOnly
+        checked={element.isSelected}
+        style={{ display: "none" }}
+      />
+      <div
+      >
+        {element.displayValue}
+      </div>
+      </label>)
       //
       ////////////////////////////////
  
