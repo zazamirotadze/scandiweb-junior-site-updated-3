@@ -69,7 +69,7 @@ class Filter extends Component {
   render() {
     const renderAttributes0 = this.state.uniqueNameData0.map(element => 
         
-        <Link key={element.name} to={`/${this.props.categoryUrl}/${JSON.parse(localStorage.getItem("filterParameterUrlAll")) === element.name  ? "": element.name}`  } className="removeLinkDefaultStyle" >
+        <Link key={element.name} to={`/${this.props.categoryUrl}/${JSON.parse(localStorage.getItem("filterParameterUrlAll")) === element.name.split(" ").join("")  ? "": element.name.split(" ").join("")}`  } className="removeLinkDefaultStyle" >
         <div 
         onClick={()=>{
             this.selectAttribute(element.name, this.state.uniqueNameData0,  "attributesNames0", "uniqueNameData0" )
@@ -88,7 +88,7 @@ class Filter extends Component {
     
     const renderAttributes1 = this.state.uniqueNameData1.map(element => 
       
-        <Link key={element.name} to={`/${this.props.categoryUrl}/${JSON.parse(localStorage.getItem("filterParameterUrlClothes")) === element.name  ? "": element.name}`  } className="removeLinkDefaultStyle" >
+        <Link key={element.name} to={`/${this.props.categoryUrl}/${JSON.parse(localStorage.getItem("filterParameterUrlClothes")) === element.name.split(" ").join("")  ? "": element.name.split(" ").join("")}`  } className="removeLinkDefaultStyle" >
         <div key={element.name}
         onClick={()=>{
             this.selectAttribute(element.name, this.state.uniqueNameData1,  "attributesNames1", "uniqueNameData1" )
@@ -103,7 +103,7 @@ class Filter extends Component {
     
     const renderAttributes2 = this.state.uniqueNameData2.map(element => 
 
-        <Link key={element.name} to={`/${this.props.categoryUrl}/${JSON.parse(localStorage.getItem("filterParameterUrlTech")) === element.name  ? "": element.name}`  } className="removeLinkDefaultStyle" >
+        <Link key={element.name} to={`/${this.props.categoryUrl}/${JSON.parse(localStorage.getItem("filterParameterUrlTech")) === element.name.split(" ").join("")  ? "": element.name.split(" ").join("")}`  } className="removeLinkDefaultStyle" >
         <div key={element.name}
         onClick={()=>{
             this.selectAttribute(element.name, this.state.uniqueNameData2,  "attributesNames2", "uniqueNameData2" )

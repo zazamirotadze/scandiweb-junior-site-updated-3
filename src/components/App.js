@@ -62,21 +62,21 @@ class App extends React.Component {
       
       if(selectedElement && prevSelectedElement !== selectedElement.name){
        
-        localStorage.setItem("filterParameterUrl", JSON.stringify(selectedElement.name))
-        this.setState({filterParameterUrl: selectedElement.name})
+        localStorage.setItem("filterParameterUrl", JSON.stringify(selectedElement.name.split(" ").join("")))
+        this.setState({filterParameterUrl: selectedElement.name.split(" ").join("")})
 
 
         // give each of the category url its filter parameter
         if(this.state.categoryUrl==="all"){
          
-          localStorage.setItem("filterParameterUrlAll", JSON.stringify(selectedElement.name))
+          localStorage.setItem("filterParameterUrlAll", JSON.stringify(selectedElement.name.split(" ").join("")))
           
         }
         if(this.state.categoryUrl==="tech"){
-          localStorage.setItem("filterParameterUrlTech", JSON.stringify(selectedElement.name))
+          localStorage.setItem("filterParameterUrlTech", JSON.stringify(selectedElement.name.split(" ").join("")))
         }
         if(this.state.categoryUrl==="clothes"){
-          localStorage.setItem("filterParameterUrlClothes", JSON.stringify(selectedElement.name))
+          localStorage.setItem("filterParameterUrlClothes", JSON.stringify(selectedElement.name.split(" ").join("")))
         }
         //
       }else{
@@ -104,8 +104,8 @@ class App extends React.Component {
       }
     }else if(!Array.isArray(data) && data){
       
-      localStorage.setItem("filterParameterUrl", JSON.stringify(data.name))
-      this.setState({filterParameterUrl: data.name})
+      localStorage.setItem("filterParameterUrl", JSON.stringify(data.name.split(" ").join("")))
+      this.setState({filterParameterUrl: data.name.split(" ").join("")})
    
        
     }else{
