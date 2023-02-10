@@ -3,7 +3,7 @@ import { Link} from "react-router-dom"
 import CardForMiniCart from './CardForMiniCart'
 import OutsideAlerterForMiniCart from '../outsideAlerters/outsideAlerterForMiniCart'
 import nodeid from 'node-id';
-import { checkBoxImplementation } from './reusableFunctions/functions';
+
 
 
 export default class MiniCart extends Component {
@@ -109,14 +109,53 @@ export default class MiniCart extends Component {
     
           //capacity With USB 3 ports
      
-          
+          const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
+          const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
+            <label
+            key={nodeid()}
+            className='minicard__attribute'
+            style={{
+              backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+              color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+            }}
+            >
+            <input
+              type="checkbox"
+              readOnly
+              checked={element.isSelected}
+              style={{ display: "none" }}
+            />
+            <div
+            >
+              {element.displayValue}
+            </div>
+            </label>
+            )
           //
     
           // touch id in keyboard
           
-         
-          const withUSB3Ports = checkBoxImplementation( attributes,undefined, "With USB 3 ports", 'minicard__attribute');
-          const touchIdInKeyboard = checkBoxImplementation( attributes, undefined, "Touch ID in keyboard", 'minicard__attribute');
+          const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
+          const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
+          <label
+          key={nodeid()}
+          className='minicard__attribute'
+          style={{
+            backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+            color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+          }}
+          >
+          <input
+            type="checkbox"
+            readOnly
+            checked={element.isSelected}
+            style={{ display: "none" }}
+          />
+          <div
+          >
+            {element.displayValue}
+          </div>
+          </label>)
           //
           ////////////////////////////////
      

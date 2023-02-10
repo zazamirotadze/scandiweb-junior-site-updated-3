@@ -6,7 +6,9 @@ import nodeid from 'node-id';
 //
 export const checkBoxImplementation = (attributes, selectMethod, attribute, classNameData) => {
     const object = attributes.find(element => element.id === attribute);
+    console.log(object)
     return object && object.items.map(element =>
+        
       <label
         key={nodeid()}
         className = {classNameData}
@@ -28,3 +30,22 @@ export const checkBoxImplementation = (attributes, selectMethod, attribute, clas
       </label>
     );
 }
+
+
+export const renderOptions = (attributes, selectMethod, attribute, classNameData ) => {
+    const object = attributes.find(element => element.id === attribute);
+    
+    return object && object.items.map((element) =>
+      <option
+        key={nodeid()}
+        className= {classNameData}
+        onClick={(event) => selectMethod(element)}
+        style={{
+          background: element.isSelected ? `${colorBlack}` : ` ${colorWhite}`,
+          color: element.isSelected ? `${colorWhite}` : `${colorBlack}`
+        }}
+      >
+        {element.displayValue}
+      </option>
+    );
+  };
