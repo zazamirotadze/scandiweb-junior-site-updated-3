@@ -63,17 +63,19 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const selectSize =this.props.selectSize
  const sizeObject = ((attributes.find(element =>element.id === "Size")))
  const renderSizes = sizeObject && sizeObject.items.map((element) =>
-   <div 
-      key={nodeid()}
-     className='popup__attributes'
-     onClick={(event) => selectSize(element)}
-     style={{
-      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
+    <option 
+    key={nodeid()}
+      className='popup__attributes'
+      onClick={(event) => selectSize(element)}
+      style={{
+        background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+        color: element.isSelected?`${colorWhite}`:`${colorBlack}`
       }} 
-   >
-     {element.displayValue}
-   </div>)
+    >
+      {element.displayValue}
+    </option> 
+   
+   )
  //
 
 
@@ -82,17 +84,19 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const selectCapacity =this.props.selectCapacity
  const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
  const Capacity = capacityObject && capacityObject.items.map((element) => 
-   <div 
-   key={nodeid()}
-     className='popup__attributes'
-     onClick={(event) => selectCapacity(element)}
-     style={{
-      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-     }} 
-   >
-     {element.displayValue}
-   </div> )
+    <option 
+    key={nodeid()}
+      className='popup__attributes'
+      onClick={(event) => selectCapacity(element)}
+      style={{
+        background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
+        color: element.isSelected?`${colorWhite}`:`${colorBlack}`
+      }} 
+    >
+      {element.displayValue}
+    </option> 
+   
+   )
  //
  
 
@@ -100,34 +104,59 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  const selectWithUSB3ports =this.props.selectWithUSB3ports
  const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
  const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
-   <div
-   key={nodeid()}
-     className='popup__attributes'
-     onClick={(event) => selectWithUSB3ports(element)}
-     style={{
-      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-     }} 
-   >
-     {element.displayValue}
-   </div>)
+  
+    <label
+    key={nodeid()}
+    className='popup__attributes'
+    style={{
+      backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+      color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+    }}
+    >
+    <input
+      type="checkbox"
+      checked={element.isSelected}
+      onChange={(event) => selectWithUSB3ports(element)}
+      style={{ display: "none" }}
+    />
+    <div
+    >
+      {element.displayValue}
+    </div>
+    </label>
+   
+   
+   )
  //
 
  // touch id in keyboard
  const selectTouchIDinkeyboard =this.props.selectTouchIDinkeyboard
  const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
  const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
-   <div 
-   key={nodeid()}
-     className='popup__attributes'
-     onClick={(event) => selectTouchIDinkeyboard(element)}
-     style={{
-      background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-      color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-     }} 
-   >
-     {element.displayValue}
-   </div>)
+ 
+
+    <label
+    key={nodeid()}
+    className='popup__attributes'
+    style={{
+      backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
+      color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
+    }}
+    >
+    <input
+      type="checkbox"
+      checked={element.isSelected}
+      onChange={(event) =>  selectTouchIDinkeyboard(element)}
+      style={{ display: "none" }}
+    />
+    <div
+    >
+      {element.displayValue}
+    </div>
+    </label>
+   
+   
+   )
  //
  ////////////////////////////////
 
@@ -143,13 +172,13 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
     <div  onMouseOut={()=>cardHoverClose()}>
         <OutsideAlerterForPopUp popUpCloser={this.props.popUpCloser}>
         <div className='popup'>
-       {renderSizes &&<div className='popup__attributes--div'>SIZE: <div >{renderSizes}</div></div>}
+       {renderSizes &&<div className='popup__attributes--div'>SIZE: <select size="4" >{renderSizes}</select></div>}
        
        {renderSwatches &&<div className='popup__attributes--div'>Color:<div>{renderSwatches}</div> </div>}
        
        {withUSB3Ports &&<div className='popup__attributes--div' >With USB 3 ports: <div>{withUSB3Ports}</div> </div>}
        
-       {Capacity && <div className='popup__attributes--div' >Capacity: <div >{Capacity}</div></div>}
+       {Capacity && <div className='popup__attributes--div' >Capacity: <select size="2" >{Capacity}</select></div>}
        
        {touchIdInKeyboard &&<div className='popup__attributes--div' >Touch ID in keyboard:<div >{touchIdInKeyboard}</div> </div>}
        

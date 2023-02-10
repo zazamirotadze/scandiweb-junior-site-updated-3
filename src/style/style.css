@@ -412,9 +412,6 @@ html {
 .description select option:not(:first-child) {
   margin-left: 5px;
 }
-.description select option:active {
-  background-color: transparent;
-}
 
 .add-to-cart-btn {
   border: none;
@@ -763,6 +760,27 @@ html {
   font-size: small;
   border-radius: 2%;
   margin-top: 1.6rem;
+}
+.popup select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  overflow-y: hidden;
+  border: none;
+  width: 100%;
+  height: 30px;
+  padding: 6px 0px;
+  outline: none;
+}
+.popup select option {
+  display: inline;
+  padding: 0.5rem;
+  font-size: small;
+  border: 1px solid black;
+}
+.popup select option:not(:first-child) {
+  margin-left: 5px;
 }
 
 .filter {
