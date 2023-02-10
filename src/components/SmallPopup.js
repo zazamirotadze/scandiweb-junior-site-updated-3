@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import OutsideAlerterForPopUp from '../outsideAlerters/OutsideAlerterForPopUp'
 import { Link } from 'react-router-dom'
 import nodeid from 'node-id';
+import { checkBoxImplementation } from './reusableFunctions/functions';
 
 
 
@@ -100,63 +101,10 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  //
  
 
- //With USB 3 ports
- const selectWithUSB3ports =this.props.selectWithUSB3ports
- const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
- const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
-  
-    <label
-    key={nodeid()}
-    className='popup__attributes'
-    style={{
-      backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-      color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-    }}
-    >
-    <input
-      type="checkbox"
-      checked={element.isSelected}
-      onChange={(event) => selectWithUSB3ports(element)}
-      style={{ display: "none" }}
-    />
-    <div
-    >
-      {element.displayValue}
-    </div>
-    </label>
-   
-   
-   )
- //
 
- // touch id in keyboard
- const selectTouchIDinkeyboard =this.props.selectTouchIDinkeyboard
- const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
- const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
- 
 
-    <label
-    key={nodeid()}
-    className='popup__attributes'
-    style={{
-      backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-      color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-    }}
-    >
-    <input
-      type="checkbox"
-      checked={element.isSelected}
-      onChange={(event) =>  selectTouchIDinkeyboard(element)}
-      style={{ display: "none" }}
-    />
-    <div
-    >
-      {element.displayValue}
-    </div>
-    </label>
-   
-   
-   )
+const withUSB3Ports = checkBoxImplementation( attributes,this.props.selectWithUSB3ports, "With USB 3 ports",'popup__attributes');
+const touchIdInKeyboard = checkBoxImplementation( attributes, this.props.selectTouchIDinkeyboard, "Touch ID in keyboard",'popup__attributes');
  //
  ////////////////////////////////
 
