@@ -71,41 +71,8 @@ export default class MiniCart extends Component {
             </div>)})
           //
     
-          //size
          
-          const sizeObject = attributes.find(element => element.id === "Size")
-          const renderSizes = sizeObject && sizeObject.items.map((element) =>
-            <option
-            onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) } 
-            key={nodeid()}
-              
-              style={{ 
-                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-              }}  
-              
-              >
-              {element.displayValue}
-            </option>)
-          //
-          //capacity
-          
-          const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
-          const Capacity = capacityObject && capacityObject.items.map((element) =>
-            <option
-            onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) } 
-            key={nodeid()}
-            
-              style={{ 
-                background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-                color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-              }}  
-              
-            >
-              {element.displayValue}
-            </option>)
-          //
-        
+         
     
           //capacity With USB 3 ports
      
@@ -164,16 +131,18 @@ export default class MiniCart extends Component {
           return(
           <div key={item.id} >
             <CardForMiniCart
+              attributes={attributes}
+              removeOpitonsDefaultClickedColor = {this.removeOpitonsDefaultClickedColor}
               
               removeFromCart={this.props.removeFromCart}
               brand={item.brand}
               name= {item.name}
               symbol={priceObject.currency.symbol}
               amount={priceObject.amount}
-              renderSizes={renderSizes}
+           
               renderSwatches={renderSwatches}
               withUSB3Ports={withUSB3Ports}
-              Capacity={Capacity}
+            
               touchIdInKeyboard={touchIdInKeyboard}
               src={item.gallery[0]}
               card={item}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import parse  from 'html-react-parser';
 import {Link} from "react-router-dom"
 import nodeid from 'node-id';
-
+import RenderOptions from './reusableFunctions/RenderOptions';
 
 export default class DescriptionPage extends Component {
 
@@ -73,42 +73,10 @@ export default class DescriptionPage extends Component {
     //
 
 
-    //size
-    const selectSize =this.props.selectSize
-    const sizeObject = ((attributes.find(element =>element.id === "Size")))
-    const renderSizes = sizeObject && sizeObject.items.map((element) =>
-      <option
-      
-      key={nodeid()}
-        
-        onClick={(event) => selectSize(element)}
-        style={{
-          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-         }} 
-      >
-        {element.displayValue}
-      </option>)
-    //
 
 
 
-    //capacity
-    const selectCapacity =this.props.selectCapacity
-    const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
-    const Capacity = capacityObject && capacityObject.items.map((element) => 
-      <option 
-      key={nodeid()}
-        className='withUSB3Ports-touchIDinkeyboard-capacity'
-        onClick={(event) => selectCapacity(element)}
-        style={{
-          background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-          color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-        }} 
-      >
-        {element.displayValue}
-      </option> )
-    //
+   
     
 
     //With USB 3 ports
@@ -192,9 +160,15 @@ export default class DescriptionPage extends Component {
         <div className='description__information-div'>
           <h2 >{brand}</h2>
           <h2 >{name}</h2>
-          {renderSizes &&<div className='description__attributes-word-div'>
-            SIZE: <select size="4" >{renderSizes}</select>
-          </div>}
+          
+          <RenderOptions
+          attributes={attributes}
+          selectMethod ={this.props.selectSize}
+          attribute = "Size"
+          classNameData = ""
+          classNameDataGeneral =  'description__attributes-word-div'
+          />
+       
           
           {renderSwatches &&<div className='description__attributes-word-div'>
             Color:<div  className='attributes-container'>{renderSwatches}</div> 
@@ -204,9 +178,14 @@ export default class DescriptionPage extends Component {
             With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div> 
           </div>}
           
-          {Capacity && <div className='description__attributes-word-div' >
-            Capacity: <select size="2" >{Capacity}</select>
-          </div>}
+         
+          <RenderOptions
+          attributes={attributes}
+          selectMethod ={this.props.selectCapacity}
+          attribute = "Capacity"
+          classNameData = ''
+          classNameDataGeneral =  'description__attributes-word-div'
+           />
           
           {touchIdInKeyboard &&<div className='description__attributes-word-div' >
             Touch ID in keyboard:<div className='attributes-container'>{touchIdInKeyboard}</div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import RenderOptions from './reusableFunctions/RenderOptions';
 
 
 export default class CardForCart extends Component {
@@ -27,7 +28,7 @@ export default class CardForCart extends Component {
 
   render() {
     
-    const {brand,name ,symbol, amount, renderSizes, renderSwatches, withUSB3Ports, Capacity, touchIdInKeyboard,  count,  id} = this.props
+    const {brand,name ,    symbol, amount,  renderSwatches, withUSB3Ports,  touchIdInKeyboard,  count,  id} = this.props
 
     const increase = this.props.increase
     const reduction=this.props.reduction
@@ -42,10 +43,22 @@ export default class CardForCart extends Component {
           <h2>{brand}</h2>
           <h2 className='name'>{name}</h2>
           <p className='price'>{symbol}{amount}</p>
-          {renderSizes &&<div className='attribute-word-div-in-cart'>SIZE: <select size="4" >{renderSizes}</select></div>}
+          <RenderOptions
+            attributes={this.props.attributes}
+            selectMethod ={this.props.removeOpitonsDefaultClickedColor}
+            attribute = "Size"
+            classNameData = ''
+            classNameDataGeneral =  'attribute-word-div-in-cart'
+          />
           {renderSwatches &&<div className='color-word-div-in-cart' >COLOR: <div className='attributes-container-forcolor'>{renderSwatches}</div></div>}
           {withUSB3Ports &&<div className='attribute-word-div-in-cart'>With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div></div>}
-          {Capacity && <div className='attribute-word-div-in-cart'>CAPACITY:<select size="2" > {Capacity}</select></div>}
+          <RenderOptions
+            attributes={this.props.attributes}
+            selectMethod ={this.props.removeOpitonsDefaultClickedColor}
+            attribute = "Capacity"
+            classNameData = ''
+            classNameDataGeneral =  'attribute-word-div-in-cart'
+          />
           {touchIdInKeyboard &&<div  className='attribute-word-div-in-cart'>Touch ID in keyboard: <div className='attributes-container'>{touchIdInKeyboard}</div></div>}
         </div>
         <div className='imp-and-btn-and-count'>

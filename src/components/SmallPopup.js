@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import OutsideAlerterForPopUp from '../outsideAlerters/OutsideAlerterForPopUp'
 import { Link } from 'react-router-dom'
 import nodeid from 'node-id';
-
-
-
-
-
+import RenderOptions from './reusableFunctions/RenderOptions';
 
 
 
 export default class SmallPopup extends Component {
+  state = {
+    toRerenderComp: false, 
+  }
+ 
   render() {
     
     // color variebles
@@ -59,45 +59,11 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
  //
 
 
- //size
- const selectSize =this.props.selectSize
- const sizeObject = ((attributes.find(element =>element.id === "Size")))
- const renderSizes = sizeObject && sizeObject.items.map((element) =>
-    <option 
-    key={nodeid()}
-      className='popup__attributes'
-      onClick={(event) => selectSize(element)}
-      style={{
-        background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-        color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-      }} 
-    >
-      {element.displayValue}
-    </option> 
-   
-   )
- //
 
 
 
- //capacity
- const selectCapacity =this.props.selectCapacity
- const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
- const Capacity = capacityObject && capacityObject.items.map((element) => 
-    <option 
-    key={nodeid()}
-      className='popup__attributes'
-      onClick={(event) => selectCapacity(element)}
-      style={{
-        background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-        color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-      }} 
-    >
-      {element.displayValue}
-    </option> 
-   
-   )
- //
+
+
  
 
  //With USB 3 ports
@@ -172,13 +138,28 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
     <div  onMouseOut={()=>cardHoverClose()}>
         <OutsideAlerterForPopUp popUpCloser={this.props.popUpCloser}>
         <div className='popup'>
-       {renderSizes &&<div className='popup__attributes--div'>SIZE: <select size="4" >{renderSizes}</select></div>}
+       
+        <RenderOptions
+          attributes={attributes}
+          selectMethod ={this.props.selectSize}
+          attribute = "Size"
+          classNameData = 'popup__attributes'
+          classNameDataGeneral =  'popup__attributes--div'
+        />
+       
+       
        
        {renderSwatches &&<div className='popup__attributes--div'>Color:<div>{renderSwatches}</div> </div>}
        
        {withUSB3Ports &&<div className='popup__attributes--div' >With USB 3 ports: <div>{withUSB3Ports}</div> </div>}
-       
-       {Capacity && <div className='popup__attributes--div' >Capacity: <select size="2" >{Capacity}</select></div>}
+
+       <RenderOptions
+          attributes={attributes}
+          selectMethod ={this.props.selectCapacity}
+          attribute = "Capacity"
+          classNameData = 'popup__attributes'
+          classNameDataGeneral =  'popup__attributes--div'
+        />
        
        {touchIdInKeyboard &&<div className='popup__attributes--div' >Touch ID in keyboard:<div >{touchIdInKeyboard}</div> </div>}
        

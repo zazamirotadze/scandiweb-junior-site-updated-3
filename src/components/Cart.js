@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import nodeid from 'node-id';
 import CardForCart from './CardForCart'
 
-
 export default class Cart extends Component {
     // to remove default clicked color that is created by the select and  option elements
     state = {
@@ -67,39 +66,8 @@ export default class Cart extends Component {
 
       //size
       
-      const sizeObject = attributes.find(element => element.id === "Size")
-      const renderSizes = sizeObject && sizeObject.items.map((element) =>{
-        
-          return(
-        <option
-        key={nodeid()}
-          onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) }
-          style={{ 
-            background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-            color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-          }}>
-          {element.displayValue}
-        </option>
-        )})
-      //
-      //capacity
-
-      const capacityObject = ((attributes.find(element =>element.id === "Capacity")))
-      const Capacity = capacityObject && capacityObject.items.map((element) =>
-        <option
-        key={nodeid()}
-          onClick ={ () =>  this.removeOpitonsDefaultClickedColor(element) }
-          className='withUSB3Ports-touchIDinkeyboard-capacity'
-          style={{ 
-            background: element.isSelected?`${colorBlack}`:` ${colorWhite}`,
-            color: element.isSelected?`${colorWhite}`:`${colorBlack}`
-          }}  
-          
-        >
-          {element.displayValue}
-        </option>)
-      //
     
+      
 
       //capacity With USB 3 ports
     
@@ -160,15 +128,17 @@ export default class Cart extends Component {
       return(
       <div key={item.id} >
         <CardForCart
+          attributes={attributes}
+          removeOpitonsDefaultClickedColor = {this.removeOpitonsDefaultClickedColor}
           removeFromCart={this.props.removeFromCart}
           brand={item.brand}
           name= {item.name}
           symbol={priceObject.currency.symbol}
           amount={priceObject.amount}
-          renderSizes={renderSizes}
+          
           renderSwatches={renderSwatches}
           withUSB3Ports={withUSB3Ports}
-          Capacity={Capacity}
+          
           touchIdInKeyboard={touchIdInKeyboard}
           src={item.gallery[0]}
           photosSrcs = {item.gallery}
