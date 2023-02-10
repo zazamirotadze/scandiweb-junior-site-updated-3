@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import nodeid from 'node-id';
 import CardForCart from './CardForCart'
-
 
 export default class Cart extends Component {
     // to remove default clicked color that is created by the select and  option elements
@@ -17,64 +15,14 @@ export default class Cart extends Component {
 
 
     render() {
-    // color variebles
-    const styles = window.getComputedStyle(document.documentElement);
-    const colorGreen = styles.getPropertyValue('--color-green');
-    const colorWhite = styles.getPropertyValue('--color-white');
-    //
-
-    const cart = this.props.cart
- 
-   
-      
-      
+    const cart = this.props.cart 
     const renderCart = cart.map(item => {
       //price
       const priceObject = (item.prices.find((element => element.currency.symbol ===this.props.currency)))
-      
-
-      //
-      
-      //selectColorF
-      
-    
-      
-      //
-      
       /////////////////////////// attributes
       const attributes = item.attributes
      
-       //colors
-      
-
-      const swatchObject = (attributes.find(element => element.type === "swatch"))
-      
-      const renderSwatches = swatchObject && swatchObject.items.map((element) => {
-        
- 
-        return(
-        <div  className='color-incart'
-        key={nodeid()}
-          style={{
-            background: `${element.displayValue}`,
-            border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
-          }}  
-          >
-          
-        </div>)})
-      //
-
-      //size
-      
     
-      
-
-  
-
-    
-      ////////////////////////////////
- 
-
       
       return(
       <div key={item.id} >
@@ -86,11 +34,6 @@ export default class Cart extends Component {
           name= {item.name}
           symbol={priceObject.currency.symbol}
           amount={priceObject.amount}
-          
-          renderSwatches={renderSwatches}
-          
-          
-          
           src={item.gallery[0]}
           photosSrcs = {item.gallery}
           card={item}

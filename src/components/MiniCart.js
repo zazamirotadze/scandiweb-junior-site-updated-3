@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link} from "react-router-dom"
 import CardForMiniCart from './CardForMiniCart'
 import OutsideAlerterForMiniCart from '../outsideAlerters/outsideAlerterForMiniCart'
-import nodeid from 'node-id';
+
 
 
 
@@ -23,12 +23,7 @@ export default class MiniCart extends Component {
    
 
     render() {
-      // color variebles
-      const styles = window.getComputedStyle(document.documentElement);
-      const colorGreen = styles.getPropertyValue('--color-green');
-      const colorWhite = styles.getPropertyValue('--color-white');
       
-      //
        
         
         const cart = this.props.cart
@@ -39,42 +34,10 @@ export default class MiniCart extends Component {
         const renderCart = cart.map(item => {
           //price
           const priceObject = (item.prices.find((element => element.currency.symbol===this.props.currency)))
-          //
-          
-          //selectColorF
-          
-          
-          
-          //
-          
+ 
           /////////////////////////// attributes
           const attributes = item.attributes
-         
-           //colors
-          
-    
-          const swatchObject = (attributes.find(element => element.type === "swatch"))
-          
-          const renderSwatches = swatchObject && swatchObject.items.map((element) => {
-            
-     
-            return(
-            <div className='minicard__color'
-            key={nodeid()}
-              style={{
-                background: `${element.displayValue}`,
-                border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
-              }}  
-              >
-              
-            </div>)})
-          //
-    
-  
-    ////////////////////////////////
-     
-    
-          
+ 
           return(
           <div key={item.id} >
             <CardForMiniCart
@@ -86,11 +49,6 @@ export default class MiniCart extends Component {
               name= {item.name}
               symbol={priceObject.currency.symbol}
               amount={priceObject.amount}
-           
-              renderSwatches={renderSwatches}
-              
-            
-              
               src={item.gallery[0]}
               card={item}
               count={item.count}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import RenderOptions from './reusableComponents/RenderOptions'
 import RenderCheckbox from './reusableComponents/RenderCheckbox';
+import RenderSwatchAttribute from './reusableComponents/RenderSwatchAttribute';
 
 export default class CardForMiniCart extends Component {
   render() {
     
-    const {brand,name ,symbol, amount,  renderSwatches,    src, count,  id} = this.props
+    const {brand,name ,symbol, amount,    src, count,  id} = this.props
 
     const increase = this.props.increase
     const reduction=this.props.reduction
@@ -22,7 +23,14 @@ export default class CardForMiniCart extends Component {
             classNameData = ''
             classNameDataGeneral =  ''
           />
-          {renderSwatches &&<div>Color: <div>{renderSwatches}</div></div>}
+          <RenderSwatchAttribute
+            attributes={this.props.attributes}
+            selectMethod ={undefined}
+            attribute = "swatch"
+            classNameData='minicard__color'
+            classNameDataMidGeneral = ''
+            classNameDataGeneral =  ''
+          />  
           
           <RenderCheckbox
             attributes={this.props.attributes}

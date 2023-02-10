@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import RenderOptions from './reusableComponents/RenderOptions';
 import RenderCheckbox from './reusableComponents/RenderCheckbox';
+import RenderSwatchAttribute from './reusableComponents/RenderSwatchAttribute';
+
 
 
 export default class CardForCart extends Component {
@@ -29,7 +31,7 @@ export default class CardForCart extends Component {
 
   render() {
     
-    const {brand,name ,    symbol, amount,  renderSwatches,    count,  id} = this.props
+    const {brand,name , symbol, amount,  count,  id} = this.props
 
     const increase = this.props.increase
     const reduction=this.props.reduction
@@ -51,7 +53,14 @@ export default class CardForCart extends Component {
             classNameData = ''
             classNameDataGeneral =  'attribute-word-div-in-cart'
           />
-          {renderSwatches &&<div className='color-word-div-in-cart' >COLOR: <div className='attributes-container-forcolor'>{renderSwatches}</div></div>}
+          <RenderSwatchAttribute
+            attributes={this.props.attributes}
+            selectMethod ={undefined}
+            attribute = "swatch"
+            classNameData='color-incart'
+            classNameDataMidGeneral = 'attributes-container-forcolor'
+            classNameDataGeneral =  'color-word-div-in-cart'
+          />  
           <RenderCheckbox
             attributes={this.props.attributes}
             selectMethod ={undefined}

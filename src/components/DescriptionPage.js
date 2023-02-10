@@ -4,20 +4,10 @@ import {Link} from "react-router-dom"
 import nodeid from 'node-id';
 import RenderOptions from './reusableComponents/RenderOptions';
 import RenderCheckbox from './reusableComponents/RenderCheckbox';
+import RenderSwatchAttribute from './reusableComponents/RenderSwatchAttribute';
 
 export default class DescriptionPage extends Component {
-
-  
-
-
   render() {
-
-    // color variebles
-    const styles = window.getComputedStyle(document.documentElement);
-    const colorGreen = styles.getPropertyValue('--color-green');
-    
-    //
-    
     const {attributes, brand,  description, gallery, id,  name, prices} = this.props.details && this.props.details
     
    
@@ -27,61 +17,15 @@ export default class DescriptionPage extends Component {
    const selectCapacityWhenInDescription= this.props.selectCapacityWhenInDescription
    const selectWithUSB3portsWhenInDescription= this.props.selectWithUSB3portsWhenInDescription
    const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboardWhenInDescription
-   
-   
-   
-    
 
     //Description
-  
-
-
     const des = parse(description)
     //
    
-
-
     //Photos
     const photosOfProducts = gallery.map(element => (<img key={nodeid()} src={element} className="secondary-Photos" alt=""></img>))
     const mainPhoto = photosOfProducts[0].props.src
     //
-
-    /////////////////////////// attributes
-    //colors
-     
-    const selectColor =this.props.selectColor
-    const swatchObject = (attributes.find(element => element.type === "swatch"))
-    
-    const renderSwatches = swatchObject && swatchObject.items.map(
-      (element) => {
-        return(
-        <div className='color'
-        key={nodeid()}
-         style={{
-             background: `${element.displayValue}`,
-             border: element.isSelected?`2px solid ${colorGreen}`:`2px solid white`
-            }} 
-             onClick={(event) =>{
-              selectColor(element)
-              
-             } }
-             
-        >
-             
-        </div>)})
-    //
-
-
-
-
-
-   
-    
-
-  
-
-    
-
     //prices
     const renderPrice = prices.find(element => element.currency.symbol===this.props.currency)
     //
@@ -113,10 +57,15 @@ export default class DescriptionPage extends Component {
           />
        
           
-          {renderSwatches &&<div className='description__attributes-word-div'>
-            Color:<div  className='attributes-container'>{renderSwatches}</div> 
-          </div>}
           
+          <RenderSwatchAttribute
+            attributes={attributes}
+            selectMethod ={this.props.selectColor}
+            attribute = "swatch"
+            classNameData='color'
+            classNameDataMidGeneral = 'attributes-container'
+            classNameDataGeneral =  'description__attributes-word-div'
+          />  
          
           <RenderCheckbox
             attributes={attributes}

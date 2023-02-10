@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import OutsideAlerterForPopUp from '../outsideAlerters/OutsideAlerterForPopUp'
 import { Link } from 'react-router-dom'
-import nodeid from 'node-id';
 import RenderOptions from './reusableComponents/RenderOptions';
 import RenderCheckbox from './reusableComponents/RenderCheckbox';
+import RenderSwatchAttribute from './reusableComponents/RenderSwatchAttribute';
 
 
 export default class SmallPopup extends Component {
@@ -12,52 +12,14 @@ export default class SmallPopup extends Component {
   }
  
   render() {
-    
-    // color variebles
-    const styles = window.getComputedStyle(document.documentElement);
-    const colorGreen = styles.getPropertyValue('--color-green');
-    const colorWhite = styles.getPropertyValue('--color-white');
-    //
 const  cardHoverClose = this.props.cardHoverClose
 const {attributes,  id, } = this.props.details && this.props.details
-    
-   
-    
+      
 const selectColorWhenInDescription=this.props.selectColorWhenInDescription
 const selectSizeWhenInDescription= this.props.selectSizeWhenInDescription
 const selectCapacityWhenInDescription= this.props.selectCapacityWhenInDescription
 const selectWithUSB3portsWhenInDescription= this.props.selectWithUSB3portsWhenInDescription
 const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboardWhenInDescription
-
-
-
-
-
- /////////////////////////// attributes
- //colors
-  
- const selectColor =this.props.selectColor
- const swatchObject = (attributes.find(element => element.type === "swatch"))
- 
- const renderSwatches = swatchObject && swatchObject.items.map(
-   (element) => {
-     return(
-     <div key={nodeid()} className='popup__color'
-      style={{
-        background: `${element.displayValue}`,
-        border: element.isSelected?`2px solid ${colorGreen}`:`2px solid ${colorWhite}`
-         }} 
-          onClick={(event) =>{
-           selectColor(element)
-           
-          } }
-          
-     >
-          
-     </div>)})
- //
-
- ////////////////////////////////
 
 
 
@@ -82,7 +44,14 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
        
        
        
-       {renderSwatches &&<div className='popup__attributes--div'>Color:<div>{renderSwatches}</div> </div>}
+       <RenderSwatchAttribute
+            attributes={attributes}
+            selectMethod ={this.props.selectColor}
+            attribute = "swatch"
+            classNameData='popup__color'
+            classNameDataMidGeneral = ''
+            classNameDataGeneral =  'popup__attributes--div'
+        />  
        
        <RenderCheckbox
             attributes={attributes}
