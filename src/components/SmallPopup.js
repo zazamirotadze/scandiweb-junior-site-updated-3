@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import OutsideAlerterForPopUp from '../outsideAlerters/OutsideAlerterForPopUp'
 import { Link } from 'react-router-dom'
 import nodeid from 'node-id';
-import RenderOptions from './reusableFunctions/RenderOptions';
-
+import RenderOptions from './reusableComponents/RenderOptions';
+import RenderCheckbox from './reusableComponents/RenderCheckbox';
 
 
 export default class SmallPopup extends Component {
@@ -16,7 +16,6 @@ export default class SmallPopup extends Component {
     // color variebles
     const styles = window.getComputedStyle(document.documentElement);
     const colorGreen = styles.getPropertyValue('--color-green');
-    const colorBlack = styles.getPropertyValue('--color-black');
     const colorWhite = styles.getPropertyValue('--color-white');
     //
 const  cardHoverClose = this.props.cardHoverClose
@@ -58,72 +57,6 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
      </div>)})
  //
 
-
-
-
-
-
-
- 
-
- //With USB 3 ports
- const selectWithUSB3ports =this.props.selectWithUSB3ports
- const withUSB3PortsObject = ((attributes.find(element =>element.id === "With USB 3 ports")))
- const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) =>
-  
-    <label
-    key={nodeid()}
-    className='popup__attributes'
-    style={{
-      backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-      color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-    }}
-    >
-    <input
-      type="checkbox"
-      checked={element.isSelected}
-      onChange={(event) => selectWithUSB3ports(element)}
-      style={{ display: "none" }}
-    />
-    <div
-    >
-      {element.displayValue}
-    </div>
-    </label>
-   
-   
-   )
- //
-
- // touch id in keyboard
- const selectTouchIDinkeyboard =this.props.selectTouchIDinkeyboard
- const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
- const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
- 
-
-    <label
-    key={nodeid()}
-    className='popup__attributes'
-    style={{
-      backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-      color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-    }}
-    >
-    <input
-      type="checkbox"
-      checked={element.isSelected}
-      onChange={(event) =>  selectTouchIDinkeyboard(element)}
-      style={{ display: "none" }}
-    />
-    <div
-    >
-      {element.displayValue}
-    </div>
-    </label>
-   
-   
-   )
- //
  ////////////////////////////////
 
 
@@ -151,7 +84,14 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
        
        {renderSwatches &&<div className='popup__attributes--div'>Color:<div>{renderSwatches}</div> </div>}
        
-       {withUSB3Ports &&<div className='popup__attributes--div' >With USB 3 ports: <div>{withUSB3Ports}</div> </div>}
+       <RenderCheckbox
+            attributes={attributes}
+            selectMethod ={this.props.selectWithUSB3ports}
+            attribute = "With USB 3 ports"
+            classNameData='popup__attributes'
+            classNameDataMidGeneral = ''
+            classNameDataGeneral =  'popup__attributes--div'
+        />
 
        <RenderOptions
           attributes={attributes}
@@ -161,7 +101,14 @@ const selectTouchIDinkeyboardWhenInDescription= this.props.selectTouchIDinkeyboa
           classNameDataGeneral =  'popup__attributes--div'
         />
        
-       {touchIdInKeyboard &&<div className='popup__attributes--div' >Touch ID in keyboard:<div >{touchIdInKeyboard}</div> </div>}
+       <RenderCheckbox
+            attributes={attributes}
+            selectMethod ={this.props.selectTouchIDinkeyboard}
+            attribute = "Touch ID in keyboard"
+            classNameData='popup__attributes'
+            classNameDataMidGeneral = ''
+            classNameDataGeneral =  'popup__attributes--div'
+          />
        
        {card.inStock && <Link  to="/Cart"> 
          <button  onClick={() => 

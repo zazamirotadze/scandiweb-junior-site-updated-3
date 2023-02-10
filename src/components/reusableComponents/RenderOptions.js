@@ -1,33 +1,6 @@
 import nodeid from 'node-id';
 import React, {Component} from 'react';
 
-/*export const checkBoxImplementation = (attributes, selectMethod, attribute, classNameData) => {
-    const object = attributes.find(element => element.id === attribute);
-    console.log(object)
-    return object && object.items.map(element =>
-        
-      <label
-        key={nodeid()}
-        className = {classNameData}
-        style={{
-          backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-          color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-        }}
-      >
-        <input
-          type="checkbox"
-          checked={element.isSelected}
-          onChange={selectMethod ? (event) => selectMethod(element) : null}
-          readOnly={!selectMethod}
-          style={{ display: "none" }}
-        />
-        <div>
-          {element.displayValue}
-        </div>
-      </label>
-    );
-}*/
-
 
 
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import RenderOptions from './reusableFunctions/RenderOptions';
+import RenderOptions from './reusableComponents/RenderOptions';
+import RenderCheckbox from './reusableComponents/RenderCheckbox';
 
 
 export default class CardForCart extends Component {
@@ -28,7 +29,7 @@ export default class CardForCart extends Component {
 
   render() {
     
-    const {brand,name ,    symbol, amount,  renderSwatches, withUSB3Ports,  touchIdInKeyboard,  count,  id} = this.props
+    const {brand,name ,    symbol, amount,  renderSwatches,    count,  id} = this.props
 
     const increase = this.props.increase
     const reduction=this.props.reduction
@@ -51,7 +52,14 @@ export default class CardForCart extends Component {
             classNameDataGeneral =  'attribute-word-div-in-cart'
           />
           {renderSwatches &&<div className='color-word-div-in-cart' >COLOR: <div className='attributes-container-forcolor'>{renderSwatches}</div></div>}
-          {withUSB3Ports &&<div className='attribute-word-div-in-cart'>With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div></div>}
+          <RenderCheckbox
+            attributes={this.props.attributes}
+            selectMethod ={undefined}
+            attribute = "With USB 3 ports"
+            classNameData='withUSB3Ports-touchIDinkeyboard-capacity'
+            classNameDataMidGeneral = 'attributes-container'
+            classNameDataGeneral =  'attribute-word-div-in-cart'
+          />
           <RenderOptions
             attributes={this.props.attributes}
             selectMethod ={this.props.removeOpitonsDefaultClickedColor}
@@ -59,7 +67,15 @@ export default class CardForCart extends Component {
             classNameData = ''
             classNameDataGeneral =  'attribute-word-div-in-cart'
           />
-          {touchIdInKeyboard &&<div  className='attribute-word-div-in-cart'>Touch ID in keyboard: <div className='attributes-container'>{touchIdInKeyboard}</div></div>}
+          <RenderCheckbox
+            attributes={this.props.attributes}
+            selectMethod = {undefined}
+            attribute = "Touch ID in keyboard"
+            classNameData='withUSB3Ports-touchIDinkeyboard-capacity'
+            classNameDataMidGeneral = 'attributes-container'
+            classNameDataGeneral =  'attribute-word-div-in-cart'
+          />
+          
         </div>
         <div className='imp-and-btn-and-count'>
           <div className='btn-and-sum' >

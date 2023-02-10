@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import parse  from 'html-react-parser';
 import {Link} from "react-router-dom"
 import nodeid from 'node-id';
-import RenderOptions from './reusableFunctions/RenderOptions';
+import RenderOptions from './reusableComponents/RenderOptions';
+import RenderCheckbox from './reusableComponents/RenderCheckbox';
 
 export default class DescriptionPage extends Component {
 
@@ -14,8 +15,6 @@ export default class DescriptionPage extends Component {
     // color variebles
     const styles = window.getComputedStyle(document.documentElement);
     const colorGreen = styles.getPropertyValue('--color-green');
-    const colorBlack = styles.getPropertyValue('--color-black');
-    const colorWhite = styles.getPropertyValue('--color-white');
     
     //
     
@@ -79,65 +78,9 @@ export default class DescriptionPage extends Component {
    
     
 
-    //With USB 3 ports
-    const selectWithUSB3ports = this.props.selectWithUSB3ports;
-    const withUSB3PortsObject = (attributes.find(element => element.id === "With USB 3 ports"));
-    const withUSB3Ports = withUSB3PortsObject && withUSB3PortsObject.items.map((element) => (
-      <label
-        key={nodeid()}
-        className='withUSB3Ports-touchIDinkeyboard-capacity'
-        style={{
-          backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-          color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-        }}
-      >
-        <input
-          type="checkbox"
-          checked={element.isSelected}
-          onChange={(event) => selectWithUSB3ports(element)}
-          style={{ display: "none" }}
-        />
-        <div
-        >
-          {element.displayValue}
-        </div>
-      </label>
-    ));
-    //
-
-    // touch id in keyboard
+  
 
     
-    
-    const selectTouchIDinkeyboard =this.props.selectTouchIDinkeyboard
-    const touchIdInKeyboardObject = ((attributes.find(element =>element.id === "Touch ID in keyboard")))
-    const touchIdInKeyboard = touchIdInKeyboardObject && touchIdInKeyboardObject.items.map((element) =>
-      <label
-      key={nodeid()}
-      className='withUSB3Ports-touchIDinkeyboard-capacity'
-      style={{
-        backgroundColor: element.isSelected ? `${colorBlack}` : `${colorWhite}`,
-        color: element.isSelected ? `${colorWhite}`  : `${colorBlack}` ,
-      }}
-      >
-      <input
-        type="checkbox"
-        checked={element.isSelected}
-        onChange={(event) => selectTouchIDinkeyboard(element)}
-        style={{ display: "none" }}
-      />
-      <div
-      >
-        {element.displayValue}
-      </div>
-      </label>
-            
-      
-      )
-    
-
-    //
-    ////////////////////////////////
 
     //prices
     const renderPrice = prices.find(element => element.currency.symbol===this.props.currency)
@@ -174,9 +117,15 @@ export default class DescriptionPage extends Component {
             Color:<div  className='attributes-container'>{renderSwatches}</div> 
           </div>}
           
-          {withUSB3Ports &&<div className='description__attributes-word-div' >
-            With USB 3 ports: <div className='attributes-container'>{withUSB3Ports}</div> 
-          </div>}
+         
+          <RenderCheckbox
+            attributes={attributes}
+            selectMethod ={this.props.selectWithUSB3ports}
+            attribute = "With USB 3 ports"
+            classNameData='withUSB3Ports-touchIDinkeyboard-capacity'
+            classNameDataMidGeneral = 'attributes-container'
+            classNameDataGeneral =  'description__attributes-word-div'
+          />
           
          
           <RenderOptions
@@ -187,9 +136,17 @@ export default class DescriptionPage extends Component {
           classNameDataGeneral =  'description__attributes-word-div'
            />
           
-          {touchIdInKeyboard &&<div className='description__attributes-word-div' >
-            Touch ID in keyboard:<div className='attributes-container'>{touchIdInKeyboard}</div>
-           </div>}
+          
+             
+           <RenderCheckbox
+            attributes={attributes}
+            selectMethod ={this.props.selectTouchIDinkeyboard}
+            attribute = "Touch ID in keyboard"
+            classNameData='withUSB3Ports-touchIDinkeyboard-capacity'
+            classNameDataMidGeneral = 'attributes-container'
+            classNameDataGeneral =  'description__attributes-word-div'
+          />
+          
           
           <div className='description__attributes-word-div'>PRICE:</div>
           <div className='price-div' >{renderPrice.currency.symbol}{renderPrice.amount}</div>
